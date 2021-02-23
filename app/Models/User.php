@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return Carbon::parse($this->attributes['date_of_birth'])->age;
     }
+
+    public function getTakeImageAttribute()
+    {
+        return '/storage/' . $this->image;
+    }
 }

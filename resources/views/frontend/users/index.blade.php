@@ -43,7 +43,7 @@
                 <div class="card my-3">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-                            <img src="{{ $user->image }}" class="img-thumbnail rounded-circle" alt="">
+                            <img src="{{ $user->takeImage }}" class="img-thumbnail rounded-circle" width="100">
                         </div>
                         <p>{{ $user->bio }}</p>
                     </div>
@@ -105,7 +105,7 @@
                                 <h6>Like</h6>
                             </div>
                             <div class="col-sm-9 text-comment">
-                                {{-- <h6>{{ count($user->posts->like) }}</h6> --}}
+                                <h6>{{ $likes }}</h6>
                             </div>
                         </div>
                         <hr>

@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'date_of_birth' => $data['date_of_birth'],
             'gender' => $data['gender'],
-            'image' => 'irp-logo.png',
+            'image' => 'img/profile/irp-logo.png',
             'role' => 'user',
         ]);
     }
