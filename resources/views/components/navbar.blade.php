@@ -42,8 +42,8 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('users.index', $user->id) }}">My Profil (0)</a>
-                            <a class="dropdown-item" href="{{ route('admin.index') }}">Admin</a>
+                            <a class="dropdown-item" href="{{ route('user.index', Auth::user()->id) }}">My Profil (0)</a>
+                            <a class="dropdown-item" href="">Admin</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

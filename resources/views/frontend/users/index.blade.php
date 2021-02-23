@@ -9,7 +9,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>My Profil</h1>
-                        <span class="subheading">Ikhsan Heriyawan</span>
+                        <span class="subheading">{{ $user->name }}</span>
                         <a href="crud-post.html" class="btn btn-success btn-lg mt-3">Create a Post</a>
                     </div>
                 </div>
@@ -24,9 +24,9 @@
                 <div class="card my-3">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-                            <img src="img/foxinban.jpg" class="img-thumbnail rounded-circle" alt="">
+                            <img src="{{ $user->image }}" class="img-thumbnail rounded-circle" alt="">
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius eaque culpa beatae! Optio corporis fugit, aperiam dignissimos! Illum placeat, velit blanditiis deserunt ab facilis officia, atque in harum earum natus.</p>
+                        <p>{{ $user->bio }}</p>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                                 <h6>Name</h6>
                             </div>
                             <div class="col-sm-9 text-comment">
-                                Ikhsan Heriyawan
+                                {{ $user->name }}
                             </div>
                         </div>
                         <hr>
@@ -50,7 +50,7 @@
                                 <h6>Jenis Kelamin</h6>
                             </div>
                             <div class="col-sm-9 text-comment">
-                                Laki-Laki
+                                {{ $user->gender }}
                             </div>
                         </div>
                         <hr>

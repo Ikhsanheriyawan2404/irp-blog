@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function show(User $user)
+    public function show()
     {
-        return view('profil.index', [
+        return view('frontend.users.index', [
+            'user' => User::get(),
             'title' => 'Halaman Profil',
-            'user' => $user,
-        ]);
-    }
+        ]);    }
 }
