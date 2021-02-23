@@ -33,9 +33,8 @@
                 <div class="card my-3">
                     <form action="{{ route('register') }}" method="post">
                     @csrf
-
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Name <small class="text-danger">*</small></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -44,7 +43,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email <small class="text-danger">*</small></label>
                             <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -53,7 +52,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">Password <small class="text-danger">*</small></label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -62,7 +61,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="password-confirm">Konfirmasi Password</label>
+                            <label for="password-confirm">Konfirmasi Password <small class="text-danger">*</small></label>
                             <input id="password-confirm" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation">
                             @error('password-confirm')
                                 <span class="invalid-feedback" role="alert">
@@ -71,8 +70,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="date_of_birth">Tanggal Lahir</label>
-                            <input type="date" class="form-control @error('password') is-invalid @enderror" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}">
+                            <label for="date_of_birth">Tanggal Lahir <small class="text-danger">*</small></label>
+                            <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}">
                             @error('date_of_birth')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -80,13 +79,22 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="gender">Jenis Kelamin</label>
-                            <select class="form-control @error('password') is-invalid @enderror" name="gender" id="gender" value="{{ old('gender') }}">
+                            <label for="gender">Jenis Kelamin <small class="text-danger">*</small></label>
+                            <select class="form-control @error('gender') is-invalid @enderror" name="gender" id="gender">
                                 <option disabled selected>Pilih Jenis Kelamin</option>
                                 <option value="L">Laki-Laki</option>
                                 <option value="P">Perempuan</option>
                             </select>
                             @error('gender')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio <small class="text-secondary">'tidak wajib diisi'</small></label>
+                            <textarea class="form-control @error('bio') is-invalid @enderror" name="bio" id="bio"></textarea>
+                            @error('bio')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

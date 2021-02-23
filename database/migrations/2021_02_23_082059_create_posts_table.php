@@ -17,12 +17,13 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title')->unique();
-            $table->string('meta-title');
-            $table->string('meta-description');
+            $table->string('meta_title');
+            $table->string('meta_description');
+            $table->string('meta_keyword');
             $table->string('slug');
             $table->text('body');
             $table->string('thumbnail')->nullable();
-            $table->integer('like');
+            $table->integer('like')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');

@@ -42,10 +42,16 @@
                             Ikhsan Heriyawan
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="profil.html">My Profil (0)</a>
+                            <a class="dropdown-item" href="{{-- {{ route('users.index') }} --}}">My Profil (0)</a>
                             <a class="dropdown-item" href="#">Admin</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 @endguest

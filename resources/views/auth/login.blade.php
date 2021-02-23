@@ -35,7 +35,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email <small class="text-danger">*</small></label>
                             <input type="text" class="form-control @error('password') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">Password <small class="text-danger">*</small></label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">

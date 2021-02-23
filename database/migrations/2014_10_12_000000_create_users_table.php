@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->date('date_of_birth');
             $table->enum('gender', ['L', 'P']);
-            $table->string('image')->default('irp-logo.jpg');
-            $table->string('bio');
+            $table->string('image')->nullable();
+            $table->string('bio')->nullable();
             $table->enum('role', ['admin', 'user']);
             $table->timestamps();
         });

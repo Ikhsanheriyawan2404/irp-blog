@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\{HomeController, UserController};
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +17,8 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 Route::get('/', HomeController::class, 'index')->name('home');
+Route::middleware('auth')->group(function () {
+    Route::prefix('users')->group(function() {
+        Route::get('{users:id}', [UserController::class])->name('users.index');
+    });
+});
