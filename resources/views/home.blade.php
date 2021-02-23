@@ -21,99 +21,49 @@
         <div class="row">
             <div class="col-lg-8 col-md-12 mx-auto">
                 <div class="card-post my-3">
-                        <img src="img/img1.png" class="card-img-top" style="height: 250px; object-fit: cover; object-position: center;" alt="">
+                    @foreach ($posts as $post)
+                        <img src="{{ $post->thumbnail }}" class="card-img-top" style="height: 250px; object-fit: cover; object-position: center;" alt="">
                         <div class="post-preview">
                             <a href="post.html">
                                 <h3 class="post-title">
-                                    Man must explore, and this is exploration at its greatest
+                                    {{ $post->title }}
                                 </h3>
                             </a>
-                            <p class="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea ad aliquid nulla expedita labore, quo at repellat dicta, accusamus molestiae illum perspiciatis voluptas sed magni velit dolorem minima, quidem harum.</p>
+                            <p class="">{{ $post->body }}</p>
                             <p class="post-meta">Posted by
-                                <a href="#">Start Bootstrap</a>
-                                on September 24, 2019</p>
+                                <a href="#">{{ $post->user->name }}</a>
+                                {{ date('Y-m-d', strtotime($post->created_at))}}</p>
                         </div>
+
+                    @endforeach
+
                 </div>
-                <div class="card-post my-3">
-                        <img src="img/foxinban.jpg" class="card-img-top" style="height: 250px; object-fit: cover; object-position: center;" alt="">
-                        <div class="post-preview">
-                            <a href="post.html">
-                                <h2 class="post-title">
-                                    Man must explore, and this is exploration at its greatest
-                                </h2>
-                                <h3 class="post-subtitle">
-                                    Problems look mighty small from 150 miles up
-                                </h3>
-                            </a>
-                            <p class="post-meta">Posted by
-                                <a href="#">Start Bootstrap</a>
-                                on September 24, 2019</p>
-                        </div>
-                </div>
-                <div class="card-post my-3">
-                        <img src="" class="img-fluid" alt="">
-                        <div class="post-preview">
-                            <a href="post.html">
-                                <h2 class="post-title">
-                                    Man must explore, and this is exploration at its greatest
-                                </h2>
-                                <h3 class="post-subtitle">
-                                    Problems look mighty small from 150 miles up
-                                </h3>
-                            </a>
-                            <p class="post-meta">Posted by
-                                <a href="#">Start Bootstrap</a>
-                                on September 24, 2019</p>
-                        </div>
-                </div>
-                <div class="card-post my-3">
-                        <img src="img/img1.png" class="img-fluid" alt="">
-                        <div class="post-preview">
-                            <a href="post.html">
-                                <h2 class="post-title">
-                                    Man must explore, and this is exploration at its greatest
-                                </h2>
-                                <h3 class="post-subtitle">
-                                    Problems look mighty small from 150 miles up
-                                </h3>
-                            </a>
-                            <p class="post-meta">Posted by
-                                <a href="#">Start Bootstrap</a>
-                                on September 24, 2019</p>
-                        </div>
-                    </div>
             </div>
             <div class="col-lg-4">
                 <div class="card my-3">
                     <h3 class="post-title">Recent Posts</h3>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <a href="#">Laravel aadaldhaf seuiahfad ffodpfabefe ... read more</a>
-                            <h1 class="text-comment">Ikhsan Heriyawan - 19-03-2000</h1>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">Laravel aadaldhaf seuiahfad ffodpfabefe ... read more</a>
-                            <h1 class="text-comment">Ikhsan Heriyawan - 19-03-2000</h1>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">Laravel aadaldhaf seuiahfad ffodpfabefe ... read more</a>
-                            <h1 class="text-comment">Ikhsan Heriyawan - 19-03-2000</h1>
-                        </li>
+                        @foreach ($posts as $post)
+                            <li class="list-group-item">
+                                <a href="#">Laravel aadaldhaf seuiahfad ffodpfabefe ... read more</a>
+                                <h1 class="text-comment">{{ $post->user->name }} - {{ date('Y-m-d', strtotime($post->crated_at))}}</h1>
+                            </li>
+                        @endforeach
                     </ul>
-            </div>
+                </div>
                 <div class="card my-3">
-                        <h3 class="post-title">Category</h3>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="">Laravel</a></li>
-                            <li class="list-group-item">PHP</li>
-                            <li class="list-group-item">JavScriipt</li>
-                        </ul>
+                    <h3 class="post-title">Category</h3>
+                    <ul class="list-group list-group-flush">
+                        @foreach ($categories as $category)
+                            <li class="list-group-item"><a href="">{{ $category->name }}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
         <!-- Pager -->
         <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            {{ $posts->links() }}
         </div>
     </div>
 @endsection

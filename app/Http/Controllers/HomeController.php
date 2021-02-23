@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\{Post, Category, User};
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,6 +16,8 @@ class HomeController extends Controller
     {
         return view('home', [
             'title' => 'Halaman Utama',
+            'posts' => Post::latest()->paginate(5),
+            'categories' => Category::get(),
             'user' => User::get(),
         ]);
     }
