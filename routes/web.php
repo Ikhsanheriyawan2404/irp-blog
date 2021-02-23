@@ -10,9 +10,9 @@ Route::get('/{slug}', [HomeController::class, 'show'])->name('post.index');
 Route::get('/tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
 Route::middleware('auth')->group(function () {
     Route::prefix('user')->group(function() {
-        Route::get('{id}', [UserController::class, 'show'])->name('user.index');
-        Route::get('{slug}/edit', [PostController::class, 'edit'])->name('user.edit');
-        Route::put('{slug}/edit', [PostController::class, 'update'])->name('user.update');
+        Route::get('{id}', [UserController::class, 'show'])->name('user.show');
+        Route::get('{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+        Route::put('{id}/edit', [UserController::class, 'update'])->name('user.update');
     });
     Route::prefix('post')->group(function () {
         Route::get('create', [PostController::class, 'create'])->name('post.create');
