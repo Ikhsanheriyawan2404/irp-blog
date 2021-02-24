@@ -80,7 +80,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('frontend.posts.edit', [
+            'title' => 'Edit Postingan',
+            'categories' => Category::get(),
+            'post' => $post,
+        ]);
     }
 
     /**
@@ -90,19 +94,20 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Post $post)
     {
-        //
+        request()->validate([
+            'title' => 'required|min:8|unique:posts,title,',
+            'category' => 'required|array',
+            'body' => 'required',
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        $post->categories->detach();
+        Storage::delete($post->thumbnail);
+        return redirect()->route('home')->with('success', 'Postingan berhasil dihapus');
     }
 }
