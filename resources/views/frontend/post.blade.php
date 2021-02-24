@@ -1,7 +1,6 @@
 @extends('layouts.frontend', compact('title'))
 
 @section('content')
-{{-- {{ dd($post->comment($post->id)) }} --}}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url({{ $post->takeImage }})">
         <div class="overlay"></div>
@@ -36,13 +35,12 @@
                         @csrf
                         <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
                             {{ $post->likes->sum('likes') }}&nbsp;<i class="fas fa-comment">
-                            {{-- {{ $post->comments->messages }} --}}
-                        </i> 0
+                        </i> {{ $post->comments->count('message') }}
                     </form>
                     <hr>
 
                     <!-- Comment -->
-                    @foreach ($posts as $post)
+                    @foreach ($post->comments as $post)
                         <div class="card my-3">
                             <div class="row">
                                 <div class="col-md-2">
@@ -50,8 +48,8 @@
                                 </div>
                                 <div class="col-md-10">
                                     <a href="">{{ $post->user->name }}</a>
-                                    <div class="text-comment">{{ $post->comment($post->id)->message }}</div>
-                                    {{-- <div class="text-comment">{{ $comment->created_at->diffForHumans() }}</div> --}}
+                                    <div class="text-comment">{{ $post->message }}</div>
+                                    <div class="text-comment">{{ $post->created_at->diffForHumans() }}</div>
                                 </div>
                             </div>
                         </div>
