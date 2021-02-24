@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\{Category, Post};
 
 class PostController extends Controller
 {
@@ -24,7 +23,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.posts.create', [
+            'title' => 'Buat Postingan',
+            'categories' => Category::get(),
+        ]);
     }
 
     /**
@@ -33,9 +35,26 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        request()->validate([
+            'title' => 'required|min:8',
+            'category' => 'required|array',
+            'body' => 'required',
+        ]);
+
+        Post::create([
+            'title' => request('title'),
+            'slug' => \Str::slug(request('title')),
+            'meta_title' => request('title'),
+            'meta_description' => request('meta_description'),
+            'meta_keyword' => request('meta_keyword'),
+            'thumbnail' => request('thumbnail') ? request()->file('thumbnail')->store('img/post') : null,
+            'category' => request('category'),
+            'body' => request('body'),
+        ]);
+
+        return redirect()->route('home')->with('success', 'Postingan baru berhasil ditambahkan');
     }
 
     /**

@@ -29,7 +29,7 @@
                     <div class="site-heading">
                         <h1>Profil Saya</h1>
                         <span class="subheading">{{ $user->name }}</span>
-                        <a href="crud-post.html" class="btn btn-success btn-lg mt-3">Create a Post</a>
+                        <a href="{{ route('post.create') }}" class="btn btn-success btn-lg mt-3">Create a Post</a>
                     </div>
                 </div>
             </div>
