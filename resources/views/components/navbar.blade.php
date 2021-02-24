@@ -22,7 +22,7 @@
                     <a class="nav-link" href="{{ route('about_us') }}">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Galeri</a>
+                    <a class="nav-link" href="{{ route('gallery') }}">Galeri</a>
                 </li>
                 @guest
                     @if (Route::has('login'))
@@ -42,8 +42,8 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">My Profil (0)</a>
-                            <a class="dropdown-item" href="">Admin</a>
+                            <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">My Profil</a>
+                            <a class="dropdown-item" href="{{ route('admin.index') }}">Admin</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -52,6 +52,15 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown dropleft">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="badge badge-success"><i class="fas fa-bell"></i>0</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item"><small>Ikhsan Heriyawan Koncoro menyukai postingan anda</small></a>
+                            <a class="dropdown-item"><small>Ikhsan komentar di postingan anda</small></a>
                         </div>
                     </li>
                 @endguest

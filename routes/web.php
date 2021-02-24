@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::prefix('category')->group(function () {
+                Route::get('/', [AdminController::class, 'index'])->name('admin.index');
                 Route::resource('category', CategoryController::class);
             });
         });

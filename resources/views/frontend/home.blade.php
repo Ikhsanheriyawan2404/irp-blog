@@ -30,9 +30,12 @@
                                 </h3>
                             </a>
                             <p class="">{{ substr($post->body, 1, 100) }} ... <a href="{{ route('post', $post->slug) }}">Baca selengkapnya</a></p>
-                            <p class="post-meta">Posted by
+                            <p class="post-meta">Diposting oleh
                                 <a href="">{{ $post->user->name }}</a>
-                                {{ $post->created_at->diffForHumans() }}</p>
+                                {{ $post->created_at->diffForHumans() }}
+                                &nbsp;
+                                <i class="far fa-thumbs-up">{{ $post->likes->sum('likes') }}</i>&nbsp;<i class="far fa-comment">0</i>
+                            </p>
                         </div>
                     @endforeach
                 </div>

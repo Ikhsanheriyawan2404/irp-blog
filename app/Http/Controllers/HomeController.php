@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Post, Category, User};
+use App\Models\{Post, Category, User, Like};
 
 class HomeController extends Controller
 {
@@ -11,13 +11,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Post $post)
     {
         return view('frontend.home', [
             'title' => 'Halaman Utama',
             'posts' => Post::latest()->paginate(5),
             'categories' => Category::get(),
             'users' => User::get(),
+            'likes' => Like::get(),
         ]);
     }
 
