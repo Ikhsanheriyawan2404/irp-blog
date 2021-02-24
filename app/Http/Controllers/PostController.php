@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\{Category, Post};
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -127,9 +128,9 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        $post->delete();
-        $post->categories->detach();
+        $post->categories()->detach();
         Storage::delete($post->thumbnail);
+        $post->delete();
         return redirect()->route('home')->with('success', 'Postingan berhasil dihapus');
     }
 }

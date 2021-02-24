@@ -31,7 +31,7 @@
                                     {{ $post->title }}
                                 </h3>
                             </a>
-                            <p>{!! substr($post->body, 1, 200) !!} ... <a href="{{ route('post', $post->slug) }}">Baca selengkapnya</a></p>
+                            <p>{!! substr($post->body, 0, 200) !!} ... <a href="{{ route('post', $post->slug) }}">Baca selengkapnya</a></p>
                             <p class="post-meta">Diposting oleh
                                 <a href="{{ route('user.show', $post->user->id) }}">{{ $post->user->name }}</a>
                                 {{ $post->created_at->diffForHumans() }}
@@ -39,7 +39,7 @@
                                 <i class="far fa-thumbs-up">
                                     {{ $post->likes->sum('likes') }}
                                 </i>&nbsp;<i class="far fa-comment">
-                                    {{-- {{ $post->comments->messages }} --}} 0
+                                    {{ $post->comments->count('message') }}
                                 </i>
                             </p>
                         </div>

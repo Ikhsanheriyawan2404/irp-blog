@@ -40,7 +40,23 @@
                     <hr>
 
                     <!-- Comment -->
-                    @foreach ($post->comments as $post)
+                    <div class="card my-3">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="{{ $post->user->takeImage }}" class="rounded-circle" width="75" alt="">
+                                </div>
+                                <div class="col-md-10">
+                                    <a href="">fdhpafhpdafh </a>
+                                    <div class="text-comment">f;dhsfpihapdsafdsfasdfsaf</div>
+                                    <div class="text-comment">423087423y ~
+                                        <a href=""><i class="fas fa-pencil-alt"></i></a>
+                                            &nbsp;
+                                        <a href=""><i class="fas fa-trash-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{-- @foreach ($post->comments as $post)
                         <div class="card my-3">
                             <div class="row">
                                 <div class="col-md-2">
@@ -53,7 +69,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @endforeach --}}
                     <div class="card my-3">
                         <div class="row">
                             <div class="col-md-2">
