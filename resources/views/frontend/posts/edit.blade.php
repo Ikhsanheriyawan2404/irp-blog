@@ -47,9 +47,9 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
-                        <h1>Ubah Postingan</h1>
+                        <h1>Edit Postingan</h1>
                         <div>
-                            <a href="{{ route('home') }}" style="color: white;">Home</a> / <a href="" style="color: white;">Ubah</a>
+                            <a href="{{ route('home') }}" style="color: white;">Home</a> / <a href="" style="color: white;">Edit</a>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                 <form action="{{ route('post.update', $post->slug) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                @include('partials.form-control')
+                @include('frontend.posts.partials.form-control')
                 <button type="submit" class="btn btn-success float-right">Ubah</button>
                 </form>
             </div>

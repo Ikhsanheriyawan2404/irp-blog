@@ -9,6 +9,6 @@ class CategoryPost extends Model
 {
     use HasFactory;
 
-    protected $table = ['category_posts'];
+    protected $table = 'category_post';
     public $timestamps = false;
 }

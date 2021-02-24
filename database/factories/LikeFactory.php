@@ -23,7 +23,7 @@ class LikeFactory extends Factory
     {
         return [
             'user_id' => rand(1,2),
-            'post_id' => rand(1,25),
+            'post_id' => rand(1,15),
             'likes' => rand(0,1),
         ];
     }

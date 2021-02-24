@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Post, Category, User, Like};
+use App\Models\{Post, Category, User, Like, Comment};
 
 class HomeController extends Controller
 {
@@ -25,13 +25,13 @@ class HomeController extends Controller
     public function show_post($slug)
     {
         $post = Post::where('slug', $slug)->first();
+        // 'comment' => Comment::where('post_id', $post->id)->first();
         if ($post) {
             return view('frontend.post', [
                 'title' => 'Read Article',
                 'posts' => Post::latest()->paginate(5),
                 'post' => $post,
                 'categories' => Category::get(),
-                'users' => User::get(),
             ]);
         } else {
             abort(404);

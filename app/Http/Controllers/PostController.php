@@ -27,6 +27,7 @@ class PostController extends Controller
     {
         return view('frontend.posts.create', [
             'title' => 'Buat Postingan',
+            'post' => new Post,
             'categories' => Category::get(),
         ]);
     }
@@ -42,7 +43,7 @@ class PostController extends Controller
         request()->validate([
             'title' => 'required|min:8|unique:posts,title,',
             'category' => 'required|array',
-            'body' => 'required',
+            'body' => 'required|min:50',
         ]);
 
         $post = Post::create([
@@ -57,7 +58,6 @@ class PostController extends Controller
         ]);
 
         $post->categories()->sync(request('category'));
-
         return redirect()->route('home')->with('success', 'Postingan baru berhasil ditambahkan');
     }
 
@@ -82,8 +82,8 @@ class PostController extends Controller
     {
         return view('frontend.posts.edit', [
             'title' => 'Edit Postingan',
-            'categories' => Category::get(),
             'post' => $post,
+            'categories' => Category::get(),
         ]);
     }
 
@@ -97,10 +97,32 @@ class PostController extends Controller
     public function update(Post $post)
     {
         request()->validate([
-            'title' => 'required|min:8|unique:posts,title,',
+            'title' => 'required|min:8|unique:posts,title,' . $post->id,
             'category' => 'required|array',
-            'body' => 'required',
+            'body' => 'required|min:50',
         ]);
+
+        if (request('thumbnail')) {
+            Storage::delete($post->thumbnail);
+            $thumbnail = request()->file('thumbnail')->store('img/post');
+        } elseif ($post->thumbnail) {
+            $thumbnail = $post->thumbnail;
+        } else {
+            $thumbnail = null;
+        }
+
+        $post->update([
+            'title' => request('title'),
+            'slug' => Str::slug(request('title')),
+            'meta_title' => request('title'),
+            'meta_description' => request('meta_description'),
+            'meta_keyword' => request('meta_keyword'),
+            'thumbnail' => $thumbnail,
+            'body' => request('body'),
+        ]);
+
+        $post->categories()->sync(request('category'));
+        return redirect()->route('home')->with('success', 'Postingan baru berhasil ditambahkan');
     }
 
     public function destroy(Post $post)

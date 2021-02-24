@@ -19,9 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::prefix('post')->group(function () {
         Route::get('create', [PostController::class, 'create'])->name('post.create');
         Route::post('store', [PostController::class, 'store'])->name('post.store');
-        Route::get('{slug}/edit', [PostController::class, 'edit'])->name('post.edit');
-        Route::put('{slug}/edit', [PostController::class, 'update'])->name('post.update');
-        Route::delete('{slug}/delete', [PostController::class, 'destroy'])->name('post.delete');
+        Route::get('{post:slug}/edit', [PostController::class, 'edit'])->name('post.edit');
+        Route::put('{post:slug}/edit', [PostController::class, 'update'])->name('post.update');
+        Route::delete('{post:slug}/delete', [PostController::class, 'destroy'])->name('post.delete');
     });
     Route::middleware('role:admin')->group(function () {
         Route::prefix('admin')->group(function () {

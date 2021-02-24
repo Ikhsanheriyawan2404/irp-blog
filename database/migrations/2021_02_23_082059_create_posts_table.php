@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title')->unique();
             $table->string('meta_title');
-            $table->string('meta_description');
-            $table->string('meta_keyword');
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keyword')->nullable();
             $table->string('slug');
             $table->text('body');
             $table->string('thumbnail')->nullable();

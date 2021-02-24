@@ -1,8 +1,9 @@
 @extends('layouts.frontend', compact('title'))
 
 @section('content')
+{{-- {{ dd($post->comment($post->id)) }} --}}
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('')">
+    <header class="masthead" style="background-image: url({{ $post->takeImage }})">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -21,26 +22,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    {!! $post->body !!}
-                    <div class="card">
+                    <div class="card my-3">
                         <div class="card-header">ADS</div>
                         <div class="card-body">
                             Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Quia sed officia, laborum odit, ullam accusamus labore, aperiam laboriosam provident dolorum molestias ipsa est numquam at dolores similique illo doloribus, necessitatibus.
                         </div>
                     </div>
+                    <div class="my-3">
+                        {!! $post->body !!}
+                    </div>
+                    <!-- Button Like -->
+                    <form action="" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
+                            {{ $post->likes->sum('likes') }}&nbsp;<i class="fas fa-comment">
+                            {{-- {{ $post->comments->messages }} --}}
+                        </i> 0
+                    </form>
                     <hr>
 
                     <!-- Comment -->
-                    @foreach ($users as $user)
+                    @foreach ($posts as $post)
                         <div class="card my-3">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="{{ $user->takeImage }}" class="rounded-circle" width="75" alt="">
+                                    <img src="{{ $post->user->takeImage }}" class="rounded-circle" width="75" alt="">
                                 </div>
                                 <div class="col-md-10">
-                                    <a href="">{{ $user->name }}</a>
-                                    {{-- <div class="text-comment">{{ $user->comments->message }}</div> --}}
-                                    {{-- <div class="text-comment">{{ $user->comments->created_at }}</div> --}}
+                                    <a href="">{{ $post->user->name }}</a>
+                                    <div class="text-comment">{{ $post->comment($post->id)->message }}</div>
+                                    {{-- <div class="text-comment">{{ $comment->created_at->diffForHumans() }}</div> --}}
                                 </div>
                             </div>
                         </div>
@@ -48,7 +59,7 @@
                     <div class="card my-3">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="" class="rounded-circle" width="75" alt="">
+                                <img src="{{ $post->user->takeImage }}" class="rounded-circle" width="75" alt="">
                             </div>
                             <div class="col-md-10">
                                 <form action="#">

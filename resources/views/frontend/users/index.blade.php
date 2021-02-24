@@ -121,7 +121,9 @@
                 </div>
                 @foreach ($posts as $post)
                     <div class="card my-3">
-                        <img src="{{ $post->thumbnail }}" class="card-img-top" style="height: 250px; object-fit: cover; object-position: center;" alt="">
+                        @if ($post->thumbnail)
+                            <img src="{{ $post->thumbnail }}" class="card-img-top" style="height: 250px; object-fit: cover; object-position: center;">
+                        @endif
                         <div class="post-preview">
                             <a href="{{ route('post', $post->slug) }}">
                                 <h2 class="post-title">
@@ -132,9 +134,13 @@
                             <p class="post-meta">Posted by
                                 <a href="{{ route('user.show', $user->id) }}">{{ $post->user->name }}</a>
                                 on September 24, 2019
-                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-success btn-sm" style="color: white;">Edit <i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-danger btn-sm" style="color: white;">Delete <i class="fas fa-trash"></i></a>
-                        </p>
+                                <div class="d-flex float-right">
+                                    <a href="{{ route('post.edit', $post->slug) }}" class="btn btn-success btn-sm mr-2" style="color: white;">Edit <i class="fas fa-pencil-alt"></i></a>
+                                    <form action="{{ route('post.delete', $post->slug) }}">
+                                        <button class="btn btn-danger btn-sm">Delete <i class="fas fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </p>
                         </div>
                     </div>
                 @endforeach

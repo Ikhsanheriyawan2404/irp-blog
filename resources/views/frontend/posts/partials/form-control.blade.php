@@ -38,7 +38,7 @@
     <label for="category">Category <small class="text-danger">*</small></label>
     <select type="text" class="form-control category @error('category') is-invalid @enderror" name="category[]" id="category" multiple>
         @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            <option {{ $post->categories()->find($category->id) ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
     </select>
     @error('category')
@@ -49,7 +49,7 @@
 </div>
 <div class="form-group">
     <label for="body">Body <small class="text-danger">*</small></label>
-    <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body">{{ old('title') ?? $post->title }}</textarea>
+    <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body">{{ old('body') ?? $post->body }}</textarea>
     @error('body')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

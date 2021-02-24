@@ -26,8 +26,18 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function comment($postId)
+    {
+        return $this->comments()->where('post_id', $postId);
+    }
+
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function getTakeImageAttribute()
+    {
+        return '/storage/' . $this->thumbnail;
     }
 }

@@ -63,7 +63,7 @@
             <div class="col-lg-10 mx-auto my-3">
                 <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @include('partials.form-control')
+                @include('frontend.posts.partials.form-control')
                 <button type="submit" class="btn btn-success float-right">Tambah</button>
                 </form>
             </div>
