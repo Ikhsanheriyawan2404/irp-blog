@@ -31,7 +31,7 @@
                             </a>
                             <p class="">{{ $post->body }}</p>
                             <p class="post-meta">Posted by
-                                <a href="#">{{ $post->user->name }}</a>
+                                <a href="">{{ $post->user->name }}</a>
                                 {{ date('Y-m-d', strtotime($post->created_at))}}</p>
                         </div>
 
@@ -45,7 +45,7 @@
                     <ul class="list-group list-group-flush">
                         @foreach ($posts as $post)
                             <li class="list-group-item">
-                                <a href="#">Laravel aadaldhaf seuiahfad ffodpfabefe ... read more</a>
+                                <a href="#">{{ $post->title }}</a>
                                 <h1 class="text-comment">{{ $post->user->name }} - {{ date('Y-m-d', strtotime($post->crated_at))}}</h1>
                             </li>
                         @endforeach

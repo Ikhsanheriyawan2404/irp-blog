@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/{slug}', [HomeController::class, 'show'])->name('post.index');
 Route::get('/tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
 Route::middleware('auth')->group(function () {

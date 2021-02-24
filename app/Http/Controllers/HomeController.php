@@ -12,13 +12,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function __invoke()
+    public function index()
     {
         return view('home', [
             'title' => 'Halaman Utama',
             'posts' => Post::latest()->paginate(5),
             'categories' => Category::get(),
-            'user' => User::get(),
+            'users' => User::get(),
         ]);
     }
 }

@@ -13,7 +13,7 @@ class UserController extends Controller
             'title' => 'Halaman User',
             'user' => User::findOrFail($id),
             'posts' => Post::latest()->paginate(5),
-            'likes' => Post::select('like')->count(),
+            'likes' => Post::select('like')->findOrFail($id)->count(),
         ]);
     }
 
