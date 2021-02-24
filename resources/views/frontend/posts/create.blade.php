@@ -2,6 +2,11 @@
 
 @section('custom-styles')
     <link rel="stylesheet" href="{{ asset('frontend/vendor/select2/dist/css/select2.min.css') }}">
+    <style>
+        .select2 {
+            width:100%!important;
+        }
+    </style>
 @endsection
 
 @section('custom-scripts')
@@ -56,68 +61,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 mx-auto my-3">
-                <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="title">Title <small class="text-danger">*</small></label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title">
-                        @error('title')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="meta_description">Deskripsi <small class="text-secondary">tidak wajib diisi</small></label>
-                        <input type="text" class="form-control @error('meta_description') is-invalid @enderror" name="meta_description" id="meta_description">
-                        @error('meta_description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="meta_keyword">Kata Kunci <small class="text-secondary">boleh kosong</small></label>
-                        <input type="text" class="form-control @error('meta_keyword') is-invalid @enderror" name="meta_keyword" id="meta_keyword">
-                        @error('meta_keyword')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="thumbnail">Thumbnail <small class="text-secondary">boleh kosong</small></label>
-                        <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
-                        @error('thumbnail')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category <small class="text-danger">*</small></label>
-                        <select type="text" class="form-control category @error('category') is-invalid @enderror" name="category[]" id="category" multiple>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('category')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="body">Body <small class="text-danger">*</small></label>
-                        <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" value="{{ old('body') }}"></textarea>
-                        @error('body')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <button type="submit" class="btn btn-success float-right">Tambah</button>
-                </form>
+                @include('partials.form-control')
             </div>
         </div>
     </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\{Category, Post};
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -38,21 +40,23 @@ class PostController extends Controller
     public function store()
     {
         request()->validate([
-            'title' => 'required|min:8',
+            'title' => 'required|min:8|unique:posts,title,',
             'category' => 'required|array',
             'body' => 'required',
         ]);
 
-        Post::create([
+        $post = Post::create([
+            'user_id' => Auth::id(),
             'title' => request('title'),
-            'slug' => \Str::slug(request('title')),
+            'slug' => Str::slug(request('title')),
             'meta_title' => request('title'),
             'meta_description' => request('meta_description'),
             'meta_keyword' => request('meta_keyword'),
             'thumbnail' => request('thumbnail') ? request()->file('thumbnail')->store('img/post') : null,
-            'category' => request('category'),
             'body' => request('body'),
         ]);
+
+        $post->categories()->sync(request('category'));
 
         return redirect()->route('home')->with('success', 'Postingan baru berhasil ditambahkan');
     }

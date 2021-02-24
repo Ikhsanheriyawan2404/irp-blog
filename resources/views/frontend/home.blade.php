@@ -29,7 +29,7 @@
                                     {{ $post->title }}
                                 </h3>
                             </a>
-                            <p class="">{{ substr($post->body, 1, 100) }} ... <a href="{{ route('post', $post->slug) }}">Baca selengkapnya</a></p>
+                            <p class="">{!! $post->body !!} ... <a href="{{ route('post', $post->slug) }}">Baca selengkapnya</a></p>
                             <p class="post-meta">Diposting oleh
                                 <a href="">{{ $post->user->name }}</a>
                                 {{ $post->created_at->diffForHumans() }}

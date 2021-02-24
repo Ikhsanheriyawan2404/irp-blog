@@ -123,13 +123,11 @@
                     <div class="card my-3">
                         <img src="{{ $post->thumbnail }}" class="card-img-top" style="height: 250px; object-fit: cover; object-position: center;" alt="">
                         <div class="post-preview">
-                            <a href="post.html">
+                            <a href="{{ route('post', $post->slug) }}">
                                 <h2 class="post-title">
                                     {{ $post->title }}
                                 </h2>
-                                <h3 class="post-subtitle">
-                                    {{ $post->body }}
-                                </h3>
+                                <p class="">{!! $post->body !!}...Baca selengkapnya</p>
                             </a>
                             <p class="post-meta">Posted by
                                 <a href="{{ route('user.show', $user->id) }}">{{ $post->user->name }}</a>
