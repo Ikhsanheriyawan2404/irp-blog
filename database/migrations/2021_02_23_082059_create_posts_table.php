@@ -23,7 +23,6 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->text('body');
             $table->string('thumbnail')->nullable();
-            $table->string('likes')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');

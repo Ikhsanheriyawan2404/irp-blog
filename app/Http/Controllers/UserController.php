@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{User, Post};
+use App\Models\{User, Post, Like};
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -11,9 +12,9 @@ class UserController extends Controller
     {
         return view('frontend.users.index', [
             'title' => 'Halaman User',
-            'user' => User::findOrFail($id),
-            'posts' => Post::latest()->paginate(5),
-            'likes' => Post::select('like')->findOrFail($id)->count(),
+            'user' => User::where('id', $id)->first(),
+            'posts' => Post::latest()->where('user_id', $id)->paginate(5),
+            'likes' => Like::where('user_id', $id),
         ]);
     }
 

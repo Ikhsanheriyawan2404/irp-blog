@@ -96,7 +96,7 @@
                                 <h6>Daftar</h6>
                             </div>
                             <div class="col-sm-9 text-comment">
-                                Since : {{ date('Y-m-d', strtotime($user->created_at))}}
+                                Since : {{ date('m-d-Y', strtotime($user->created_at))}}
                             </div>
                         </div>
                         <hr>
@@ -105,7 +105,7 @@
                                 <h6>Like</h6>
                             </div>
                             <div class="col-sm-9 text-comment">
-                                <h6>{{ $likes }}</h6>
+                                <h6>{{ $likes->sum('likes') }}</h6>
                             </div>
                         </div>
                         <hr>

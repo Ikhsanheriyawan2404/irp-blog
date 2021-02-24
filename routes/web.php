@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/{slug}', [HomeController::class, 'show'])->name('post.index');
-Route::get('/tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
+Route::get('{post:slug}', [HomeController::class, 'show_post'])->name('post');
+Route::get('category/{category:slug}', [HomeController::class, 'show_category'])->name('category');
+Route::get('info/tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
+Route::get('info/galeri', [HomeController::class, 'gallery'])->name('gallery');
 Route::middleware('auth')->group(function () {
     Route::prefix('user')->group(function() {
         Route::get('{user:id}', [UserController::class, 'show'])->name('user.show');

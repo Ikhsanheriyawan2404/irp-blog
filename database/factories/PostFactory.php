@@ -31,7 +31,6 @@ class PostFactory extends Factory
             'meta_description' => $this->faker->sentence,
             'meta_keyword' => $this->faker->word,
             'body' => $this->faker->paragraph,
-            'like' => rand(1,10),
             'created_at' => now(),
             'updated_at' => now(),
         ];

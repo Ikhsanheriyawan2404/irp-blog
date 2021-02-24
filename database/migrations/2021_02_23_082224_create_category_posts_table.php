@@ -17,7 +17,6 @@ class CreateCategoryPostsTable extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->foreignId('post_id');
-            $table->timestamps();
         });
     }
 
