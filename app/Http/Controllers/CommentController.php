@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\{Comment, Post};
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Http\Response;
 
 class CommentController extends Controller
 {
@@ -46,9 +45,10 @@ class CommentController extends Controller
     //     return back();
     // }
 
-    public function destroy(Comment $comment, Post $post)
+    public function destroy($id)
     {
+        $comment = Comment::find($id);
         $comment->delete();
-        return redirect()->route('post', $post->slug);
+        return redirect()->route('post', $comment->post->slug);
     }
 }

@@ -151,8 +151,8 @@
                                         <form action="{{ route('post.delete', $post->slug) }}" method="post">
                                             @csrf
                                             @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus postingan ini?')">Delete <i class="fas fa-trash"></i></button>
                                         </form>
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus postingan ini?')">Delete <i class="fas fa-trash"></i></button>
                                         {{-- <a href="" class="btn btn-danger btn-sm delete-button" data-slug={{ $post->slug }}>Hapus <i class="fas fa-trash"></i></a> --}}
                                     {{-- @endcan --}}
                                 </div>
