@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController};
+use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController};
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -15,6 +15,12 @@ Route::middleware('auth')->group(function () {
         Route::get('{user:id}', [UserController::class, 'show'])->name('user.show');
         Route::get('{user:id}/edit', [UserController::class, 'edit'])->name('user.edit');
         Route::put('{user:id}/edit', [UserController::class, 'update'])->name('user.update');
+    });
+    Route::prefix('comment')->group(function() {
+        Route::post('comment/{post:id}', [CommentController::class, 'store'])->name('comment.store');
+        Route::get('comment/{post:id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
+        Route::put('comment/{post:id}/edit', [CommentController::class, 'update'])->name('comment.update');
+        Route::delete('comment/{post:id}/edit', [CommentController::class, 'destroy'])->name('comment.delete');
     });
     Route::prefix('post')->group(function () {
         Route::get('create', [PostController::class, 'create'])->name('post.create');

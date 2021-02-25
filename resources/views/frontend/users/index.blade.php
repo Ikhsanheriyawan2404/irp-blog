@@ -29,7 +29,9 @@
                     <div class="site-heading">
                         <h1>Profil Saya</h1>
                         <span class="subheading">{{ $user->name }}</span>
-                        <a href="{{ route('post.create') }}" class="btn btn-success btn-lg mt-3">Buat Postingan</a>
+                        @can('create', $postt)
+                            <a href="{{ route('post.create') }}" class="btn btn-success btn-lg mt-3">Buat Postingan</a>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -50,9 +52,12 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-10 mx-auto">
+                @include('components.alert')
                 <div class="card my-3">
                     <div class="card-header">
-                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-dark float-right">Edit Profil <i class="fas fa-cogs"></i></a>
+                        @can('update', $user)
+                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-dark float-right">Edit Profil <i class="fas fa-cogs"></i></a>
+                        @endcan
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -131,15 +136,21 @@
                                 </h2>
                                 <p class="">{!! substr($post->body,0 , 100) !!}...Baca selengkapnya</p>
                             </a>
-                            <p class="post-meta">Posted by
-                                <a href="{{ route('user.show', $user->id) }}">{{ $post->user->name }}</a>
-                                on September 24, 2019
+                            <p class="post-meta">Diposting oleh
+                                <a href="{{ route('user.show', $post->user->id) }}">{{ $post->user->name }}</a>
+                                {{ $post->created_at->diffForHumans() }}
+                                &nbsp;
+                                <i class="far fa-thumbs-up">
+                                    {{ $post->likes->sum('likes') }}
+                                </i>&nbsp;<i class="far fa-comment">
+                                    {{ $post->comments->count('message') }}
+                                </i>
                                 <div class="d-flex float-right">
                                     <a href="{{ route('post.edit', $post->slug) }}" class="btn btn-success btn-sm mr-2" style="color: white;">Edit <i class="fas fa-edit"></i></a>
                                     <form action="{{ route('post.delete', $post->slug) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger btn-sm">Delete <i class="fas fa-trash"></i></button>
+                                        <button onclick="return confirm('Yakin ingin dihapus?')" class="btn btn-danger btn-sm">Delete <i class="fas fa-trash"></i></button>
                                     </form>
                                 </div>
                             </p>

@@ -31,9 +31,9 @@
         <div class="row">
             <div class="col-lg-6 col-md-10 mx-auto">
                 <div class="card my-3">
+                    @include('components.alert')
                     <form action="{{ route('login') }}" method="post">
                         @csrf
-
                         <div class="form-group">
                             <label for="email">Email <small class="text-danger">*</small></label>
                             <input type="text" class="form-control @error('password') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">

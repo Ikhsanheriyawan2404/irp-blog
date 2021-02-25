@@ -1,5 +1,10 @@
 @extends('layouts.frontend', compact('title'))
 
+@section('custom-scripts')
+    <script src="{{ asset('frontend/vendor/sweetalert2/src/sweetalert2.js') }}"></script>
+    <script></script>
+@endsection
+
 @section('content')
     <!-- Page Header -->
     <header class="masthead" style="background-image: url()">

@@ -59,7 +59,7 @@ class PostController extends Controller
         ]);
 
         $post->categories()->sync(request('category'));
-        return redirect()->route('home')->with('success', 'Postingan baru berhasil ditambahkan');
+        return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan baru berhasil ditambahkan');
     }
 
     /**
@@ -123,7 +123,7 @@ class PostController extends Controller
         ]);
 
         $post->categories()->sync(request('category'));
-        return redirect()->route('home')->with('success', 'Postingan baru berhasil ditambahkan');
+        return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan baru berhasil ditambahkan');
     }
 
     public function destroy(Post $post)
@@ -131,6 +131,6 @@ class PostController extends Controller
         $post->categories()->detach();
         Storage::delete($post->thumbnail);
         $post->delete();
-        return redirect()->route('home')->with('success', 'Postingan berhasil dihapus');
+        return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan berhasil dihapus');
     }
 }

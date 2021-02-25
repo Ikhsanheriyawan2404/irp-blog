@@ -6,6 +6,7 @@ use App\Models\{User, Post, Like};
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+
 class UserController extends Controller
 {
     public function show($id)
@@ -52,6 +53,6 @@ class UserController extends Controller
             'date_of_birth' => request('date_of_birth'),
         ]);
 
-        return redirect()->route('user.show', $user->id)->with('success', 'Profil berhasil diubah');
+        return redirect()->route('user.show', $user->id)->with('success', 'Profil berhasil diedit');
     }
 }

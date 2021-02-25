@@ -1,6 +1,7 @@
 @extends('layouts.frontend', compact('title'))
 
 @section('content')
+{{-- {{ $comment }} --}}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url({{ $post->takeImage }})">
         <div class="overlay"></div>
@@ -31,32 +32,17 @@
                         {!! $post->body !!}
                     </div>
                     <!-- Button Like -->
-                    <form action="" method="post">
+                    <form {{-- action="{{ route('like.store', $post->id) }}" --}} method="post">
                         @csrf
                         <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
+                        <button type="submit" class="btn btn-danger">Unlike <i class="fas fa-thumbs-up"></i></button>
                             {{ $post->likes->sum('likes') }}&nbsp;<i class="fas fa-comment">
                         </i> {{ $post->comments->count('message') }}
                     </form>
                     <hr>
 
                     <!-- Comment -->
-                    <div class="card my-3">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="{{ $post->user->takeImage }}" class="rounded-circle" width="75" alt="">
-                                </div>
-                                <div class="col-md-10">
-                                    <a href="">fdhpafhpdafh </a>
-                                    <div class="text-comment">f;dhsfpihapdsafdsfasdfsaf</div>
-                                    <div class="text-comment">423087423y ~
-                                        <a href=""><i class="fas fa-pencil-alt"></i></a>
-                                            &nbsp;
-                                        <a href=""><i class="fas fa-trash-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {{-- @foreach ($post->comments as $post)
+                    @foreach ($post->comments as $post)
                         <div class="card my-3">
                             <div class="row">
                                 <div class="col-md-2">
@@ -65,21 +51,31 @@
                                 <div class="col-md-10">
                                     <a href="">{{ $post->user->name }}</a>
                                     <div class="text-comment">{{ $post->message }}</div>
-                                    <div class="text-comment">{{ $post->created_at->diffForHumans() }}</div>
+                                    <div class="text-comment">{{ $post->created_at->diffForHumans() }}
+                                        <a data-toggle="modal" data-target="#edit-commentar" data-id="{{-- {{ $comment->id }} --}}"><i class="fas fa-pencil-alt"></i></a>
+                                            &nbsp;
+                                        <a href=""><i class="fas fa-trash-alt"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach --}}
+                    @endforeach
                     <div class="card my-3">
                         <div class="row">
                             <div class="col-md-2">
                                 <img src="{{ $post->user->takeImage }}" class="rounded-circle" width="75" alt="">
                             </div>
                             <div class="col-md-10">
-                                <form action="#">
+                                <form action="{{ route('comment.store', $post->id) }}" method="post">
+                                    @csrf
                                     <div class="form-group">
-                                        <label for="comment">Leave a comment</label>
-                                        <textarea class="form-control" name="comment" id="comment" cols="20" rows="5"></textarea>
+                                        <label for="comment">Berikan komentar</label>
+                                        <textarea class="form-control @error('comment') is-invalid @enderror" name="comment" id="comment" cols="10" rows="3"></textarea>
+                                        @error('comment')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <button type="submit" class="btn btn-success float-right mt-3">Comment</button>
                                     </div>
                                 </form>
@@ -114,4 +110,33 @@
             </div>
         </div>
     </article>
+
+    <!-- Modal -->
+    <div class="modal fade" id="edit-commentar" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form action="" method="post">
+                        @csrf
+                        <div class="modal-body">
+                            <textarea class="form-control" name="comment" id="comment" cols="10" rows="3" autofocus required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                            <button type="submit" class="btn btn-success">Edit Komentar</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+
+    @section('custom-scripst')
+        <script>
+            $(document).ready(function () {
+                $('body').on('click', '#edit-modal', function () {
+                    var customer_id = $(this).data('id');
+                    $('#commentar').val(data.commentar);
+                });
+            });
+        </script>
+    @endsection
 @endsection
