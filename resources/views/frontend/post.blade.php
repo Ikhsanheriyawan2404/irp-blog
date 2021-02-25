@@ -63,9 +63,13 @@
                                     <a href="">{{ $comment->user->name }}</a>
                                     <div class="text-comment">{{ $comment->message }}</div>
                                     <div class="text-comment">{{ $comment->created_at->diffForHumans() }}
-                                        <a data-toggle="modal" data-target="#edit-comment" data-id="{{ $comment->id }}"><i class="fas fa-pencil-alt"></i></a>
+                                        {{-- <a data-toggle="modal" data-target="#edit-comment" data-id="{{ $comment->id }}"><i class="fas fa-pencil-alt"></i></a> --}}
                                             &nbsp;
-                                        <a href=""><i class="fas fa-trash-alt"></i></a>
+                                        <form action="{{ route('comment.delete', $comment->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -122,32 +126,49 @@
         </div>
     </article>
 
-    <!-- Modal -->
-    <div class="modal fade" id="edit-comment" tabindex="-1" aria-hidden="true">
+    <!-- Modal Edit -->
+    {{-- <div class="modal fade" id="edit-comment" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <form action="" method="post">
-                        @csrf
-                        <div class="modal-body">
-                            <textarea class="form-control" name="comment" id="comment" data-id="" cols="10" rows="3" autofocus required></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-success">Edit Komentar</button>
-                        </div>
-                    </form>
-                </div>
+            <div class="modal-content">
+                <form action="{{ route('comment.update', $comment->id) }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <textarea class="form-control" name="comment" id="comment" data-id="" cols="10" rows="3" autofocus required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Edit Komentar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    </div> --}}
 
-    @section('custom-scripst')
+    {{-- Modal Delete --}}
+    {{-- <div class="modal fade" id="delete-comment" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Apakah kamu yakin? komentar ini akan terhapus.</p>
+                </div>
+                <form action="{{ route('comment.delete', $comment->id) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+
+    {{-- @section('custom-scripst')
         <script>
             $(document).ready(function () {
-                $('body').on('click', '#edit-comment', function () {
-                    let comment_id = $(this).data('id');
-                    $('#comment').val(data.comment);
-                });
+                let
             });
         </script>
-    @endsection
+    @endsection --}}
 @endsection

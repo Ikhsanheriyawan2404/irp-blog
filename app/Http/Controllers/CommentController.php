@@ -24,30 +24,31 @@ class CommentController extends Controller
         return back();
     }
 
-    public function edit($id)
-    {
-        $comment = Comment::where('id', $id)->first();
-        return \Response::json($comment);
-    }
+    // public function edit($id)
+    // {
+    //     $comment = Comment::where('id', $id)->first();
+    //     return \Response::json($comment);
+    // }
 
-    public function update(Comment $comment)
-    {
-        request()->validate([
-            'comment' => 'required',
-        ]);
+    // public function update(Comment $comment)
+    // {
+    //     request()->validate([
+    //         'comment' => 'required',
+    //     ]);
 
-        $post = Post::find($id);
-        $comment->update([
-            'user_id' => Auth::id(),
-            'post_id' => $post->id,
-            'message' => request('comment'),
-        ]);
+    //     $post = Post::find($id);
+    //     $comment->update([
+    //         'user_id' => Auth::id(),
+    //         'post_id' => $post->id,
+    //         'message' => request('comment'),
+    //     ]);
 
-        return back();
-    }
+    //     return back();
+    // }
 
-    public function destroy(Comment $comment)
+    public function destroy(Comment $comment, Post $post)
     {
         $comment->delete();
+        return redirect()->route('post', $post->slug);
     }
 }

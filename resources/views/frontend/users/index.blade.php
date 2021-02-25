@@ -151,8 +151,8 @@
                                         <form action="{{ route('post.delete', $post->slug) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger btn-sm btn-delete" data-slug="{{ $post->slug }}">Delete <i class="fas fa-trash"></i></button>
                                         </form>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus postingan ini?')">Delete <i class="fas fa-trash"></i></button>
                                         {{-- <a href="" class="btn btn-danger btn-sm delete-button" data-slug={{ $post->slug }}>Hapus <i class="fas fa-trash"></i></a> --}}
                                     {{-- @endcan --}}
                                 </div>
@@ -168,11 +168,10 @@
 
 
 @section('custom-scripts')
-    <script src="{{ asset('frontend/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script> --}}
     {{-- <script>
-        $('body').on('click', '.delete-button', function (e) {
-            e.preventDefault();
-            let slug = $(this).data('slug');
+        function deletePost(slug)
+        {
             Swal.fire({
                 title: 'Apakah kamu yakin?',
                 text: "data ini akan terhapus.",
@@ -184,27 +183,9 @@
                 cancelButtonText: 'Tidak'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $.ajax({
-                        type: "delete",
-                        url: "{{ route('post.delete', $post->slug) }}",
-                        data: {
-                            slug: slug,
-                            _token: "{{ csrf_token() }}",
-                        },
-                        success: function () {
-                            Swal.fire(
-                                'Terhapus!',
-                                'Postingan kamu sudah dihapus.',
-                                'success'
-                            )
-                        },
-                        error: function (e) {
-                            console.log(e)
-                        }
-                    });
+                    $('#data-'+slug).submit();
                 }
             })
-
-        });
+        }
     </script> --}}
 @endsection
