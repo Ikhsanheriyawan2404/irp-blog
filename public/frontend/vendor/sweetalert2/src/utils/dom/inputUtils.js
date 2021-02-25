@@ -40,7 +40,7 @@ const handleInputOptions = (instance, params) => {
   const content = dom.getContent()
   const processInputOptions = (inputOptions) => populateInputOptions[params.input](content, formatInputOptions(inputOptions), params)
   if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
-    showLoading(dom.getConfirmButton())
+    showLoading()
     asPromise(params.inputOptions).then((inputOptions) => {
       instance.hideLoading()
       processInputOptions(inputOptions)
@@ -77,7 +77,9 @@ const populateInputOptions = {
       const option = document.createElement('option')
       option.value = optionValue
       dom.setInnerHtml(option, optionLabel)
-      option.selected = isSelected(optionValue, params.inputValue)
+      if (params.inputValue.toString() === optionValue.toString()) {
+        option.selected = true
+      }
       parent.appendChild(option)
     }
     inputOptions.forEach(inputOption => {
@@ -110,7 +112,7 @@ const populateInputOptions = {
       radioInput.type = 'radio'
       radioInput.name = swalClasses.radio
       radioInput.value = radioValue
-      if (isSelected(radioValue, params.inputValue)) {
+      if (params.inputValue.toString() === radioValue.toString()) {
         radioInput.checked = true
       }
       const label = document.createElement('span')
@@ -151,8 +153,4 @@ const formatInputOptions = (inputOptions) => {
     })
   }
   return result
-}
-
-const isSelected = (optionValue, inputValue) => {
-  return inputValue && inputValue.toString() === optionValue.toString()
 }

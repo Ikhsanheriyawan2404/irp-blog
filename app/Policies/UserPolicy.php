@@ -12,6 +12,6 @@ class UserPolicy
 
     public function update(User $user)
     {
-        return $user->id == Auth::id();
+        return $user->id !== auth()->user()->id;
     }
 }

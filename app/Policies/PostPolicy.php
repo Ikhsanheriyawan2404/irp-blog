@@ -9,18 +9,18 @@ class PostPolicy
 {
     use HandlesAuthorization;
 
-    public function create(User $user, Post $postt)
+    public function create(Post $post)
     {
-        return $user->id === $post->user_id;
+        return auth()->user()->id === $post->user_id;
     }
 
-    public function update(User $user, Post $postt)
+    public function update(Post $post)
     {
-        return $user->id === $post->user_id;
+        return auth()->user()->id === $post->user_id;
     }
 
-    public function delete(User $user, Post $postt)
+    public function delete(Post $post)
     {
-        return $user->id === $post->user_id;
+        return auth()->user()->id === $post->user_id;
     }
 }

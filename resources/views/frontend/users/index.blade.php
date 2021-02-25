@@ -1,15 +1,8 @@
 @extends('layouts.frontend', compact('title'))
 
 @section('custom-styles')
+    <link rel="stylesheet" href="{{ asset('frontend/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
     <style>
-    @media only screen and (min-width: 768px) {
-        header.masthead .page-heading,
-        header.masthead .post-heading,
-        header.masthead .site-heading {
-            padding: 50px 0;
-        }
-    }
-
     header.masthead .page-heading,
     header.masthead .post-heading,
     header.masthead .site-heading {
@@ -21,6 +14,7 @@
 
 @section('content')
     <!-- Page Header -->
+    {{-- {{ dd(auth()->user()->id) }} --}}
     <header class="masthead" style="background-image: url()">
         <div class="overlay"></div>
         <div class="container">
@@ -29,9 +23,11 @@
                     <div class="site-heading">
                         <h1>Profil Saya</h1>
                         <span class="subheading">{{ $user->name }}</span>
-                        @can('create', $postt)
-                            <a href="{{ route('post.create') }}" class="btn btn-success btn-lg mt-3">Buat Postingan</a>
-                        @endcan
+                            {{-- @if () --}}
+                            {{-- @can('create', Post::class) --}}
+                                <a href="{{ route('post.create') }}" class="btn btn-success btn-lg mt-3">Buat Postingan</a>
+                            {{-- @endcan --}}
+                            {{-- @endif --}}
                     </div>
                 </div>
             </div>
@@ -55,9 +51,11 @@
                 @include('components.alert')
                 <div class="card my-3">
                     <div class="card-header">
-                        @can('update', $user)
+                        {{-- @if ($user->id == auth()->user()->id) --}}
+                        {{-- @can('update', $user) --}}
                             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-dark float-right">Edit Profil <i class="fas fa-cogs"></i></a>
-                        @endcan
+                        {{-- @endcan --}}
+                        {{-- @endif --}}
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -134,7 +132,7 @@
                                 <h2 class="post-title">
                                     {{ $post->title }}
                                 </h2>
-                                <p class="">{!! substr($post->body,0 , 100) !!}...Baca selengkapnya</p>
+                                <p class="">{!! Str::limit($post->body, 100) !!} Baca selengkapnya</p>
                             </a>
                             <p class="post-meta">Diposting oleh
                                 <a href="{{ route('user.show', $post->user->id) }}">{{ $post->user->name }}</a>
@@ -146,12 +144,17 @@
                                     {{ $post->comments->count('message') }}
                                 </i>
                                 <div class="d-flex float-right">
-                                    <a href="{{ route('post.edit', $post->slug) }}" class="btn btn-success btn-sm mr-2" style="color: white;">Edit <i class="fas fa-edit"></i></a>
-                                    <form action="{{ route('post.delete', $post->slug) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button onclick="return confirm('Yakin ingin dihapus?')" class="btn btn-danger btn-sm">Delete <i class="fas fa-trash"></i></button>
-                                    </form>
+                                    {{-- @can('update', Post::class) --}}
+                                        <a href="{{ route('post.edit', $post->slug) }}" class="btn btn-success btn-sm mr-2">Edit <i class="fas fa-edit"></i></a>
+                                    {{-- @endcan --}}
+                                    {{-- @can('delete', Post::class) --}}
+                                        <form action="{{ route('post.delete', $post->slug) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm btn-delete" data-slug="{{ $post->slug }}">Delete <i class="fas fa-trash"></i></button>
+                                        </form>
+                                        {{-- <a href="" class="btn btn-danger btn-sm delete-button" data-slug={{ $post->slug }}>Hapus <i class="fas fa-trash"></i></a> --}}
+                                    {{-- @endcan --}}
                                 </div>
                             </p>
                         </div>
@@ -161,4 +164,47 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('custom-scripts')
+    <script src="{{ asset('frontend/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+    {{-- <script>
+        $('body').on('click', '.delete-button', function (e) {
+            e.preventDefault();
+            let slug = $(this).data('slug');
+            Swal.fire({
+                title: 'Apakah kamu yakin?',
+                text: "data ini akan terhapus.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "delete",
+                        url: "{{ route('post.delete', $post->slug) }}",
+                        data: {
+                            slug: slug,
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function () {
+                            Swal.fire(
+                                'Terhapus!',
+                                'Postingan kamu sudah dihapus.',
+                                'success'
+                            )
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    });
+                }
+            })
+
+        });
+    </script> --}}
 @endsection

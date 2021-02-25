@@ -121,27 +121,33 @@ declare module 'sweetalert2' {
     /**
      * Gets the close button.
      */
-    function getCloseButton(): HTMLButtonElement | null;
+    function getCloseButton(): HTMLElement | null;
 
     /**
-     * Gets the icon.
+     * Gets the current visible icon.
      */
     function getIcon(): HTMLElement | null;
 
     /**
+     * Gets all icons. The current visible icon will have `style="display: flex"`,
+     * all other will be hidden by `style="display: none"`.
+     */
+    function getIcons(): readonly HTMLElement[];
+
+    /**
      * Gets the "Confirm" button.
      */
-    function getConfirmButton(): HTMLButtonElement | null;
+    function getConfirmButton(): HTMLElement | null;
 
     /**
      * Gets the "Deny" button.
      */
-    function getDenyButton(): HTMLButtonElement | null;
+    function getDenyButton(): HTMLElement | null;
 
     /**
      * Gets the "Cancel" button.
      */
-    function getCancelButton(): HTMLButtonElement | null;
+    function getCancelButton(): HTMLElement | null;
 
     /**
      * Gets actions (buttons) wrapper.
@@ -174,18 +180,12 @@ declare module 'sweetalert2' {
     function disableButtons(): void;
 
     /**
-     * Shows loader (spinner), this is useful with AJAX requests.
-     *
-     * By default the loader be shown instead of the "Confirm" button, but if you want
-     * another button to be replaced with a loader, just pass it like this:
-     * ```
-     * Swal.showLoading(Swal.getDenyButton())
-     * ```
+     * Disables buttons and show loader. This is useful with AJAX requests.
      */
-    function showLoading(buttonToReplace?: HTMLButtonElement): void;
+    function showLoading(): void;
 
     /**
-     * Hides loader and shows back the button which was hidden by .showLoading()
+     * Enables buttons and hide loader.
      */
     function hideLoading(): void;
 
@@ -429,7 +429,6 @@ declare module 'sweetalert2' {
     icon?: string;
     image?: string;
     content?: string;
-    htmlContainer?: string;
     input?: string;
     validationMessage?: string;
     actions?: string;
@@ -520,52 +519,6 @@ declare module 'sweetalert2' {
     footer?: string | HTMLElement | JQuery;
 
     /**
-     * The declarative <template> of the popup. All API prams can be set via
-     * `<swal-param name="..." value="..."></swal-param>`, e.g.
-     * `<swal-param name="toast" value="true"></swal-param>`
-     *
-     * Additionally, there are specialized elements for specific params:
-     *  - `<swal-title>`
-     *  - `<swal-html>`
-     *  - `<swal-icon>`
-     *  - `<swal-image>`
-     *  - `<swal-input>`
-     *  - `<swal-input-option>`
-     *  - `<swal-button>`
-     *  - `<swal-footer>`
-     *
-     * Example:
-     * ```html
-     * <template id="my-template">
-     *   <swal-title>Are you sure?</swal-title>
-     *   <swal-html>You won't be able to revert this!</swal-html>
-     *
-     *   <swal-icon type="success"></swal-icon>
-     *   <swal-image src="..." width="..." height="..." alt="..."></swal-image>
-     *
-     *   <swal-input type="select" placeholder="..." label="..." value="...">
-     *     <swal-input-option value="...">...</swal-input-option>
-     *   </swal-input>
-     *   <swal-param name="inputAttributes" value='{ "multiple": true }'></swal-param>
-     *
-     *   <swal-button type="confirm" color="..." aria-label="...">Yes</swal-button>
-     *   <swal-button type="cancel" color="..." aria-label="...">No</swal-button>
-     *
-     *   <swal-footer>read more here</swal-footer>
-     * </template>
-     * ```
-     *
-     * ```
-     * Swal.fire({
-     *   template: '#my-template'
-     * })
-     * ```
-     *
-     * @default undefined
-     */
-    template?: string | HTMLTemplateElement;
-
-    /**
      * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.
      * Either a boolean value or a css background value (hex, rgb, rgba, url, etc.)
      *
@@ -598,7 +551,7 @@ declare module 'sweetalert2' {
     input?: SweetAlertInput;
 
     /**
-     * Popup width, including paddings (`box-sizing: border-box`).
+     * Popup width, including paddings (`box-sizing: border-box`). Can be in px or %.
      *
      * @default undefined
      */
@@ -662,7 +615,6 @@ declare module 'sweetalert2' {
      *     image: '...',
      *     content: '...',
      *     input: '...',
-     *     inputLabel: '...',
      *     validationMessage: '...',
      *     actions: '...',
      *     confirmButton: '...',
@@ -674,7 +626,7 @@ declare module 'sweetalert2' {
      * })
      * ```
      *
-     * @default {}
+     * @default undefined
      */
     customClass?: SweetAlertCustomClass;
 
@@ -903,20 +855,11 @@ declare module 'sweetalert2' {
     loaderHtml?: string;
 
     /**
-     * Set to `true` to disable buttons and show the loader instead of the Confirm button.
-     * Use it in combination with the `preConfirm` parameter.
+     * Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests.
      *
      * @default false
      */
     showLoaderOnConfirm?: boolean;
-
-    /**
-     * Set to `true` to disable buttons and show the loader instead of the Deny button.
-     * Use it in combination with the `preDeny` parameter.
-     *
-     * @default false
-     */
-    showLoaderOnDeny?: boolean;
 
     /**
      * Function to execute before confirming, may be async (Promise-returning) or sync.
@@ -963,18 +906,18 @@ declare module 'sweetalert2' {
     imageUrl?: string;
 
     /**
-     * If imageUrl is set, you can specify imageWidth to describes image width.
+     * If imageUrl is set, you can specify imageWidth to describes image width in px.
      *
      * @default undefined
      */
-    imageWidth?: number | string;
+    imageWidth?: number;
 
     /**
-     * If imageUrl is set, you can specify imageHeight to describes image height.
+     * If imageUrl is set, you can specify imageHeight to describes image height in px.
      *
      * @default undefined
      */
-    imageHeight?: number | string;
+    imageHeight?: number;
 
     /**
      * An alternative text for the custom image icon.
@@ -1217,4 +1160,10 @@ declare module 'sweetalert2/*/sweetalert2.all.js' {
  */
 
 interface JQuery {
+}
+
+interface Promise<T> {
+}
+
+interface Map<K, V> {
 }

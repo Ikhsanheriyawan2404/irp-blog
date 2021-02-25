@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\{Category, Post};
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -47,8 +46,7 @@ class PostController extends Controller
             'body' => 'required|min:50',
         ]);
 
-        $post = Post::create([
-            'user_id' => Auth::id(),
+        $attr = [
             'title' => request('title'),
             'slug' => Str::slug(request('title')),
             'meta_title' => request('title'),
@@ -56,8 +54,9 @@ class PostController extends Controller
             'meta_keyword' => request('meta_keyword'),
             'thumbnail' => request('thumbnail') ? request()->file('thumbnail')->store('img/post') : null,
             'body' => request('body'),
-        ]);
+        ];
 
+        $post = auth()->user()->posts()->create($attr);
         $post->categories()->sync(request('category'));
         return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan baru berhasil ditambahkan');
     }

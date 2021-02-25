@@ -31,7 +31,8 @@ class HomeController extends Controller
                 'title' => 'Read Article',
                 'posts' => Post::latest()->paginate(5),
                 'post' => $post,
-                'categories' => Category::get(),
+                'category' => Category::first(),
+                // 'comments' => Comment::
             ]);
         } else {
             abort(404);
@@ -45,7 +46,7 @@ class HomeController extends Controller
             'title' => 'Category Article',
             'category' => $category,
             'categories' => Category::get(),
-            'posts' => $category->posts->latest()->paginate(5),
+            'posts' => $category->posts()->latest(),
             'users' => User::get(),
         ]);
     }

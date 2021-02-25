@@ -2,14 +2,6 @@
 
 @section('custom-styles')
     <style>
-    @media only screen and (min-width: 768px) {
-        header.masthead .page-heading,
-        header.masthead .post-heading,
-        header.masthead .site-heading {
-            padding: 50px 0;
-        }
-    }
-
     header.masthead .page-heading,
     header.masthead .post-heading,
     header.masthead .site-heading {
@@ -63,7 +55,7 @@
                         </div>
                         <div class="form-group">
                             <label for="bio">Bio <small class="text-secondary">*</small></label>
-                            <textarea type="text" class="form-control @error('bio') is-invalid @enderror" name="bio" id="bio"></textarea>
+                            <textarea type="text" class="form-control @error('bio') is-invalid @enderror" name="bio" id="bio">{{ old('bio') ?? $user->bio }}</textarea>
                             @error('bio')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

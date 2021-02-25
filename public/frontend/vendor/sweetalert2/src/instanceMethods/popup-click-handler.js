@@ -27,7 +27,6 @@ const handleToastClick = (instance, domCache, dismissWith) => {
       innerParams.showDenyButton ||
       innerParams.showCancelButton ||
       innerParams.showCloseButton ||
-      innerParams.timer ||
       innerParams.input
     ) {
       return

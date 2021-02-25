@@ -1,7 +1,17 @@
 @extends('layouts.frontend', compact('title'))
 
+@section('custom-styles')
+    <style>
+        header.masthead .page-heading,
+        header.masthead .post-heading,
+        header.masthead .site-heading {
+            padding: 100px 0 50px;
+            color: white;
+        }
+    </style>
+@endsection
+
 @section('content')
-{{-- {{ $comment }} --}}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url({{ $post->takeImage }})">
         <div class="overlay"></div>
@@ -11,6 +21,7 @@
                     <div class="post-heading">
                         <h1 class="subheading">{{ $post->title }}</h1>
                         <h3 class="meta">{{ $post->meta_description}}</h3>
+                        <h3 class="meta"> - Di posting {{ $post->created_at->diffForHumans() }} oleh {{ $post->user->name }}</h3>
                     </div>
                 </div>
             </div>
@@ -28,7 +39,7 @@
                             Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Quia sed officia, laborum odit, ullam accusamus labore, aperiam laboriosam provident dolorum molestias ipsa est numquam at dolores similique illo doloribus, necessitatibus.
                         </div>
                     </div>
-                    <div class="my-3">
+                    <div class="my-5">
                         {!! $post->body !!}
                     </div>
                     <!-- Button Like -->
@@ -42,17 +53,17 @@
                     <hr>
 
                     <!-- Comment -->
-                    @foreach ($post->comments as $post)
+                    @foreach ($post->comments as $comment)
                         <div class="card my-3">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="{{ $post->user->takeImage }}" class="rounded-circle" width="75" alt="">
+                                    <img src="{{ $comment->user->takeImage }}" class="rounded-circle" width="75" alt="">
                                 </div>
                                 <div class="col-md-10">
-                                    <a href="">{{ $post->user->name }}</a>
-                                    <div class="text-comment">{{ $post->message }}</div>
-                                    <div class="text-comment">{{ $post->created_at->diffForHumans() }}
-                                        <a data-toggle="modal" data-target="#edit-commentar" data-id="{{-- {{ $comment->id }} --}}"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="">{{ $comment->user->name }}</a>
+                                    <div class="text-comment">{{ $comment->message }}</div>
+                                    <div class="text-comment">{{ $comment->created_at->diffForHumans() }}
+                                        <a data-toggle="modal" data-target="#edit-comment" data-id="{{ $comment->id }}"><i class="fas fa-pencil-alt"></i></a>
                                             &nbsp;
                                         <a href=""><i class="fas fa-trash-alt"></i></a>
                                     </div>
@@ -98,27 +109,27 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="card my-3">
+                    {{-- <div class="card my-3">
                         <h3 class="post-title">Category</h3>
                         <ul class="list-group list-group-flush">
                             @foreach ($categories as $category)
                                  <li class="list-group-item"><a href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </article>
 
     <!-- Modal -->
-    <div class="modal fade" id="edit-commentar" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="edit-comment" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <form action="" method="post">
                         @csrf
                         <div class="modal-body">
-                            <textarea class="form-control" name="comment" id="comment" cols="10" rows="3" autofocus required></textarea>
+                            <textarea class="form-control" name="comment" id="comment" data-id="" cols="10" rows="3" autofocus required></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
@@ -132,9 +143,9 @@
     @section('custom-scripst')
         <script>
             $(document).ready(function () {
-                $('body').on('click', '#edit-modal', function () {
-                    var customer_id = $(this).data('id');
-                    $('#commentar').val(data.commentar);
+                $('body').on('click', '#edit-comment', function () {
+                    let comment_id = $(this).data('id');
+                    $('#comment').val(data.comment);
                 });
             });
         </script>

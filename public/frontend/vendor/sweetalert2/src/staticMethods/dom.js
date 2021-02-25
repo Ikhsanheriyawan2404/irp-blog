@@ -9,6 +9,7 @@ export {
   getHtmlContainer,
   getImage,
   getIcon,
+  getIcons,
   getInputLabel,
   getCloseButton,
   getActions,

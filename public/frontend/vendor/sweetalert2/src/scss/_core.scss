@@ -250,10 +250,10 @@
 }
 
 .swal2-styled {
-  margin: $swal2-button-margin;
-  padding: $swal2-button-padding;
-  box-shadow: $swal2-button-box-shadow;
-  font-weight: $swal2-button-font-weight;
+  margin: .3125em;
+  padding: .625em 2em;
+  box-shadow: none;
+  font-weight: 500;
 
   &:not([disabled]) {
     cursor: pointer;
@@ -357,11 +357,6 @@
     transform: $swal2-close-button-hover-transform;
     background: $swal2-close-button-hover-background;
     color: $swal2-close-button-hover-color;
-  }
-
-  &:focus {
-    outline: $swal2-close-button-focus-outline;
-    box-shadow: $swal2-close-button-focus-box-shadow;
   }
 
   &::-moz-focus-inner {
@@ -524,12 +519,6 @@
   }
 }
 
-// https://stackoverflow.com/a/12335841/1331425
-@function strip-units($number) {
-  @return $number / ($number * 0 + 1);
-}
-$icon-zoom: strip-units($swal2-icon-size) / 5;
-
 .swal2-icon {
   position: relative;
   box-sizing: content-box;
@@ -538,9 +527,8 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
   height: $swal2-icon-size;
   margin: $swal2-icon-margin;
   zoom: $swal2-icon-zoom;
-  border: #{.25em * $icon-zoom} solid transparent;
+  border: .25em solid transparent;
   border-radius: 50%;
-  border-color: $swal2-icon-border-color;
   font-family: $swal2-icon-font-family;
   line-height: $swal2-icon-size;
   cursor: default;
@@ -549,7 +537,7 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
   .swal2-icon-content {
     display: flex;
     align-items: center;
-    font-size: $swal2-icon-font-size;
+    font-size: 3.75em;
   }
 
   &.swal2-error {
@@ -559,10 +547,6 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
     .swal2-x-mark {
       position: relative;
       flex-grow: 1;
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
     }
 
     [class^='swal2-x-mark-line'] {
@@ -630,10 +614,6 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
         transform: rotate(-45deg);
         transform-origin: 3.75em 3.75em;
         border-radius: 7.5em 0 0 7.5em;
-
-        @if $icon-zoom != 1 {
-          zoom: $icon-zoom;
-        }
       }
 
       &[class$='right'] {
@@ -642,10 +622,6 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
         transform: rotate(-45deg);
         transform-origin: 0 3.75em;
         border-radius: 0 7.5em 7.5em 0;
-
-        @if $icon-zoom != 1 {
-          zoom: $icon-zoom;
-        }
       }
     }
 
@@ -660,10 +636,6 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
       height: 100%;
       border: .25em solid $swal2-success-border;
       border-radius: 50%;
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
     }
 
     .swal2-success-fix {
@@ -675,10 +647,6 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
       width: .4375em;
       height: 5.625em;
       transform: rotate(-45deg);
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
     }
 
     [class^='swal2-success-line'] {
@@ -701,10 +669,6 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
         right: .5em;
         width: 2.9375em;
         transform: rotate(-45deg);
-      }
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
       }
     }
 

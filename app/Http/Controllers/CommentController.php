@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{Comment, Post};
 use Illuminate\Support\Facades\Auth;
+// use Illuminate\Http\Response;
 
 class CommentController extends Controller
 {
@@ -26,7 +27,7 @@ class CommentController extends Controller
     public function edit($id)
     {
         $comment = Comment::where('id', $id)->first();
-        return Response::json($comment);
+        return \Response::json($comment);
     }
 
     public function update(Comment $comment)

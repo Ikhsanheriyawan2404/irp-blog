@@ -97,7 +97,6 @@ const setInputLabel = (input, prependTo, params) => {
     const labelClass = swalClasses['input-label']
     label.setAttribute('for', input.id)
     label.className = labelClass
-    dom.addClass(label, params.customClass.inputLabel)
     label.innerText = params.inputLabel
     prependTo.insertAdjacentElement('beforebegin', label)
   }
@@ -177,12 +176,11 @@ renderInputType.textarea = (textarea, params) => {
   setInputPlaceholder(textarea, params)
   setInputLabel(textarea, textarea, params)
 
-  const getPadding = (el) => parseInt(window.getComputedStyle(el).paddingLeft) + parseInt(window.getComputedStyle(el).paddingRight)
-
   if ('MutationObserver' in window) { // #1699
     const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
+    const popupPadding = parseInt(window.getComputedStyle(dom.getPopup()).paddingLeft) + parseInt(window.getComputedStyle(dom.getPopup()).paddingRight)
     const outputsize = () => {
-      const contentWidth = textarea.offsetWidth + getPadding(dom.getPopup()) + getPadding(dom.getContent())
+      const contentWidth = textarea.offsetWidth + popupPadding
       if (contentWidth > initialPopupWidth) {
         dom.getPopup().style.width = `${contentWidth}px`
       } else {

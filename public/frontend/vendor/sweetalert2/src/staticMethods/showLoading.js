@@ -3,28 +3,20 @@ import Swal from '../sweetalert2.js'
 import { swalClasses } from '../utils/classes.js'
 
 /**
- * Shows loader (spinner), this is useful with AJAX requests.
- * By default the loader be shown instead of the "Confirm" button.
+ * Show spinner instead of Confirm button
  */
-const showLoading = (buttonToReplace) => {
+const showLoading = () => {
   let popup = dom.getPopup()
   if (!popup) {
     Swal.fire()
   }
   popup = dom.getPopup()
   const actions = dom.getActions()
+  const confirmButton = dom.getConfirmButton()
   const loader = dom.getLoader()
 
-  if (!buttonToReplace && dom.isVisible(dom.getConfirmButton())) {
-    buttonToReplace = dom.getConfirmButton()
-  }
-
   dom.show(actions)
-  if (buttonToReplace) {
-    dom.hide(buttonToReplace)
-    loader.setAttribute('data-button-to-replace', buttonToReplace.className)
-  }
-  loader.parentNode.insertBefore(loader, buttonToReplace)
+  dom.hide(confirmButton)
   dom.addClass([popup, actions], swalClasses.loading)
 
   dom.show(loader)

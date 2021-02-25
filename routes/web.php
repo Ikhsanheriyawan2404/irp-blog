@@ -17,10 +17,10 @@ Route::middleware('auth')->group(function () {
         Route::put('{user:id}/edit', [UserController::class, 'update'])->name('user.update');
     });
     Route::prefix('comment')->group(function() {
-        Route::post('comment/{post:id}', [CommentController::class, 'store'])->name('comment.store');
-        Route::get('comment/{post:id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
-        Route::put('comment/{post:id}/edit', [CommentController::class, 'update'])->name('comment.update');
-        Route::delete('comment/{post:id}/edit', [CommentController::class, 'destroy'])->name('comment.delete');
+        Route::post('{post:id}', [CommentController::class, 'store'])->name('comment.store');
+        Route::get('{post:id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
+        Route::put('{post:id}/edit', [CommentController::class, 'update'])->name('comment.update');
+        Route::delete('{post:id}/edit', [CommentController::class, 'destroy'])->name('comment.delete');
     });
     Route::prefix('post')->group(function () {
         Route::get('create', [PostController::class, 'create'])->name('post.create');

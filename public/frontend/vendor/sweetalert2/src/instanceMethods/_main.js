@@ -4,7 +4,6 @@ import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
 import { callIfFunction } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
-import { getTemplateParams } from '../utils/getTemplateParams.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
@@ -15,15 +14,15 @@ import { addKeydownHandler, setFocus } from './keydown-handler.js'
 import { handlePopupClick } from './popup-click-handler.js'
 import { DismissReason } from '../utils/DismissReason.js'
 
-export function _main (userParams, mixinParams = {}) {
-  showWarningsForParams(Object.assign({}, mixinParams, userParams))
+export function _main (userParams) {
+  showWarningsForParams(userParams)
 
   if (globalState.currentInstance) {
     globalState.currentInstance._destroy()
   }
   globalState.currentInstance = this
 
-  const innerParams = prepareParams(userParams, mixinParams)
+  const innerParams = prepareParams(userParams)
   setParameters(innerParams)
   Object.freeze(innerParams)
 
@@ -45,11 +44,10 @@ export function _main (userParams, mixinParams = {}) {
   return swalPromise(this, domCache, innerParams)
 }
 
-const prepareParams = (userParams, mixinParams) => {
-  const templateParams = getTemplateParams(userParams)
-  const showClass = Object.assign({}, defaultParams.showClass, mixinParams.showClass, templateParams.showClass, userParams.showClass)
-  const hideClass = Object.assign({}, defaultParams.hideClass, mixinParams.hideClass, templateParams.hideClass, userParams.hideClass)
-  const params = Object.assign({}, defaultParams, mixinParams, templateParams, userParams) // precedence is described in #2131
+const prepareParams = (userParams) => {
+  const showClass = Object.assign({}, defaultParams.showClass, userParams.showClass)
+  const hideClass = Object.assign({}, defaultParams.hideClass, userParams.hideClass)
+  const params = Object.assign({}, defaultParams, userParams)
   params.showClass = showClass
   params.hideClass = hideClass
   // @deprecated
@@ -133,7 +131,7 @@ const setupTimer = (globalState, innerParams, dismissWith) => {
     if (innerParams.timerProgressBar) {
       dom.show(timerProgressBar)
       setTimeout(() => {
-        if (globalState.timeout && globalState.timeout.running) { // timer can be already stopped or unset at this point
+        if (globalState.timeout.running) { // timer can be already stopped at this point
           dom.animateTimerProgressBar(innerParams.timer)
         }
       })

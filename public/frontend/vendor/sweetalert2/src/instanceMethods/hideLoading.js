@@ -3,7 +3,7 @@ import { swalClasses } from '../utils/classes.js'
 import privateProps from '../privateProps.js'
 
 /**
- * Hides loader and shows back the button which was hidden by .showLoading()
+ * Enables buttons and hide loader.
  */
 function hideLoading () {
   // do nothing if popup is closed
@@ -13,10 +13,9 @@ function hideLoading () {
   }
   const domCache = privateProps.domCache.get(this)
   dom.hide(domCache.loader)
-  const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'))
-  if (buttonToReplace.length) {
-    dom.show(buttonToReplace[0], 'inline-block')
-  } else if (dom.allButtonsAreHidden()) {
+  if (innerParams.showConfirmButton) {
+    dom.show(domCache.confirmButton, 'inline-block')
+  } else if (!innerParams.showConfirmButton && !innerParams.showCancelButton) {
     dom.hide(domCache.actions)
   }
   dom.removeClass([domCache.popup, domCache.actions], swalClasses.loading)

@@ -6,6 +6,13 @@
         .select2 {
             width:100%!important;
         }
+
+        header.masthead .page-heading,
+        header.masthead .post-heading,
+        header.masthead .site-heading {
+            padding: 100px 0 50px;
+            color: white;
+        }
     </style>
 @endsection
 
