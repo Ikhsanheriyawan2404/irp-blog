@@ -29,14 +29,14 @@
 <body>
 
     <!-- Navigation -->
-    @include('components.navbar')
+    @include('frontend.components.navbar')
 
     <!-- Main Content -->
     @yield('content')
     <hr>
 
     <!-- Footer -->
-    @include('components.footer')
+    @include('frontend.components.footer')
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>

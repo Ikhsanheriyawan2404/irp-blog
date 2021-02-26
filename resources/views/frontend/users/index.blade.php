@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-10 mx-auto">
-                @include('components.alert')
+                @include('frontend.components.alert')
                 <div class="card my-3">
                     <div class="card-header">
                         {{-- @if ($user->id == auth()->user()->id) --}}

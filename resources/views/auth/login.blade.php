@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-10 mx-auto">
                 <div class="card my-3">
-                    @include('components.alert')
+                    @include('frontend.components.alert')
                     <form action="{{ route('login') }}" method="post">
                         @csrf
                         <div class="form-group">

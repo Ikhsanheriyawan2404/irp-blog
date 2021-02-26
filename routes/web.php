@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController};
+use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController};
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -33,12 +33,13 @@ Route::middleware('auth')->group(function () {
         Route::put('{post:slug}/edit', [PostController::class, 'update'])->name('post.update');
         Route::delete('{post:slug}/delete', [PostController::class, 'destroy'])->name('post.delete');
     });
-    Route::middleware('role:admin')->group(function () {
+    // Route::middleware('user:role' => 'admin')->group(function () {
         Route::prefix('admin')->group(function () {
+            Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
             Route::prefix('category')->group(function () {
                 Route::get('/', [AdminController::class, 'index'])->name('admin.index');
                 Route::resource('category', CategoryController::class);
             });
         });
-    });
+    // });
 });
