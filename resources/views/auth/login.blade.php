@@ -56,20 +56,20 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
+                                    <small>Ingat saya</small>
                                 </label>
                             </div>
                             <div>
                                 @if (Route::has('password.request'))
-                                    <label><a href="{{ route('password.request') }}">Forgot password</a></label>
+                                    <small><a href="{{-- {{ route('password.request') }} --}}" disabled>Forgot password</a></small>
                                 @endif
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success float-right">Masuk</button>
+                        <div class="my-3">
+                            <button type="submit" class="btn btn-success float-right">Masuk</button>
+                            <small>Belum punya akun?<a href="{{ route('register') }}"> Daftar disini</a></small>
+                        </div>
                     </form>
-                    <div class="d-flex jutify-content-center text-comment">
-                        Belum punya akun ?<a href="{{ route('register') }}">Daftar disini</a>
-                    </div>
                 </div>
             </div>
         </div>

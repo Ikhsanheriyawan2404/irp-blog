@@ -13,8 +13,8 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
-                        <h1>My Blog</h1>
-                        <span class="subheading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quam voluptatem sapiente consequatur, amet reprehenderit, odio quisquam. Ex autem dolorem esse dolor, laboriosam reiciendis consectetur sint, ea iste, ipsam odio.</span>
+                        <h1>IRP Blog</h1>
+                        <span class="subheading">Sebuah tempat digital untuk sharing pemikiran, diskusi publik, dan interaksi sosial secara online.</span>
                     </div>
                 </div>
             </div>

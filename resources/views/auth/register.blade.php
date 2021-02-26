@@ -93,9 +93,7 @@
                         </div>
                         <button type="submit" class="btn btn-success float-right">Daftar</button>
                     </form>
-                    <div class="d-flex jutify-content-center text-comment">
-                        Sudah punya akun ?<a href="{{ route('login') }}">Masuk disini</a>
-                    </div>
+                        <small>Sudah punya akun?<a href="{{ route('login') }}"> Masuk disini</a></small>
                 </div>
             </div>
         </div>
