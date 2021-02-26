@@ -13,6 +13,7 @@
 
 @section('content')
     <!-- Page Header -->
+    {{-- {{ dd($post->likes->likes) }} --}}
     <header class="masthead" style="background-image: url({{ $post->takeImage }})">
         <div class="overlay"></div>
         <div class="container">
@@ -43,13 +44,28 @@
                         {!! $post->body !!}
                     </div>
                     <!-- Button Like -->
-                    <form {{-- action="{{ route('like.store', $post->id) }}" --}} method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
-                        <button type="submit" class="btn btn-danger">Unlike <i class="fas fa-thumbs-up"></i></button>
+                    {{-- {{ dd(auth()->user() == null) }} --}}
+                    {{-- {{ dd($ ?? $likes) }} --}}
+                    {{-- @if ($likes->where('user_id', auth()->user()->id)) --}}
+                    {{ dd($likes->where('user_id', auth()->user()->id)) }}
+                        @if (auth()->user() == null)
+                            <form action="{{ route('post.like', $post->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
+                            </form>
+                        @else
+                            @if ($likes->where('user_id', auth()->user()->id))
+                                <form action="{{ route('post.like', $post->id) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
+                                </form>
+                            @else
+                                <button class="btn btn-success" disabled>Like <i class="fas fa-check"></i></button>
+                            @endif
+                        @endif
                             {{ $post->likes->sum('likes') }}&nbsp;<i class="fas fa-comment">
                         </i> {{ $post->comments->count('message') }}
-                    </form>
+                    {{-- @endif --}}
                     <hr>
 
                     <!-- Comment -->
@@ -78,7 +94,7 @@
                     <div class="card my-3">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="{{ $post->user->takeImage }}" class="rounded-circle" width="75" alt="">
+                                <img src="{{ auth()->user()->takeImage ?? '' }}" class="rounded-circle" width="75" alt="">
                             </div>
                             <div class="col-md-10">
                                 <form action="{{ route('comment.store', $post->id) }}" method="post">

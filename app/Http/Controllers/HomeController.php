@@ -26,13 +26,15 @@ class HomeController extends Controller
     public function show_post($slug)
     {
         $post = Post::where('slug', $slug)->first();
+        $likes = Like::where('post_id', $post->id)->first();
+
         if ($post) {
             return view('frontend.post', [
                 'title' => 'Read Article',
-                'posts' => Post::latest()->paginate(5),
+                'posts' => Post::latest()->limit(5)->get(),
                 'post' => $post,
                 'category' => Category::first(),
-                // 'comments' => Comment::
+                'likes' => $likes,
             ]);
         } else {
             abort(404);

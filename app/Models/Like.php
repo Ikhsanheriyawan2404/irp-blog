@@ -9,6 +9,7 @@ class Like extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['post_id', 'likes'];
     public $timestamps = false;
 
     public function post()
