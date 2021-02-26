@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
-                        <h1>Login</h1>
+                        <h1>Masuk</h1>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="email">Email <small class="text-danger">*</small></label>
-                            <input type="text" class="form-control @error('password') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">
+                            <input type="text" class="form-control @error('password') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" autofocus>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

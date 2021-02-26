@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="title">Title <small class="text-danger">*</small></label>
-    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ old('title') ?? $post->title }}">
+    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ old('title') ?? $post->title }}" autofocus>
     @error('title')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

@@ -37,7 +37,7 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="name">Name <small class="text-danger">*</small></label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') ?? $user->name }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') ?? $user->name }}" autofocus>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="bio">Bio <small class="text-secondary">*</small></label>
+                            <label for="bio">Bio <small class="text-secondary">maksimal 255 karakter*</small></label>
                             <textarea type="text" class="form-control @error('bio') is-invalid @enderror" name="bio" id="bio">{{ old('bio') ?? $user->bio }}</textarea>
                             @error('bio')
                                 <span class="invalid-feedback" role="alert">

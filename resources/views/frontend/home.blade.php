@@ -53,18 +53,19 @@
             </div>
             <div class="col-lg-4">
                 <div class="card my-3">
-                    <h3 class="post-title">Recent Posts</h3>
+                    <h3 class="post-title">Postingan Terakhir</h3>
                     <ul class="list-group list-group-flush">
                         @foreach ($posts as $post)
                             <li class="list-group-item">
                                 <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>
-                                <h1 class="text-comment">{{ $post->user->name }} - {{ date('Y-m-d', strtotime($post->crated_at))}}</h1>
+                                <br>
+                                <small class="text-comment">{{ $post->user->name }} - {{ date('Y-m-d', strtotime($post->crated_at))}}</small>
                             </li>
                         @endforeach
                     </ul>
                 </div>
                 <div class="card my-3">
-                    <h3 class="post-title">Category</h3>
+                    <h3 class="post-title">Kategori</h3>
                     <ul class="list-group list-group-flush">
                         @foreach ($categories as $category)
                             <li class="list-group-item"><a href="{{ route('category', $category->slug) }}">{{ $category->name }}</a></li>

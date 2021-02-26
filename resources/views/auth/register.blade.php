@@ -35,7 +35,7 @@
                     @csrf
                         <div class="form-group">
                             <label for="name">Name <small class="text-danger">*</small></label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" autofocus>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -86,15 +86,6 @@
                                 <option value="P">Perempuan</option>
                             </select>
                             @error('gender')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="bio">Bio <small class="text-secondary">'tidak wajib diisi'</small></label>
-                            <textarea class="form-control @error('bio') is-invalid @enderror" name="bio" id="bio"></textarea>
-                            @error('bio')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

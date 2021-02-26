@@ -55,8 +55,15 @@ class HomeController extends Controller
 
     public function about_us()
     {
-        return view([
+        return view('frontend.about_us',[
             'title' => 'Tentang Kami',
+        ]);
+    }
+
+    public function gallery()
+    {
+        return view('frontend.gallery',[
+            'title' => 'Galleri Dokumentasi IRP',
         ]);
     }
 }
