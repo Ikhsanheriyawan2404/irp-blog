@@ -44,28 +44,37 @@
                         {!! $post->body !!}
                     </div>
                     <!-- Button Like -->
-                    {{-- {{ dd(auth()->user() == null) }} --}}
-                    {{-- {{ dd($ ?? $likes) }} --}}
-                    {{-- @if ($likes->where('user_id', auth()->user()->id)) --}}
-                    {{ dd($likes->where('user_id', auth()->user()->id)) }}
-                        @if (auth()->user() == null)
-                            <form action="{{ route('post.like', $post->id) }}" method="post">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
-                            </form>
-                        @else
-                            @if ($likes->where('user_id', auth()->user()->id))
-                                <form action="{{ route('post.like', $post->id) }}" method="post">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
-                                </form>
+                        <div class="d-flex justify-content-between">
+                            @if (auth()->user() == null)
+                                <div>
+                                    <form action="{{ route('post.like', $post->id) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
+                                    </form>
+                                </div>
                             @else
-                                <button class="btn btn-success" disabled>Like <i class="fas fa-check"></i></button>
+                            {{-- {{$like = }} --}}
+                                @if ($likes->where('user_id', auth()->user()->id)->count() > 0)
+                                    <div>
+                                        <form action="">
+                                            <button class="btn btn-success" disabled>Like <i class="fas fa-check"></i></button>
+                                        </form>
+                                    </div>
+                                @else
+                                    <div>
+                                        <form action="{{ route('post.like', $post->id) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
+                                        </form>
+                                    </div>
+                                @endif
                             @endif
-                        @endif
-                            {{ $post->likes->sum('likes') }}&nbsp;<i class="fas fa-comment">
-                        </i> {{ $post->comments->count('message') }}
-                    {{-- @endif --}}
+                            <div>
+                                <i class="fas fa-thumbs-up"></i> {{ $post->likes->sum('likes') }}
+                                &nbsp;
+                                <i class="fas fa-comment"></i> {{ $post->comments->count('message') }}
+                            </div>
+                        </div>
                     <hr>
 
                     <!-- Comment -->

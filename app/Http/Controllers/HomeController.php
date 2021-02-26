@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function show_post($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        $likes = Like::where('post_id', $post->id)->first();
+        $likes = Like::where('post_id', $post->id)->get();
 
         if ($post) {
             return view('frontend.post', [
