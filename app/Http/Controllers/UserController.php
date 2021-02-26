@@ -9,14 +9,18 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function show($id)
+    public function show(User $user)
     {
-        return view('frontend.users.index', [
-            'title' => 'Halaman User',
-            'user' => User::where('id', $id)->first(),
-            'posts' => Post::latest()->where('user_id', $id)->paginate(5),
-            'likes' => Like::where('user_id', $id),
-        ]);
+        if ($user) {
+            return view('frontend.users.index', [
+                'title' => 'Halaman User',
+                'user' => $user,
+                'posts' => Post::latest()->where('user_id', $user->id)->paginate(5),
+                'likes' => Like::where('user_id', $user->id),
+            ]);
+        } else {
+            abort(404);
+        }
     }
 
     public function edit(User $user)
@@ -29,6 +33,7 @@ class UserController extends Controller
 
     public function update(User $user)
     {
+        $this->authorize('update', $user);
         if (request('image')) {
             Storage::delete($user->image);
             $image = request()->file('image')->store('img/profile');

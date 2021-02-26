@@ -1,19 +1,13 @@
 @extends('layouts.frontend', compact('title'))
 
-@section('custom-styles')
-    <style>
-        header.masthead .page-heading,
-        header.masthead .post-heading,
-        header.masthead .site-heading {
-            padding: 100px 0 50px;
-            color: white;
-        }
-    </style>
+@section('meta')
+    <meta name="title" content="{{ $post->meta_title ?? 'IRP Blog' }}">
+    <meta name="description" content="{{ $post->meta_description ?? 'Sebuah sarana blog publik untuk saling berbagi - Remaja generasi millenial bisa' }}">
+    <meta name="keyword" content="{{ $post->meta_keyword ?? 'Forum, Remaja, IRP' }}">
 @endsection
 
 @section('content')
     <!-- Page Header -->
-    {{-- {{ dd($post->likes->likes) }} --}}
     <header class="masthead" style="background-image: url({{ $post->takeImage }})">
         <div class="overlay"></div>
         <div class="container">
@@ -22,7 +16,6 @@
                     <div class="post-heading">
                         <h1 class="subheading">{{ $post->title }}</h1>
                         <h3 class="meta">{{ $post->meta_description}}</h3>
-                        <h3 class="meta"> - Di posting {{ $post->created_at->diffForHumans() }} oleh {{ $post->user->name }}</h3>
                     </div>
                 </div>
             </div>
@@ -41,6 +34,12 @@
                         </div>
                     </div>
                     <div class="my-5">
+                        <h1>{{ $post->title }}</h1>
+                        <small class="text-comment"> Penulis : <a href="{{ route('user.show', $post->user->id) }}">{{ $post->user->name }}</a>;
+                            Kategori : @foreach ($post->categories as $category) {{ $category->name }};@endforeach
+                            Terbit : {{ date('d-m-Y', strtotime($post->created_at)) }};
+                        </small>
+                        <img src="{{ $post->takeImage }}" class="img-fluid">
                         {!! $post->body !!}
                     </div>
                     <!-- Button Like -->
@@ -56,7 +55,7 @@
                             {{-- {{$like = }} --}}
                                 @if ($likes->where('user_id', auth()->user()->id)->count() > 0)
                                     <div>
-                                        <form action="">
+                                        <form action="#">
                                             <button class="btn btn-success" disabled>Like <i class="fas fa-check"></i></button>
                                         </form>
                                     </div>
@@ -128,12 +127,16 @@
                         <h3>ADS</h3>
                     </div>
                     <div class="card my-3">
-                        <h3 class="post-title">Related Posts</h3>
+                        <h3 class="post-title">Posingan Terkait</h3>
                         <ul class="list-group list-group-flush">
                             @foreach ($posts as $post)
                                 <li class="list-group-item">
-                                    <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>
-                                    <h1 class="text-comment">{{ $post->user->name }} | {{ date('d-m-Y', strtotime($post->created_at)) }}</h1>
+                                    <div>
+                                        <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('user.show', $post->user->id) }}" class="text-comment">{{ $post->user->name }}</a><small class="text-comment"> - {{ $post->created_at->diffForHumans() }}</small>
+                                    </div>
                                 </li>
                             @endforeach
                         </ul>

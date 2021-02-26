@@ -96,6 +96,8 @@ class PostController extends Controller
      */
     public function update(Post $post)
     {
+        $this->authorize('update', $post);
+
         request()->validate([
             'title' => 'required|min:8|unique:posts,title,' . $post->id,
             'category' => 'required|array',
@@ -127,6 +129,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->categories()->detach();
         Storage::delete($post->thumbnail);
         $post->delete();

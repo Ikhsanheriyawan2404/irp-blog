@@ -23,16 +23,14 @@ class HomeController extends Controller
         ]);
     }
 
-    public function show_post($slug)
+    public function show_post(Post $post)
     {
-        $post = Post::where('slug', $slug)->first();
         $likes = Like::where('post_id', $post->id)->get();
-
         if ($post) {
             return view('frontend.post', [
                 'title' => 'Read Article',
-                'posts' => Post::latest()->limit(5)->get(),
                 'post' => $post,
+                'posts' => Post::latest()->limit(5)->get(),
                 'category' => Category::first(),
                 'likes' => $likes,
             ]);

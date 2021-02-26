@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+{{-- {{ dd($user)}} --}}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url()">
         <div class="overlay"></div>
