@@ -38,6 +38,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
+                @include('frontend.components.alert')
                 <div class="card my-3">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
@@ -48,7 +49,6 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-10 mx-auto">
-                @include('frontend.components.alert')
                 <div class="card my-3">
                     <div class="card-header">
                         @if ($user->id === auth()->user()->id)

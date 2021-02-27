@@ -124,7 +124,7 @@ class PostController extends Controller
         ]);
 
         $post->categories()->sync(request('category'));
-        return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan baru berhasil ditambahkan');
+        return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan berhasil diedit');
     }
 
     public function destroy(Post $post)

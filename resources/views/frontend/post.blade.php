@@ -38,6 +38,18 @@
                         <small class="text-comment"> Penulis : <a href="{{ route('user.show', $post->user->id) }}">{{ $post->user->name }}</a>;
                             Kategori : @foreach ($post->categories as $category) {{ $category->name }};@endforeach
                             Terbit : {{ date('d-m-Y', strtotime($post->created_at)) }};
+                            <div class="d-flex justify-content-left">
+                                @can('update', $post)
+                                    <a class="btn btn-success btn-sm mr-2" href="{{ route('post.edit', $post->slug) }}">edit <i class="fas fa-pencil-alt"></i></a>
+                                @endcan
+                                @can('delete', $post)
+                                    <form action="{{ route('post.delete', $post->slug) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Apakah yakin ingin menghapus postingan ini?')">hapus <i class="fas fa-trash"></i></button>
+                                    </form>
+                                @endcan
+                            </div>
                         </small>
                         <hr>
                         @if ($post->thumbnail)
