@@ -12,14 +12,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Post $post)
+    public function index()
     {
         return view('frontend.home', [
             'title' => 'Halaman Utama',
-            'posts' => Post::latest()->paginate(5),
+            'posts' => Post::with('user', 'likes', 'comments', 'categories')->paginate(5),
             'categories' => Category::get(),
-            'users' => User::get(),
-            'likes' => Like::get(),
+        ]);
+    }
+
+    public function search()
+    {
+        $query = request('query');
+        return view('frontend.home', [
+            'title' => 'Hasil untuk ' . $query,
+            'posts' => Post::where("title", "like", "%$query%")->latest()->paginate(5),
+            'categories' => Category::get(),
         ]);
     }
 
@@ -28,10 +36,9 @@ class HomeController extends Controller
         $likes = Like::where('post_id', $post->id)->get();
         if ($post) {
             return view('frontend.post', [
-                'title' => 'Read Article',
+                'title' => $post->title,
                 'post' => $post,
-                'posts' => Post::latest()->limit(5)->get(),
-                'category' => Category::first(),
+                'posts' => Post::with('user', 'categories')->limit(5)->get(),
                 'likes' => $likes,
             ]);
         } else {
@@ -39,15 +46,14 @@ class HomeController extends Controller
         }
     }
 
-    public function show_category($slug)
+    public function show_category(Category $category)
     {
-        $category = Category::where('slug', $slug)->first();
+        $posts = $category->posts()->with('user', 'likes', 'comments')->latest()->paginate(5);
         return view('frontend.category', [
-            'title' => 'Category Article',
+            'title' => 'Kategori Postingan',
             'category' => $category,
+            'posts' => $posts,
             'categories' => Category::get(),
-            'posts' => $category->posts()->latest(),
-            'users' => User::get(),
         ]);
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('search', [HomeController::class, 'search'])->name('post.search');
 Route::get('{post:slug}', [HomeController::class, 'show_post'])->name('post');
 Route::get('category/{category:slug}', [HomeController::class, 'show_category'])->name('category');
 Route::get('info/tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
@@ -20,7 +21,7 @@ Route::middleware('auth')->group(function () {
         Route::post('{post:id}', [CommentController::class, 'store'])->name('comment.store');
         // Route::get('{post:id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
         // Route::put('{post:id}/edit', [CommentController::class, 'update'])->name('comment.update');
-        Route::delete('{post:id}/delete', [CommentController::class, 'destroy'])->name('comment.delete');
+        Route::delete('{comment:id}/delete', [CommentController::class, 'destroy'])->name('comment.delete');
     });
     Route::prefix('like')->group(function () {
         Route::post('{post:id}/create', [LikeController::class, 'store'])->name('post.like');

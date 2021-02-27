@@ -7,11 +7,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <div class="search">
-                <form action="#">
-                    <input type="text" placeholder="Cari . . .">
-                    <span>
-                        <i class="fas fa-search"></i>
-                    </span>
+                <form action="{{ route('post.search') }}">
+                    <input type="text" placeholder="Cari . . ." name="query">
+                        <span>
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </input>
                 </form>
             </div>
             <ul class="navbar-nav ml-auto">

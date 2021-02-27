@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-{{-- {{ dd($user)}} --}}
+{{-- {{ dd($post->categories)}} --}}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url()">
         <div class="overlay"></div>
@@ -26,6 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12 mx-auto">
+                @include('frontend.components.alert')
                 @foreach ($posts as $post)
                     <div class="card-post my-3">
                         @if ($post->thumbnail)
@@ -38,7 +39,11 @@
                                 </h3>
                             </a>
                             <p>{!! Str::limit($post->body, 200) !!} <a href="{{ route('post', $post->slug) }}">Baca selengkapnya</a></p>
-                            <p class="post-meta">Diposting oleh
+                            <p class="post-meta">
+                                @foreach ($post->categories as $category)
+                                    {{ $category->name }} -
+                                @endforeach
+                                Diposting oleh
                                 <a href="{{ route('user.show', $post->user->id) }}">{{ $post->user->name }}</a>
                                 {{ $post->created_at->diffForHumans() }}
                                 &nbsp;
@@ -58,9 +63,12 @@
                     <ul class="list-group list-group-flush">
                         @foreach ($posts as $post)
                             <li class="list-group-item">
-                                <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>
-                                <br>
-                                <small class="text-comment">{{ $post->user->name }} - {{ date('Y-m-d', strtotime($post->crated_at))}}</small>
+                                <div>
+                                    <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>
+                                </div>
+                                <div>
+                                    <a href="{{ route('user.show', $post->user->id) }}" class="text-comment">{{ $post->user->name }}</a><small class="text-comment"> - {{ $post->created_at->diffForHumans() }}</small>
+                                </div>
                             </li>
                         @endforeach
                     </ul>

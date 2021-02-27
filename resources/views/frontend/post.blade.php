@@ -39,7 +39,10 @@
                             Kategori : @foreach ($post->categories as $category) {{ $category->name }};@endforeach
                             Terbit : {{ date('d-m-Y', strtotime($post->created_at)) }};
                         </small>
-                        <img src="{{ $post->takeImage }}" class="img-fluid">
+                        <hr>
+                        @if ($post->thumbnail)
+                            <img src="{{ $post->takeImage }}" class="img-fluid">
+                        @endif
                         {!! $post->body !!}
                     </div>
                     <!-- Button Like -->
@@ -52,7 +55,6 @@
                                     </form>
                                 </div>
                             @else
-                            {{-- {{$like = }} --}}
                                 @if ($likes->where('user_id', auth()->user()->id)->count() > 0)
                                     <div>
                                         <form action="#">
@@ -87,13 +89,13 @@
                                     <a href="">{{ $comment->user->name }}</a>
                                     <div class="text-comment">{{ $comment->message }}</div>
                                     <div class="text-comment">{{ $comment->created_at->diffForHumans() }}
-                                        {{-- <a data-toggle="modal" data-target="#edit-comment" data-id="{{ $comment->id }}"><i class="fas fa-pencil-alt"></i></a> --}}
-                                            &nbsp;
-                                        <form action="{{ route('comment.delete', $comment->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus komentar ini?')"><i class="fas fa-trash-alt"></i></button>
-                                        </form>
+                                        @can('delete', $comment)
+                                            <form action="{{ route('comment.delete', $comment->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus komentar ini?')"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +129,7 @@
                         <h3>ADS</h3>
                     </div>
                     <div class="card my-3">
-                        <h3 class="post-title">Posingan Terkait</h3>
+                        <h3 class="post-title">Postingan Terkait</h3>
                         <ul class="list-group list-group-flush">
                             @foreach ($posts as $post)
                                 <li class="list-group-item">

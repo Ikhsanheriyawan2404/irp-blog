@@ -34,7 +34,7 @@
                     <form action="{{ route('register') }}" method="post">
                     @csrf
                         <div class="form-group">
-                            <label for="name">Name <small class="text-danger">*</small></label>
+                            <label for="name">Nama <small class="text-danger">*</small></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" autofocus>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">

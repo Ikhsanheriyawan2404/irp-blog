@@ -12,9 +12,6 @@
 @endsection
 
 @section('content')
-{{-- {{dd($user->id === auth()->user()->id)}} --}}
-{{-- {{var_dump($user->id)}}
-{{var_dump(auth()->user()->id)}} --}}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url()">
         <div class="overlay"></div>
@@ -24,11 +21,13 @@
                     <div class="site-heading">
                         <h1>Profil Saya</h1>
                         <span class="subheading">{{ $user->name }}</span>
-                        @foreach ($posts as $post)
-                            @can('create', $post)
-                                <a href="{{ route('post.create') }}" class="btn btn-success btn-lg mt-3">Buat Postingan</a>
-                            @endcan
+                        <!-- Ini sungguh sangat membingungkan saya -->
+                        <!-- Saya tidak tahu teknis nya, tetapi its work -->
+                        @foreach ($user->posts as $post)
                         @endforeach
+                        @can('create', $post)
+                            <a href="{{ route('post.create') }}" class="btn btn-success btn-lg mt-3">Buat Postingan</a>
+                        @endcan
                     </div>
                 </div>
             </div>

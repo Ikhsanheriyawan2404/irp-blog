@@ -7,13 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function store($id)
+    public function store(Post $post)
     {
         request()->validate([
             'comment' => 'required',
         ]);
 
-        $post = Post::find($id);
         Comment::create([
             'user_id' => Auth::id(),
             'post_id' => $post->id,
@@ -45,9 +44,9 @@ class CommentController extends Controller
     //     return back();
     // }
 
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        $comment = Comment::find($id);
+        $this->authorize('delete', $comment);
         $comment->delete();
         return redirect()->route('post', $comment->post->slug);
     }
