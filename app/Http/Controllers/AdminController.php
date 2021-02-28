@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\{Post, Category, User, Gallery};
 
 class AdminController extends Controller
 {
@@ -10,6 +10,9 @@ class AdminController extends Controller
     {
         return view('backend.index', [
             'title' => 'Halaman Admin',
+            'posts' => Post::get(),
+            'categories' => Category::get(),
+            'users' => User::get(),
         ]);
     }
 }

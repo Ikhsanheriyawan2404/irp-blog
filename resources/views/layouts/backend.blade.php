@@ -1,43 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>{{ 'IRP' }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ $title ?? config('app.name') }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/adminlte.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/daterangepicker/daterangepicker.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <!-- General CSS Files -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
+    @yield('custom-styles')
 </head>
-<body>
-    <div id="app">
-        <div class="main-wrapper">
-            @include('backend.components.navbar')
-            @include('backend.components.sidebar')
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
 
-            <!-- Main Content -->
-            @yield('content')
-            @include('backend.components.footer')
-        </div>
-    </div>
+        <!-- Navbar -->
+        @include('backend.components.navbar')
+        <!-- /.navbar -->
 
-    <!-- General JS Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="{{ asset('backend/assets/js/stisla.js') }}"></script>
+        <!-- Main Sidebar Container -->
+        @include('backend.components.sidebar')
 
-    <!-- JS Libraies -->
-    <script src="{{ asset('backend/node_modules/chart.js/dist/Chart.min.js') }}"></script>
+        <!-- Content Wrapper. Contains page content -->
+        @yield('content')
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
-    <!-- Template JS File -->
-    <script src="{{ asset('backend//assets/js/scripts.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+<!-- Sikil Mu -->
+@include('backend.components.footer')
 
-    <!-- Page Specific JS File -->
-    <script src="../assets/js/page/index.js"></script>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('backend') }}/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="{{ asset('backend') }}/plugins/chart.js/Chart.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="{{ asset('backend') }}/plugins/moment/moment.min.js"></script>
+    <script src="{{ asset('backend') }}/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('backend') }}/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ asset('backend') }}/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('backend') }}/dist/js/demo.js"></script>
+
+    @yield('custom-scripts')
 </body>
 </html>

@@ -14,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.categories.index', [
+            'title' => 'Page Categories',
+            'categories' => Category::latest()->paginate(5),
+        ]);
     }
 
     /**

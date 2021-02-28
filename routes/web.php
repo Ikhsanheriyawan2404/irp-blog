@@ -19,8 +19,6 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('comment')->group(function () {
         Route::post('{post:id}', [CommentController::class, 'store'])->name('comment.store');
-        // Route::get('{post:id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
-        // Route::put('{post:id}/edit', [CommentController::class, 'update'])->name('comment.update');
         Route::delete('{comment:id}/delete', [CommentController::class, 'destroy'])->name('comment.delete');
     });
     Route::prefix('like')->group(function () {
@@ -37,9 +35,14 @@ Route::middleware('auth')->group(function () {
     // Route::middleware('user:role' => 'admin')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-            Route::prefix('category')->group(function () {
-                Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-                Route::resource('category', CategoryController::class);
+            Route::resource('category', CategoryController::class);
+            Route::prefix('post')->group(function () {
+                Route::get('/', [PostController::class, 'index'])->name('post.index');
+                Route::delete('{post:id}/delete', [PostController::class, 'destroy'])->name('post.delete');
+            });
+            Route::prefix('users')->group(function () {
+                Route::get('/', [UserController::class, 'index'])->name('user.index');
+                Route::delete('{users:id}/delete', [UserController::class, 'destroy'])->name('user.delete');
             });
         });
     // });

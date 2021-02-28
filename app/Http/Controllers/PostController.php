@@ -15,7 +15,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.posts.index', [
+            'title' => 'Post Page',
+            'posts' => Post::latest()->paginate(10),
+        ]);
     }
 
     /**
