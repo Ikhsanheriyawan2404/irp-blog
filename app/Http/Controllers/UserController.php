@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        return view('backend.users.index', [
+            'title' => 'Users Page',
+            'users' => User::latest()->paginate(2),
+        ]);
+    }
     public function show(User $user)
     {
         if ($user) {
