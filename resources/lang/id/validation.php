@@ -13,5 +13,5 @@ return [
         'string' => 'Kurang dong :attribute nya, harus :min karakter.',
     ],
     'password' => 'Password nya salah.',
-    'unique' => 'Coba lagi, ganti yang aja ya',
+    'unique' => ':attribute sudah ada, ganti yang lain aja ya',
 ];

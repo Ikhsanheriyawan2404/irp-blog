@@ -33,10 +33,15 @@ class UserController extends Controller
 
     public function update(User $user)
     {
+        # logic to configuration default image not delete when update
         $this->authorize('update', $user);
         if (request('image')) {
-            Storage::delete($user->image);
-            $image = request()->file('image')->store('img/profile');
+            if ($user->image == 'img/profile/irp-logo.png') {
+                $image = request()->file('image')->store('img/profile');
+            } else {
+                Storage::delete($user->image);
+                $image = request()->file('image')->store('img/profile');
+            }
         } elseif ($user->image) {
             $image = $user->image;
         } else {
