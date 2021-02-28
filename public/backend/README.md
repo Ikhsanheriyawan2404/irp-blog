@@ -1,156 +1,113 @@
-<p align="center">
-  <a href="https://getstisla.com">
-    <img src="https://avatars2.githubusercontent.com/u/45754626?s=75&v=4" alt="Stisla logo" width="75" height="75">
-  </a>
-</p>
+# [AdminLTE - Bootstrap 4 Admin Dashboard](https://adminlte.io)
 
-<h1 align="center">Stisla</h1>
+[![npm version](https://img.shields.io/npm/v/admin-lte/latest.svg)](https://www.npmjs.com/package/admin-lte)
+[![Packagist](https://img.shields.io/packagist/v/almasaeed2010/adminlte.svg)](https://packagist.org/packages/almasaeed2010/adminlte)
+[![cdn version](https://data.jsdelivr.com/v1/package/npm/admin-lte/badge)](https://www.jsdelivr.com/package/npm/admin-lte)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
 
-<p>
-  Stisla is a Free Bootstrap Admin Template which will help you to speed up your project and design your own dashboard UI. Users will love it.
-</p>
-<br>
-<span align="center">
+**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 4.6](https://getbootstrap.com/)** framework and also the JS/jQuery plugin.
+Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops.
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-22-orange.svg?style=flat-square)](#contributors-)
-![GitHub last commit](https://img.shields.io/github/last-commit/stisla/stisla.svg)
-![GitHub repo size in bytes](https://img.shields.io/github/repo-size/badges/shields.svg)
-[![License](https://img.shields.io/github/license/stisla/stisla.svg)](LICENSE)
-![npm version](https://badge.fury.io/js/yarn.svg)
+**Preview on [AdminLTE.io](https://adminlte.io/themes/v3)**
 
-</span>
+## Looking for Premium Templates?
 
-<br>
+AdminLTE.io just opened a new premium templates page. Hand picked to ensure the best quality and the most affordable
+prices. Visit <https://adminlte.io/premium> for more information.
 
-<p align="center">
-  <a href="https://getstisla.com">Homepage</a>
-  •
-  <a href="https://getstisla.com/getting-started">Getting Started</a>
-  •
-  <a href="https://demo.getstisla.com" target="_new">Demo</a>
-  •
-  <a href="https://getstisla.com/docs">Documentation</a>
-  •
-  <a href="https://getstisla.com/blog">Blog</a>
-  •
-  <a href="https://getstisla.com/support">Issue</a>
-</p>
+!["AdminLTE Presentation"](https://adminlte.io/AdminLTE3.png "AdminLTE Presentation")
 
-<br>
-
-[![Stisla Preview](https://camo.githubusercontent.com/2135e0f6544a7286a3412cdc3df32d47fc91b045/68747470733a2f2f692e6962622e636f2f3674646d6358302f323031382d31312d31312d31352d33352d676574737469736c612d636f6d2e706e67)](https://getstisla.com)
-
-
-## Table of contents
-
-- [Status](#status)
-- [Quick start](#quick-start)
-- [Roadmap](#roadmap)
-- [Integrates](#integrates)
-- [Creator](#creator)
-- [Contributors](#contributors)
-- [Contributing](#contributing)
-- [Showcase](#showcase)
-- [License](#license)
-- [Supported By BrowserStack](#supported-by-browserstack)
-
+**AdminLTE** has been carefully coded with clear comments in all of its JS, SCSS and HTML files.
+SCSS has been used to increase code customizability.
 
 ## Quick start
 
-Several quick start options are available:
+There are multiple ways to install AdminLTE.
 
-- Clone the repo: `git clone https://github.com/stisla/stisla.git`
-- Install [yarn](https://yarnpkg.com) first if you don't have it in your machine
-- Run the `yarn` command
-- Done
+### Download & Changelog:
 
-Or if you're Indonesian, you can watch my video [here](https://www.youtube.com/watch?v=dvnqtOUvGFc)
+Always Recommended to download from GitHub latest release [AdminLTE 3](https://github.com/ColorlibHQ/AdminLTE/releases/latest) for bug free and latest features.\
+Visit the [releases](https://github.com/ColorlibHQ/AdminLTE/releases) page to view the changelog.\
+Legacy Releases are [AdminLTE 2](https://github.com/ColorlibHQ/AdminLTE/releases/tag/v2.4.18) / [AdminLTE 1](https://github.com/ColorlibHQ/AdminLTE/releases/tag/1.3.1).
 
-Read the [Getting started page](https://getstisla.com/docs) for information on the framework contents, templates and examples, and more.
+### Grab from [jsdelivr](https://www.jsdelivr.com/package/npm/admin-lte) CDN :
 
-## Development Guide
-- Clone the repo: `git clone https://github.com/stisla/stisla.git` to your local path
-- Make sure you have [npm](https://www.npmjs.com) or [yarn](https://yarnpkg.com) installed to your machine
-- Run the `stisla-dev` command to install production dependencies
-- Run the `dev` command to start developing
+_**Important Note**: You needed to add separately cdn links for plugins in your project._
 
-## Roadmap
-You can find the Stisla road map here: [Stisla Roadmap](https://trello.com/b/M8TMnehE/stisla-roadmap)
+```html
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+```
 
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+```
 
-## Integrates
-- [Rails](https://github.com/SunDi3yansyah/stisla-rails)
-- [CodeIgniter](https://github.com/KhidirDotID/stisla-codeigniter)
-- [Laravel](https://github.com/rehmatworks/stisla-laravel)
-- [Laravel UI Preset](https://github.com/poteto-dev/laravel-ui-stisla)
-- [Jekyll](https://github.com/SunDi3yansyah/stisla-jekyll)
-- [YII2](https://github.com/piantgrunger/yii2-stisla)
+### Using The Command Line:
 
-- Django (let's contribute)
-- and more...
+_**Important Note**: To install it via npm/Yarn, you need at least Node.js 10 or higher._
 
-## Creator
-Stisla is created by [Nauval](http://nauv.al) ([Twitter](https://twitter.com/mhdnauvalazhar)). [Support](https://www.buymeacoffee.com/mhd) this guy!
+- **Via npm**
 
-## Contributors
-Stisla is better because of the [contributors](https://github.com/stisla/stisla/graphs/contributors). Thank them too.
+    ```bash
+    npm install admin-lte@^3.1 --save
+    ```
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/muhammaddicky"><img src="https://avatars0.githubusercontent.com/u/25713287?v=4" width="100px;" alt=""/><br /><sub><b>Muhammad Dicky</b></sub></a><br /><a href="#design-muhammaddicky" title="Design">🎨</a></td>
-    <td align="center"><a href="http://weibo.com/jkweiyi"><img src="https://avatars1.githubusercontent.com/u/16080182?v=4" width="100px;" alt=""/><br /><sub><b>Jokin</b></sub></a><br /><a href="#design-jokin1999" title="Design">🎨</a></td>
-    <td align="center"><a href="http://www.barndev.com"><img src="https://avatars2.githubusercontent.com/u/10700286?v=4" width="100px;" alt=""/><br /><sub><b>Muhammad Ihsan</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=muhammad-ihsan" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/dubnm"><img src="https://avatars3.githubusercontent.com/u/3620552?v=4" width="100px;" alt=""/><br /><sub><b>Trevor</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=dubnm" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/ranzeplay"><img src="https://avatars3.githubusercontent.com/u/43675876?v=4" width="100px;" alt=""/><br /><sub><b>Play_D</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=ranzeplay" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://rizkyhidayat.id"><img src="https://avatars0.githubusercontent.com/u/25103643?v=4" width="100px;" alt=""/><br /><sub><b>rizkyyangpalsu</b></sub></a><br /><a href="#platform-rizkyyangpalsu" title="Packaging/porting to new platform">📦</a></td>
-    <td align="center"><a href="https://tackeyy.com/"><img src="https://avatars3.githubusercontent.com/u/8916877?v=4" width="100px;" alt=""/><br /><sub><b>Yusuke Takita</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=tackeyy" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/mariocalin"><img src="https://avatars0.githubusercontent.com/u/16624614?v=4" width="100px;" alt=""/><br /><sub><b>Mario</b></sub></a><br /><a href="#design-mariocalin" title="Design">🎨</a></td>
-    <td align="center"><a href="http://iqbalaqaba.github.io"><img src="https://avatars3.githubusercontent.com/u/20835372?v=4" width="100px;" alt=""/><br /><sub><b>Iqbal</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=iqbalaqaba" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/cesarlopes"><img src="https://avatars0.githubusercontent.com/u/1175019?v=4" width="100px;" alt=""/><br /><sub><b>César Lopes</b></sub></a><br /><a href="#design-cesarlopes" title="Design">🎨</a></td>
-    <td align="center"><a href="https://rehmat.works"><img src="https://avatars2.githubusercontent.com/u/23554187?v=4" width="100px;" alt=""/><br /><sub><b>Rehmat Alam</b></sub></a><br /><a href="#platform-rehmatworks" title="Packaging/porting to new platform">📦</a></td>
-    <td align="center"><a href="https://github.com/stefanturcanu"><img src="https://avatars0.githubusercontent.com/u/6572745?v=4" width="100px;" alt=""/><br /><sub><b>Stefan Turcanu</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=stefanturcanu" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/mehmetmenengec"><img src="https://avatars2.githubusercontent.com/u/8948335?v=4" width="100px;" alt=""/><br /><sub><b>Mehmet MENENGEÇ</b></sub></a><br /><a href="#design-mehmetmenengec" title="Design">🎨</a></td>
-    <td align="center"><a href="https://github.com/lkloon123"><img src="https://avatars2.githubusercontent.com/u/21114981?v=4" width="100px;" alt=""/><br /><sub><b>NeoSon</b></sub></a><br /><a href="#design-lkloon123" title="Design">🎨</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/jenkijo"><img src="https://avatars1.githubusercontent.com/u/32048650?v=4" width="100px;" alt=""/><br /><sub><b>Phong Truong</b></sub></a><br /><a href="#design-jenkijo" title="Design">🎨</a></td>
-    <td align="center"><a href="https://github.com/frobinsonj"><img src="https://avatars3.githubusercontent.com/u/16726902?v=4" width="100px;" alt=""/><br /><sub><b>Freddy Robinson</b></sub></a><br /><a href="#design-frobinsonj" title="Design">🎨</a></td>
-    <td align="center"><a href="https://alfiannaufal.com"><img src="https://avatars1.githubusercontent.com/u/15101734?v=4" width="100px;" alt=""/><br /><sub><b>Alfian Naufal</b></sub></a><br /><a href="#platform-piantgrunger" title="Packaging/porting to new platform">📦</a></td>
-    <td align="center"><a href="http://achmiral.id"><img src="https://avatars0.githubusercontent.com/u/10906059?v=4" width="100px;" alt=""/><br /><sub><b>Miral Achmed</b></sub></a><br /><a href="#content-achmiral" title="Content">🖋</a></td>
-    <td align="center"><a href="http://david.polynar.hu"><img src="https://avatars1.githubusercontent.com/u/1795922?v=4" width="100px;" alt=""/><br /><sub><b>David Polynar</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=polynar" title="Code">💻</a></td>
-    <td align="center"><a href="http://tarhche.ir"><img src="https://avatars3.githubusercontent.com/u/6291970?v=4" width="100px;" alt=""/><br /><sub><b>mahdikhanzadi</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=khanzadimahdi" title="Code">💻</a></td>
-    <td align="center"><a href="https://medium.com/omarelgabrys-blog/"><img src="https://avatars3.githubusercontent.com/u/9262504?v=4" width="100px;" alt=""/><br /><sub><b>OMAR ELGABRY</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=OmarElGabry" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://sundi3yansyah.com"><img src="https://avatars2.githubusercontent.com/u/3952281?v=4" width="100px;" alt=""/><br /><sub><b>Cahyadi Triyansyah</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=SunDi3yansyah" title="Code">💻</a></td>
-    <td align="center"><a href="https://harshal.one"><img src="https://avatars0.githubusercontent.com/u/20720521?s=460&v=4" width="100px;" alt=""/><br /><sub><b>Harshal Parekh</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=Harshal96" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/ppabcd"><img src="https://avatars0.githubusercontent.com/u/7419422?s=460&u=a8afa0f92608d126296e79f2ff0314a8fc794fd1&v=4" width="100px;" alt=""/><br /><sub><b>Reza Juliandri</b></sub></a><br /><a href="https://github.com/stisla/stisla/commits?author=ppabcd" title="Code">💻</a></td>
-  </tr>
-</table>
+- **Via Yarn**
 
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+    ```bash
+    yarn add admin-lte@^3.1
+    ```
+
+- **Via Composer**
+
+    ```bash
+    composer require "almasaeed2010/adminlte=~3.1"
+    ```
+
+- **Via Git**
+
+    Clone to your machine
+
+    ```bash
+    git clone https://github.com/ColorlibHQ/AdminLTE.git
+    ```
+
+## Documentation
+
+Visit the [online documentation](https://adminlte.io/docs/3.1/) for the most
+updated guide. Information will be added on a weekly basis.
+
+## Browsers support
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>iOS Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/samsung-internet/samsung-internet_48x48.png" alt="Samsung" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Samsung | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/vivaldi/vivaldi_48x48.png" alt="Vivaldi" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Vivaldi | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Electron |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions
+
+### Compile dist files
+
+To compile the dist files you need Node.js/npm, clone/download the repo then:
+
+1. `npm install` (install npm deps)
+2. _Optional:_ `npm run dev` (developer mode, autocompile with browsersync support for live demo)
+3. `npm run production` (compile css/js files)
+
 
 ## Contributing
-Want to help Stisla get better? Let's contribute and follow our [contribution guide](https://github.com/stisla/stisla/blob/master/CONTRIBUTING.md).
 
-### Showcase
+Please read through our [contributing guidelines](https://github.com/ColorlibHQ/AdminLTE/tree/master/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-- [app.whatspie.com](https://app.whatspie.com) - Enterprise ready unofficial WhatsApp API and BOT Service, allow you to sending notification to customer using WhatsApp API from your App
+Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/main/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
 
 
 ## License
-Stisla is under the [MIT License](LICENSE)
 
-## Supported by BrowserStack
-Thanks to BrowserStack for their support of this open-source project.
+AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](https://opensource.org/licenses/MIT).
+AdminLTE.io reserves the right to change the license of future releases.
 
-<a href="https://www.browserstack.com">
-  <img src="https://getstisla.com/svg/Browserstack-logo.svg" alt="BrowserStack" width="250">
-</a>
+## Image Credits
+
+- [Pixeden](http://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd)
+- [Graphicsfuel](https://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/)
+- [Pickaface](https://pickaface.net/)
+- [Unsplash](https://unsplash.com/)
+- [Uifaces](http://uifaces.com/)

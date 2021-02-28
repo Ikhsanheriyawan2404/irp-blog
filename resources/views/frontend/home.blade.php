@@ -25,7 +25,7 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-12 mx-auto">
+            <div class="col-lg-8 col-md-10 mx-auto">
                 @include('frontend.components.alert')
                 @foreach ($posts as $post)
                     <div class="card-post my-3">

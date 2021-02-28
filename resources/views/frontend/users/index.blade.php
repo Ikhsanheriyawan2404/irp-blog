@@ -21,13 +21,9 @@
                     <div class="site-heading">
                         <h1>Profil Saya</h1>
                         <span class="subheading">{{ $user->name }}</span>
-                        <!-- Ini sungguh sangat membingungkan saya -->
-                        <!-- Saya tidak tahu teknis nya, tetapi its work -->
-                        @foreach ($user->posts as $post)
-                        @endforeach
-                        @can('create', $post)
+                        @if (auth()->user()->id == $user->id)
                             <a href="{{ route('post.create') }}" class="btn btn-success btn-lg mt-3">Buat Postingan</a>
-                        @endcan
+                        @endif
                     </div>
                 </div>
             </div>
