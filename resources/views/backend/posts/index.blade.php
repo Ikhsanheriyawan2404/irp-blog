@@ -55,8 +55,12 @@
                                             <td>{{ $post->user->name }}</td>
                                             <td>{{ $post->created_at }}</td>
                                             <td>
-                                                <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-eye"></i></a>
-                                                <a href="{{ route('post.delete', $post->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash" onclick="return confirm('Dimohon untuk admin tidak menyalahi wewenang yang ada')"></i></a>
+                                                <form action="{{ route('post.delete', $post->slug) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash" onclick="return confirm('Dimohon untuk admin tidak menyalahi wewenang yang ada')"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -76,25 +80,27 @@
     <!-- MODAL -->
     <div class="modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Body Posts</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Body Posts</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                @if ($posts)
+                    <p>{!! $post->body !!}</p>
+                @endif
+                </div>
+                <div class="modal-footer justify-content-right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-body">
-              <p>{!! $post->body !!}</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
+        <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
+    </div>
+    <!-- /.modal -->
 @endsection
 
 @section('custom-scripts')

@@ -32,18 +32,18 @@ Route::middleware('auth')->group(function () {
         Route::put('{post:slug}/edit', [PostController::class, 'update'])->name('post.update');
         Route::delete('{post:slug}/delete', [PostController::class, 'destroy'])->name('post.delete');
     });
-    // Route::middleware('user:role' => 'admin')->group(function () {
+    Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
             Route::resource('category', CategoryController::class);
             Route::prefix('post')->group(function () {
                 Route::get('/', [PostController::class, 'index'])->name('post.index');
-                Route::delete('{post:id}/delete', [PostController::class, 'destroy'])->name('post.delete');
+                // Route::delete('{post:id}/delete', [PostController::class, 'destroy'])->name('post.delete');
             });
             Route::prefix('users')->group(function () {
                 Route::get('/', [UserController::class, 'index'])->name('user.index');
                 Route::delete('{users:id}/delete', [UserController::class, 'destroy'])->name('user.delete');
             });
         });
-    // });
+    });
 });

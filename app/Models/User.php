@@ -11,6 +11,7 @@ use Carbon\Carbon;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    use \App\Http\Traits\UsesUuid;
 
     /**
      * The attributes that are mass assignable.
@@ -63,5 +64,10 @@ class User extends Authenticatable
     public function getTakeImageAttribute()
     {
         return '/storage/' . $this->image;
+    }
+
+    public function isAdmin()
+    {
+        return $this->role == 'admin';
     }
 }

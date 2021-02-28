@@ -44,7 +44,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">Profil</a>
-                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
+                            @if (auth()->user()->role == 'admin')
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
+                            @endif
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
