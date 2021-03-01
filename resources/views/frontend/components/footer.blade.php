@@ -1,10 +1,5 @@
 <footer>
     <div class="container">
-        <!-- <div class="row">
-            <div class="col-lg-6">
-                <h1>Contact Us</h1>
-            </div>
-        </div> -->
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <ul class="list-inline text-center">
@@ -41,7 +36,8 @@
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Your Website 2020</p>
+                <p class="copyright text-muted">Copyright &copy; Ikatan Remaja Penangisan 2020 - {{ date('Y') }}</p>
+                <p class="copyright text-muted">Template By <a href="https://startbootstrap.com/theme/clean-blog">Start Bootstrap</a></p>
             </div>
         </div>
     </div>

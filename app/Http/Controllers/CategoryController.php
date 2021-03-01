@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -36,9 +35,18 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+         request()->validate([
+            'name' => 'required',
+        ]);
+
+        Category::create([
+            'name' => request('name'),
+            'slug' => request('name'),
+        ]);
+
+        // return back()->with('success', 'Category was created');
     }
 
     /**
@@ -83,6 +91,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return back()->with('success', 'Data was deleted.');
     }
 }

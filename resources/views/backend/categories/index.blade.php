@@ -31,11 +31,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        @include('frontend.components.alert')
                         <div class="card">
                           <div class="card-header">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Table Data Categories</h3>
-                                <button class="btn btn-sm btn-primary" onclick="addForm()">Create <i class="fas fa-plus"></i></button>
+                                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-md">Create <i class="fas fa-plus"></i></button>
                             </div>
                           </div>
                           <!-- /.card-header -->
@@ -57,7 +58,11 @@
                                             <td>{{ $category->slug }}</td>
                                             <td>
                                                 <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-md"><i class="fas fa-pencil-alt"></i></a>
-                                                <a href="{{ route('category.destroy', $category->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash" onclick="return confirm('Dimohon untuk admin tidak menyalahi wewenang yang ada')"></i></a>
+                                                <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash" onclick="return confirm('Dimohon untuk admin tidak menyalahi wewenang yang ada')"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -84,14 +89,17 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form class="form-inline" action="" method="post">
+                <form action="{{ route('category.store') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
                         <div class="form-group">
                             <input type="text" class="form-control mr-2" name="category" id="category" required>
                         </div>
+                    </div>
+                    <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save</button>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
           <!-- /.modal-content -->
         </div>
@@ -121,19 +129,6 @@
                 "autoWidth": false,
                 "responsive": true,
             });
-
-            function addForm()
-            {
-                $('#modal-md').modal('show');
-                setTimeout(function () {
-                    $('#nama_pegawai').focus();
-                }, 1000);
-            }
-
-            function editForm($id)
-            {
-
-            }
         });
     </script>
 @endsection
