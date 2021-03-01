@@ -1,9 +1,9 @@
 @extends('layouts.backend', compact('title'))
 
 @section('custom-styles')
-      <!-- DataTables -->
-      <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-      <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -36,12 +36,12 @@
                           <div class="card-header">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Table Data Categories</h3>
-                                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-md">Create <i class="fas fa-plus"></i></button>
+                                <button class="btn btn-sm btn-primary" id="createNewItem">Create <i class="fas fa-plus"></i></button>
                             </div>
                           </div>
                           <!-- /.card-header -->
                           <div class="card-body">
-                            <table id="data-category" class="table table-bordered table-striped">
+                            <table id="data-category"  class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -51,7 +51,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
+                                    {{-- @foreach ($categories as $category)
                                         <tr>
                                             <td>{{ $categories->count() * ($categories->currentPage() - 1) + $loop->iteration  }}</td>
                                             <td>{{ $category->name }}</td>
@@ -65,7 +65,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                           </div>
@@ -84,20 +84,21 @@
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Create Category</h4>
+                    <h4 class="modal-title" id="modal-title"></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('category.store') }}" method="post">
+                <form method="post" id="itemForm" name="itemForm">
                     @csrf
+                    <input type="hidden" name="category_id" id="category_id">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control mr-2" name="category" id="category" required>
+                            <input type="text" class="form-control mr-2" name="name" id="name" required>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save</button>
                     </div>
                 </form>
             </div>
@@ -114,20 +115,88 @@
     <script src="{{ asset('backend') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{ asset('backend') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('backend') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script>
+    <script type="text/javascript">
         $(function () {
-            $("#data-category").DataTable({
-                "responsive": true,
-                "autoWidth": false,
+
+            var table = $('#data-category').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('category.index') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'name', name: 'name'},
+                    {data: 'slug', name: 'slug'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
             });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+
+            $('#createNewItem').click(function () {
+                setTimeout(function () {
+                    $('#name').focus();
+                }, 1000);
+                $('#saveBtn').val("Add");
+                $('#category_id').val('');
+                $('#itemForm').trigger("reset");
+                $('#modal-title').html("Create New Category");
+                $('#modal-md').modal('show');
+            });
+
+            $('body').on('click', '#editItem', function () {
+                var category_id = $(this).data('id');
+                $.get("{{ route('category.index') }}" +'/' + category_id +'/edit', function (data) {
+                    $('#modal-md').modal('show');
+                    setTimeout(function () {
+                        $('#name').focus();
+                    }, 1000);
+                    $('#modal-title').html("Edit Category");
+                    $('#saveBtn').val("Edit");
+                    $('#category_id').val(data.id);
+                    $('#name').val(data.name);
+                })
+           });
+
+            $('#saveBtn').click(function (e) {
+                e.preventDefault();
+                // $(this).html('Sending..');
+
+                $.ajax({
+                    data: $('#itemForm').serialize(),
+                    url: "{{ route('category.store') }}",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#itemForm').trigger("reset");
+                        $('#modal-md').modal('hide');
+                        table.draw();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                        $('#saveBtn').html('Save');
+                    }
+              });
+            });
+
+            $('body').on('click', '#deleteItem', function () {
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                var category_id = $(this).data("id");
+                confirm("Are You sure want to delete !");
+
+                $.ajax({
+                    method: "DELETE",
+                    url: "{{ route('category.store') }}"+'/'+category_id + '/delete',
+                    success: function (data) {
+                        table.draw();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+                });
             });
         });
     </script>
