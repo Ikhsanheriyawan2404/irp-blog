@@ -74,7 +74,7 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>65</h3>
+                                <h3>100</h3>
 
                                 <p>IMAGE DOCUMENTATIONS</p>
                             </div>
