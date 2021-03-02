@@ -40,13 +40,15 @@
                             Terbit : {{ date('d-m-Y', strtotime($post->created_at)) }};
                             <div class="d-flex justify-content-left">
                                 @can('update', $post)
-                                    <a class="btn btn-success btn-sm mr-2" href="{{ route('post.edit', $post->slug) }}">edit <i class="fas fa-pencil-alt"></i></a>
+                                <form action="{{ route('post.edit', $post->slug) }}">
+                                    <button class="badge badge-success">edit <i class="fas fa-pencil-alt"></i></button>
+                                </form>
                                 @endcan
                                 @can('delete', $post)
                                     <form action="{{ route('post.delete', $post->slug) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Apakah yakin ingin menghapus postingan ini?')">hapus <i class="fas fa-trash"></i></button>
+                                        <button class="badge badge-danger" type="submit" onclick="return confirm('Apakah yakin ingin menghapus postingan ini?')">hapus <i class="fas fa-trash"></i></button>
                                     </form>
                                 @endcan
                             </div>
@@ -55,7 +57,9 @@
                         @if ($post->thumbnail)
                             <img src="{{ $post->takeImage }}" class="img-fluid">
                         @endif
-                        {!! $post->body !!}
+                        <div style="word-wrap: break-word;">
+                            {!! $post->body !!}
+                        </div>
                     </div>
                     <!-- Button Like -->
                         <div class="d-flex justify-content-between">
@@ -105,7 +109,7 @@
                                             <form action="{{ route('comment.delete', $comment->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus komentar ini?')"><i class="fas fa-trash-alt"></i></button>
+                                                <button type="submit" class="badge badge-danger" onclick="return confirm('Apakah yakin ingin menghapus komentar ini?')"><i class="fas fa-trash-alt"></i></button>
                                             </form>
                                         @endcan
                                     </div>

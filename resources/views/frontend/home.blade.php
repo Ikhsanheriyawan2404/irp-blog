@@ -28,17 +28,17 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 @include('frontend.components.alert')
                 @foreach ($posts as $post)
-                    <div class="card-post my-3">
+                    <div class="card my-3">
                         @if ($post->thumbnail)
                             <img src="{{ $post->takeImage }}" class="card-img-top" style="height: 250px; object-fit: cover; object-position: center;">
                         @endif
                         <div class="post-preview">
                             <a href="{{ route('post', $post->slug) }}">
-                                <h3 class="post-title">
+                                <h2 class="post-title">
                                     {{ $post->title }}
-                                </h3>
+                                </h2>
+                                <p class="">{!! Str::limit($post->body, 200) !!} Baca selengkapnya</p>
                             </a>
-                            <p>{!! Str::limit($post->body, 200) !!} <a href="{{ route('post', $post->slug) }}">Baca selengkapnya</a></p>
                             <p class="post-meta">
                                 @foreach ($post->categories as $category)
                                     {{ $category->name }} -

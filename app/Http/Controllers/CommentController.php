@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\{Comment, Post};
-use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -13,12 +12,12 @@ class CommentController extends Controller
             'comment' => 'required',
         ]);
 
-        Comment::create([
-            'user_id' => Auth::id(),
+        $attr = [
             'post_id' => $post->id,
             'message' => request('comment'),
-        ]);
+        ];
 
+        auth()->user()->comments()->create($attr);
         return back();
     }
 
