@@ -61,7 +61,7 @@
                 <div class="card my-3">
                     <h3 class="post-title">Postingan Terakhir</h3>
                     <ul class="list-group list-group-flush">
-                        @foreach ($posts as $post)
+                        @foreach ($posts->sortByDesc('created_at') as $post)
                             <li class="list-group-item">
                                 <div>
                                     <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>

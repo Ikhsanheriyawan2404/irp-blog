@@ -340,16 +340,6 @@ footer .copyright {
     box-shadow: 0 4px 16px rgba(0, 0, 0, .1);
 }
 
-// Learn about this solution to creating custom select styles: // @link https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/ *, ::after, ::before {
-    box-sizing: border-box;
-}
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 :root {
   --input-border: #8b8a8b;

@@ -35,4 +35,9 @@ class Post extends Model
     {
         return '/storage/' . $this->thumbnail;
     }
+
+    public function sortByLike()
+    {
+        return $this->orderBy('likes', 'DESC');
+    }
 }
