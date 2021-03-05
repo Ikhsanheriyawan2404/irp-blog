@@ -104,14 +104,17 @@
                                 <div class="col-md-10">
                                     <a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a>
                                     <div class="text-comment">{{ $comment->message }}</div>
-                                    <div class="text-comment">{{ $comment->created_at->diffForHumans() }}
-                                        @can('delete', $comment)
-                                            <form action="{{ route('comment.delete', $comment->id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="badge badge-danger" onclick="return confirm('Apakah yakin ingin menghapus komentar ini?')"><i class="fas fa-trash-alt"></i></button>
-                                            </form>
-                                        @endcan
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text-comment">{{ $comment->created_at->diffForHumans() }}</div>
+                                        <div>
+                                            @can('delete', $comment)
+                                                <form action="{{ route('comment.delete', $comment->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="badge badge-danger" onclick="return confirm('Apakah yakin ingin menghapus komentar ini?')"><i class="fas fa-trash-alt"></i></button>
+                                                </form>
+                                            @endcan
+                                        </div>
                                     </div>
                                 </div>
                             </div>
