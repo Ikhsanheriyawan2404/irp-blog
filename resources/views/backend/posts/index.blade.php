@@ -37,7 +37,7 @@
                           </div>
                           <!-- /.card-header -->
                           <div class="card-body">
-                            <table id="data-post" class="table table-bordered table-striped">
+                            <table id="data-posts" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -48,22 +48,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($posts as $post)
-                                        <tr>
-                                            <td>{{ $posts->count() * ($posts->currentPage() - 1) + $loop->iteration  }}</td>
-                                            <td>{{ $post->title }}</td>
-                                            <td>{{ $post->user->name }}</td>
-                                            <td>{{ $post->created_at }}</td>
-                                            <td>
-                                                <form action="{{ route('post.delete', $post->slug) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-eye"></i></button>
-                                                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash" onclick="return confirm('Dimohon untuk admin tidak menyalahi wewenang yang ada')"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach --}}
+
                                 </tbody>
                             </table>
                           </div>
@@ -82,15 +67,17 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Body Posts</h4>
+                    <h4 class="modal-title" id="modal-title">Body Posts</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                @if ($posts)
-                    <p>{!! $post->body !!}</p>
-                @endif
+                <div>
+                    <input type="hidden" name="post_id" id="post_id">
+                    <div class="modal-body">
+                        <h4 id="title"></h4>
+                        <div id="body"></div>
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-right">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -110,6 +97,53 @@
     <script src="{{ asset('backend') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('backend') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script>
+        $(function () {
 
+            var table = $('#data-posts').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('post.index') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'title', name: 'title'},
+                    {data: 'users', name: 'users.name'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+           $('body').on('click', '#showItem', function () {
+                var post_id = $(this).data('id');
+                $.get("{{ route('post.index') }}" +'/' + post_id +'/show', function (data) {
+                    $('#modal-lg').modal('show');
+                    $('#modal-title').html("Post Info");
+                    $('#post_id').val(data.id);
+                    $('#title').html(data.title);
+                    $('#meta_description').html(data.meta_description);
+                    $('#body').html(data.body);
+                })
+           });
+
+           $('body').on('click', '#deleteItem', function () {
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                confirm("Are You sure want to delete this?");
+
+                $.ajax({
+                    method: "DELETE",
+                    success: function (data) {
+                        table.draw();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+                });
+            });
+        });
     </script>
 @endsection

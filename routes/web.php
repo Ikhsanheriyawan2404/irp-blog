@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('category', CategoryController::class);
             Route::prefix('post')->group(function () {
                 Route::get('/', [PostController::class, 'index'])->name('post.index');
-                // Route::delete('{post:id}/delete', [PostController::class, 'destroy'])->name('post.delete');
+                Route::get('{post:id}/show', [PostController::class, 'show'])->name('post.show');
             });
             Route::prefix('users')->group(function () {
                 Route::get('/', [UserController::class, 'index'])->name('user.index');

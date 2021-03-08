@@ -41,7 +41,7 @@
                           </div>
                           <!-- /.card-header -->
                           <div class="card-body">
-                            <table id="data-category"  class="table table-bordered table-striped">
+                            <table id="data-categories"  class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -51,6 +51,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                 </tbody>
                             </table>
                           </div>
@@ -103,7 +104,7 @@
     <script type="text/javascript">
         $(function () {
 
-            var table = $('#data-category').DataTable({
+            var table = $('#data-categories').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('category.index') }}",
@@ -174,7 +175,7 @@
 
                 $.ajax({
                     method: "DELETE",
-                    url: "{{ route('category.store') }}"+'/'+category_id + '/delete',
+
                     success: function (data) {
                         table.draw();
                     },

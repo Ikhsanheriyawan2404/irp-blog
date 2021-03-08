@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\{Category, Post};
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Yajra\Datatables\Datatables;
+use Illuminate\Http\Request;
+
 
 class PostController extends Controller
 {
@@ -13,11 +16,30 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Post $post)
     {
+        if (request()->ajax()) {
+            $data = Post::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('users', function (Post $post) {
+                    return $post->user->name;
+                })
+                ->editColumn('created_at', function($request) {
+                    return $request->created_at->diffForHumans();
+                })
+                ->addColumn('action', function($row) {
+                    $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-info btn-sm" id="showItem"><i class="fas fa-eye"></i></a>
+                        <a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem"><i class="fas fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
         return view('backend.posts.index', [
-            'title' => 'Post Page',
-            'posts' => Post::latest()->paginate(10),
+            'title' => 'Posts Page',
+            'post' => $post,
         ]);
     }
 
@@ -72,7 +94,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return response()->json($post);
     }
 
     /**

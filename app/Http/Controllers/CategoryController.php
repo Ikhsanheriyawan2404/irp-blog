@@ -13,23 +13,24 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category)
     {
         if (request()->ajax()) {
             $data = Category::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row) {
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" class="btn btn-success btn-sm" id="editItem">Edit</a>';
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem">Delete</a>';
-                        return $btn;
+                    $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-success btn-sm" id="editItem"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem"><i class="fas fa-trash-alt"></i></a>';
+                    return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
 
         return view('backend.categories.index', [
-            'title' => 'Page Categories',
+            'title' => 'Categories Page',
+            'category' => $category,
         ]);
     }
 
