@@ -51,21 +51,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($categories as $category)
-                                        <tr>
-                                            <td>{{ $categories->count() * ($categories->currentPage() - 1) + $loop->iteration  }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->slug }}</td>
-                                            <td>
-                                                <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-md"><i class="fas fa-pencil-alt"></i></a>
-                                                <form action="{{ route('category.destroy', $category->id) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash" onclick="return confirm('Dimohon untuk admin tidak menyalahi wewenang yang ada')"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach --}}
                                 </tbody>
                             </table>
                           </div>

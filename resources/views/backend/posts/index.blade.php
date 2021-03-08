@@ -48,7 +48,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($posts as $post)
+                                    {{-- @foreach ($posts as $post)
                                         <tr>
                                             <td>{{ $posts->count() * ($posts->currentPage() - 1) + $loop->iteration  }}</td>
                                             <td>{{ $post->title }}</td>
@@ -63,7 +63,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                           </div>
@@ -110,20 +110,6 @@
     <script src="{{ asset('backend') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('backend') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script>
-        $(function () {
-            $("#data-post").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
+
     </script>
 @endsection
