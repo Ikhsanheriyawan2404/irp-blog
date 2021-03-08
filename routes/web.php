@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController};
+use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController, GalleryController};
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -43,6 +43,12 @@ Route::middleware('auth')->group(function () {
             Route::prefix('users')->group(function () {
                 Route::get('/', [UserController::class, 'index'])->name('user.index');
                 Route::delete('{users:id}/delete', [UserController::class, 'destroy'])->name('user.delete');
+            });
+            Route::prefix('gallery')->group(function () {
+                Route::get('/', [GalleryController::class, 'index'])->name('gallery.index');
+                Route::post('create', [GalleryController::class, 'create'])->name('gallery.create');
+                Route::post('store', [GalleryController::class, 'store'])->name('gallery.store');
+                Route::delete('{gallery:id}/delete', [GalleryController::class, 'destroy'])->name('gallery.destroy');
             });
         });
     });

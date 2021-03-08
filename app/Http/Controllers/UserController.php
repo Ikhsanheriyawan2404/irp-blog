@@ -5,15 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\{User, Post, Like};
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-
+use Yajra\Datatables\Datatables;
 
 class UserController extends Controller
 {
     public function index()
     {
+        if (request()->ajax()) {
+            $data = User::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->editColumn('created_at', function($request) {
+                    return $request->created_at->diffForHumans();
+                })
+                ->addColumn('action', function($row) {
+                    $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem"><i class="fas fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
         return view('backend.users.index', [
             'title' => 'Users Page',
-            'users' => User::latest()->paginate(2),
         ]);
     }
     public function show(User $user)

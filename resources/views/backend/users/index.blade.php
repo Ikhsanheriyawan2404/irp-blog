@@ -37,29 +37,21 @@
                           </div>
                           <!-- /.card-header -->
                           <div class="card-body">
-                            <table id="data-user" class="table table-bordered table-striped">
+                            <table id="data-users" class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Gender</th>
+                                        <th>Date Of Birth</th>
+                                        <th>Since</th>
                                         <th>Role</th>
                                         <th><i class="fas fa-cogs"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
-                                        <tr>
-                                            <td>{{ $users->count() * ($users->currentPage() - 1) + $loop->iteration  }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->role }}</td>
-                                            <td>
-                                                <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-eye"></i></a>
-                                                <a href="{{ route('user.delete', $user->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash" onclick="return confirm('Dimohon untuk admin tidak menyalahi wewenang yang ada')"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+
                                 </tbody>
                             </table>
                           </div>
@@ -72,29 +64,6 @@
         </section>
         <!-- right col -->
     </div>
-
-    <!-- MODAL -->
-    <div class="modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Body Users</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>{!! $user->body !!}</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
 @endsection
 
 @section('custom-scripts')
@@ -105,18 +74,43 @@
     <script src="{{ asset('backend') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script>
         $(function () {
-            $("#data-user").DataTable({
-                "responsive": true,
-                "autoWidth": false,
+
+            var table = $('#data-users').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                ajax: "{{ route('user.index') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'gender', name: 'gender'},
+                    {data: 'date_of_birth', name: 'date_of_birth'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'role', name: 'role'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
             });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+
+           $('body').on('click', '#deleteItem', function () {
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                confirm("Are You sure want to delete this?");
+
+                $.ajax({
+                    method: "DELETE",
+                    success: function (data) {
+                        table.draw();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+                });
             });
         });
     </script>

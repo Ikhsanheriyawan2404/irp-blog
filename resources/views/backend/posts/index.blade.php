@@ -37,7 +37,7 @@
                           </div>
                           <!-- /.card-header -->
                           <div class="card-body">
-                            <table id="data-posts" class="table table-bordered table-striped">
+                            <table id="data-posts" class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -102,6 +102,7 @@
             var table = $('#data-posts').DataTable({
                 processing: true,
                 serverSide: true,
+                responsive: true,
                 ajax: "{{ route('post.index') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
