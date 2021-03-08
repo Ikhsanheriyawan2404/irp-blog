@@ -1,8 +1,7 @@
-@extends('layouts.frontend', compact('title'))
+@extends('layouts.frontend')
 
 @section('custom-scripts')
     <script src="{{ asset('frontend/vendor/sweetalert2/src/sweetalert2.js') }}"></script>
-    <script></script>
 @endsection
 
 @section('content')
@@ -14,8 +13,8 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
-                        <h1>IRP Blog</h1>
-                        <span class="subheading">Sebuah tempat digital untuk sharing pemikiran, diskusi publik, dan interaksi sosial secara online.</span>
+                        <h1>IRP Media</h1>
+                        <span class="subheading">Sebuah platform untuk berbagi ilmu pengetahuan, diskusi publik, dan interaksi sosial secara online.</span>
                     </div>
                 </div>
             </div>
@@ -59,7 +58,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="card my-3">
-                    <h3 class="post-title">Postingan Terakhir</h3>
+                    <h3 class="post-title">Postingan Terbaru</h3>
                     <ul class="list-group list-group-flush">
                         @foreach ($posts->sortByDesc('created_at') as $post)
                             <li class="list-group-item">

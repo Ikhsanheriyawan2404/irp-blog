@@ -15,7 +15,6 @@ class HomeController extends Controller
     public function index()
     {
         return view('frontend.home', [
-            'title' => 'Halaman Utama',
             'posts' => Post::with('user', 'likes', 'comments', 'categories')->withCount('likes')->orderBy('likes_count', 'DESC')->paginate(5),
             'categories' => Category::get(),
         ]);

@@ -9,7 +9,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>IRP</h1>
-                        <span class="subheading"></span>
+                        <span class="subheading">Kumpulan galeri dokumentasi acara kegiatan Ikatan Remaja Penangsian</span>
                     </div>
                 </div>
             </div>

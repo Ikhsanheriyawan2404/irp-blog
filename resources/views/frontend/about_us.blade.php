@@ -9,7 +9,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>IRP</h1>
-                        <span class="subheading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptate natus harum eveniet debitis libero maiores modi rerum ratione. Laboriosam hic assumenda laudantium nesciunt nam accusamus officia nihil quasi tempora.</span>
+                        <span class="subheading">Ikatan Remaja Penangisan adalah lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptate natus harum eveniet debitis libero maiores modi rerum ratione. Laboriosam hic assumenda laudantium nesciunt nam accusamus officia nihil quasi tempora.</span>
                     </div>
                 </div>
             </div>
