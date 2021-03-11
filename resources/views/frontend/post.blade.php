@@ -213,11 +213,15 @@
         </div>
     </div> --}}
 
-    {{-- @section('custom-scripst')
-        <script>
-            $(document).ready(function () {
-                let
-            });
-        </script>
-    @endsection --}}
+@endsection
+@section('custom-scripts')
+    <script>
+        $(document).on('submit', 'form', function() {
+            try {
+                $('button').attr('disabled', 'disabled');
+            } catch (e) {
+
+            }
+        });
+    </script>
 @endsection

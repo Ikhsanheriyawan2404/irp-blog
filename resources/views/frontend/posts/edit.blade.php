@@ -26,6 +26,9 @@
             $('#category').select2({
                 placeholder: 'Choose Category'
             });
+            $(document).on('submit', 'form', function() {
+                $('button').attr('disabled', 'disabled');
+            });
         });
     </script>
     <script>

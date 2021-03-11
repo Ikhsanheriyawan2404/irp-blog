@@ -26,9 +26,10 @@
             $('#category').select2({
                 placeholder: 'Choose Category'
             });
+            $(document).on('submit', 'form', function() {
+                $('button').attr('disabled', 'disabled');
+            });
         });
-    </script>
-    <script>
         ClassicEditor
             .create( document.querySelector( '#body' ), {
                 toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
@@ -71,7 +72,7 @@
                 <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @include('frontend.posts.partials.form-control')
-                <button type="submit" class="btn btn-success float-right">Tambah</button>
+                <button type="submit" class="btn btn-success float-right d-flex align-items-center">Tambah <i class="fas fa-plane"></i></button>
                 </form>
             </div>
         </div>
