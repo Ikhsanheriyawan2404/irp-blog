@@ -136,7 +136,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        <button type="submit" class="btn btn-success float-right mt-3">Comment</button>
+                                        <button type="submit" class="btn btn-success float-right mt-3">Comment <i class="fas fa-paper-plane"></i></button>
                                     </div>
                                 </form>
                             </div>

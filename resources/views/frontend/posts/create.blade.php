@@ -72,7 +72,7 @@
                 <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @include('frontend.posts.partials.form-control')
-                <button type="submit" class="btn btn-success float-right d-flex align-items-center">Tambah <i class="fas fa-plane"></i></button>
+                <button type="submit" class="btn btn-success float-right">Tambah <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>

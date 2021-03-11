@@ -75,7 +75,7 @@
                 @csrf
                 @method('PUT')
                 @include('frontend.posts.partials.form-control')
-                <button type="submit" class="btn btn-success float-right">Ubah</button>
+                <button type="submit" class="btn btn-success float-right">Ubah <i class="fas fa-pencil-alt"></i></button>
                 </form>
             </div>
         </div>

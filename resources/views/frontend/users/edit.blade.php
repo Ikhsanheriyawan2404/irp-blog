@@ -83,7 +83,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-success float-right">Edit</button>
+                        <button type="submit" class="btn btn-success float-right">Edit <i class="fas fa-pencil-alt"></i></button>
                     </form>
                 </div>
             </div>
