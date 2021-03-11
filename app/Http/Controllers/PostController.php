@@ -69,6 +69,7 @@ class PostController extends Controller
             'title' => 'required|min:8|unique:posts,title,',
             'category' => 'required|array',
             'body' => 'required|min:50',
+            'thumbnail' => 'image|mimes:jpg,jpeg,png|max:2058',
         ]);
 
         $attr = [
@@ -127,6 +128,7 @@ class PostController extends Controller
             'title' => 'required|min:8|unique:posts,title,' . $post->id,
             'category' => 'required|array',
             'body' => 'required|min:50',
+            'thumbnail' => 'image|mimes:jpg,jpeg,png|max:2058',
         ]);
 
         if (request('thumbnail')) {

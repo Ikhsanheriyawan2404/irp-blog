@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
             });
             Route::prefix('gallery')->group(function () {
                 Route::get('/', [GalleryController::class, 'index'])->name('gallery.index');
-                Route::post('create', [GalleryController::class, 'create'])->name('gallery.create');
+                Route::get('create', [GalleryController::class, 'create'])->name('gallery.create');
                 Route::post('store', [GalleryController::class, 'store'])->name('gallery.store');
                 Route::delete('{gallery:id}/delete', [GalleryController::class, 'destroy'])->name('gallery.destroy');
             });

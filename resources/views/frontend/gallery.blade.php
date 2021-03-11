@@ -22,6 +22,7 @@
             <div class="col-lg-4">
                 <div class="card my-3">
                     <img src="fdjal" alt="">
+                    <p class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam rem numquam maiores atque quae, unde maxime, modi facere at fuga debitis ducimus mollitia. Eius ad voluptates dignissimos, reiciendis inventore, quas.</p>
                 </div>
             </div>
             <div class="col-lg-4">

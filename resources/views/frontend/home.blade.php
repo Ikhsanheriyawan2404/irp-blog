@@ -1,9 +1,5 @@
 @extends('layouts.frontend')
 
-@section('custom-scripts')
-    <script src="{{ asset('frontend/vendor/sweetalert2/src/sweetalert2.js') }}"></script>
-@endsection
-
 @section('content')
 {{-- {{ dd($post->categories)}} --}}
     <!-- Page Header -->
