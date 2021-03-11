@@ -18,7 +18,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Galleries</li>
+                            <li class="breadcrumb-item"><a href="{{ route('gallery.index') }}">Galleries</a></li>
+                            <li class="breadcrumb-item active">Create</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -38,7 +39,10 @@
                           <!-- /.card-header -->
                           <div class="card-body">
                             <div class="col-md-8 mx-auto">
-                                <form action="{{ route('gallery.store') }}">
+                                @include('frontend.components.alert')
+                                <form action="{{ route('gallery.store') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+
                                     <div class="form-group">
                                         <label for="image">Image</label>
                                         <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">

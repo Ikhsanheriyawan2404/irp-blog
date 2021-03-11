@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Gallery extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['image', 'caption'];
+
+    public function getTakeImageAttribute()
+    {
+        return '/storage/' . $this->image;
+    }
 }
