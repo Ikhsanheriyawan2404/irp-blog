@@ -48,7 +48,7 @@
                                 <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
                             @endif
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="dropdown-item"
                                onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">Keluar
                             </a>
@@ -62,7 +62,7 @@
                             <span class="badge badge-success"><i class="fas fa-bell"></i>0</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item"><small>Ikhsan Heriyawan Koncoro menyukai postingan anda</small></a>
+                            <a class="dropdown-item"><small>Ikhsan Heriyawan menyukai postingan anda</small></a>
                             <a class="dropdown-item"><small>Ikhsan komentar di postingan anda</small></a>
                         </div>
                     </li>

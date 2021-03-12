@@ -13,6 +13,7 @@ class AdminController extends Controller
             'posts' => Post::get(),
             'categories' => Category::get(),
             'users' => User::get(),
+            'galleries' => Gallery::get(),
         ]);
     }
 }

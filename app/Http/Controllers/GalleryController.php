@@ -16,7 +16,7 @@ class GalleryController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('image', function($request) {
-                    return "<img src=$request->takeImage />";
+                    return "<img src='$request->takeImage' class='img-fluid' />";
                 })
                 ->addColumn('action', function($row) {
                     $btn = '<form action="' . route('gallery.destroy', $row->id) . '" method="post">
