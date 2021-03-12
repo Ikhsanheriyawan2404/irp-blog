@@ -20,8 +20,14 @@ class CategoryController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row) {
-                    $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-success btn-sm" id="editItem"><i class="fas fa-pencil-alt"></i></a>
-                        <a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem"><i class="fas fa-trash-alt"></i></a>';
+                    $btn = '<div class="d-flex justify-content-center">
+                    <a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-success btn-sm" id="editItem"><i class="fas fa-pencil-alt"></i></a>
+                        <form action="' . route('category.destroy', $row->id) . '" method="post">
+                        ' . csrf_field() . '
+                        ' . method_field("DELETE") . '
+                            <button type="submit" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem" onclick="return confirm(\'Are you sure want to delete this?\')"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </div>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

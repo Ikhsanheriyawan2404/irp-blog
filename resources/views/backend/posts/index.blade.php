@@ -44,7 +44,7 @@
                                         <th>Title</th>
                                         <th>Author</th>
                                         <th>Created At</th>
-                                        <th><i class="fas fa-cogs"></i></th>
+                                        <th class="text-center"><i class="fas fa-cogs"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -124,27 +124,6 @@
                     $('#body').html(data.body);
                 })
            });
-
-           $('body').on('click', '#deleteItem', function () {
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                confirm("Are You sure want to delete this?");
-
-                $.ajax({
-                    method: "DELETE",
-                    success: function (data) {
-                        table.draw();
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
-                });
-            });
         });
     </script>
 @endsection
