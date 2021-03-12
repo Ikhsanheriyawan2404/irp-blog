@@ -9,7 +9,7 @@
 </div>
 <div class="form-group">
     <label for="meta_description">Deskripsi <small class="text-secondary">tidak wajib diisi</small></label>
-    <input type="text" class="form-control @error('meta_description') is-invalid @enderror" name="meta_description" id="meta_description" value="{{ old('meta_description') ?? $post->meta_description }}">
+    <input type="text" class="form-control @error('meta_description') is-invalid @enderror" name="meta_description" id="meta_description" value="{{ old('meta_description') ?? $post->meta_description }}" placeholder="Deskripsi singkat artikel anda...">
     @error('meta_description')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -18,7 +18,7 @@
 </div>
 <div class="form-group">
     <label for="meta_keyword">Kata Kunci <small class="text-secondary">boleh kosong</small></label>
-    <input type="text" class="form-control @error('meta_keyword') is-invalid @enderror" name="meta_keyword" id="meta_keyword" value="{{ old('meta_keyword') ?? $post->meta_keyword }}">
+    <input type="text" class="form-control @error('meta_keyword') is-invalid @enderror" name="meta_keyword" id="meta_keyword" value="{{ old('meta_keyword') ?? $post->meta_keyword }}" placeholder="contoh: Keyword1, Keyword2, Keyword3">
     @error('meta_keyword')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
