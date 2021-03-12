@@ -21,7 +21,7 @@ class CategoryController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($row) {
                     $btn = '<div class="d-flex justify-content-center">
-                    <a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-success btn-sm" id="editItem"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-success btn-sm mr-2" id="editItem"><i class="fas fa-pencil-alt"></i></a>
                         <form action="' . route('category.destroy', $row->id) . '" method="post">
                         ' . csrf_field() . '
                         ' . method_field("DELETE") . '

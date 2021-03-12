@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Post, Category, User, Like, Comment};
+use App\Models\{Post, Category, User, Like, Comment, Gallery};
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -65,8 +65,9 @@ class HomeController extends Controller
 
     public function gallery()
     {
-        return view('frontend.gallery',[
-            'title' => 'Galleri Dokumentasi IRP',
+        return view('frontend.gallery', [
+            'title' => 'Galeri Dokumentasi IRP',
+            'galleries' => Gallery::latest()->paginate(9),
         ]);
     }
 }

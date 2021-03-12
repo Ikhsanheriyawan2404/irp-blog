@@ -19,7 +19,11 @@ class GalleryController extends Controller
                     return "<img src=$request->takeImage />";
                 })
                 ->addColumn('action', function($row) {
-                    $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem"><i class="fas fa-trash"></i></a>';
+                    $btn = '<form action="' . route('gallery.destroy', $row->id) . '" method="post">
+                    '. csrf_field() .'
+                    '. method_field('DELETE') .'
+                    <button type="submit" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem" onclick="return confirm(\'Are you sure want delete this data?\')">Delete <i class="fas fa-trash-alt"></i></button>
+                    </form>';
                     return $btn;
                 })
                 ->rawColumns(['image', 'action'])
@@ -56,8 +60,8 @@ class GalleryController extends Controller
 
     public function destroy(Gallery $gallery)
     {
-        Storage::delete($gallery->image);
         $gallery->delete();
-        return back()->with('succes', 'Image was deleted');
+        Storage::delete($gallery->image);
+        return back()->with('success', 'Image was deleted');
     }
 }

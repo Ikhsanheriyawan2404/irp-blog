@@ -31,6 +31,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        @include('frontend.components.alert')
                         <div class="card">
                           <div class="card-header">
                             <div class="d-flex justify-content-between">
@@ -46,7 +47,7 @@
                                         <th>No.</th>
                                         <th>Image</th>
                                         <th>Caption</th>
-                                        <th><i class="fas fa-cogs"></i></th>
+                                        <th class="text-center" width="100"><i class="fas fa-cogs"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -86,27 +87,6 @@
                     {data: 'caption', name: 'caption'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
-            });
-
-           $('body').on('click', '#deleteItem', function () {
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                confirm("Are You sure want to delete this?");
-
-                $.ajax({
-                    method: "DELETE",
-                    success: function (data) {
-                        table.draw();
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
-                });
             });
         });
     </script>

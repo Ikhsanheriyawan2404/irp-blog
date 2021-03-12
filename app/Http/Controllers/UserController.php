@@ -19,11 +19,11 @@ class UserController extends Controller
                     return $request->created_at->diffForHumans();
                 })
                 ->addColumn('action', function($row) {
-                    $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem"><i class="fas fa-trash"></i></a>
-                    <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                      <label class="custom-control-label" for="customSwitch1"></label>
-                    </div>';
+                    $btn = '<form action="' . route('user.destroy', $row->id) . '" method="post">
+                    '. csrf_field() .'
+                    '. method_field('DELETE') .'
+                    <button type="submit" data-id="'.$row->id.'" class="btn btn-danger btn-sm" id="deleteItem" onclick="return confirm(\'Are you sure want delete this data?\')"><i class="fas fa-trash"></i></button>
+                    </form>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
@@ -89,5 +89,13 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('user.show', $user->id)->with('success', 'Profil berhasil diedit');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        Storage::delete($user->image);
+
+        return back()->with('success', 'Data user was deleted!');
     }
 }

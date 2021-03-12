@@ -44,7 +44,7 @@
                                         <th>Title</th>
                                         <th>Author</th>
                                         <th>Created At</th>
-                                        <th class="text-center"><i class="fas fa-cogs"></i></th>
+                                        <th class="text-center" width="100"><i class="fas fa-cogs"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>

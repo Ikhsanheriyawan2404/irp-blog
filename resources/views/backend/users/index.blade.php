@@ -31,6 +31,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        @include('frontend.components.alert')
                         <div class="card">
                           <div class="card-header">
                             <h3 class="card-title">Table Data Users</h3>
@@ -47,7 +48,7 @@
                                         <th>Date Of Birth</th>
                                         <th>Since</th>
                                         <th>Role</th>
-                                        <th><i class="fas fa-cogs"></i></th>
+                                        <th class="text-center"><i class="fas fa-cogs"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,27 +91,6 @@
                     {data: 'role', name: 'role'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
-            });
-
-           $('body').on('click', '#deleteItem', function () {
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                confirm("Are You sure want to delete this?");
-
-                $.ajax({
-                    method: "DELETE",
-                    success: function (data) {
-                        table.draw();
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
-                });
             });
         });
     </script>

@@ -47,7 +47,7 @@
                                         <th>No.</th>
                                         <th>Name</th>
                                         <th>Slug</th>
-                                        <th><i class="fas fa-cogs"></i></th>
+                                        <th class="text-center" width="100"><i class="fas fa-cogs"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
