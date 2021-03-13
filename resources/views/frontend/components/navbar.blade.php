@@ -16,29 +16,29 @@
                 </form>
             </div>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->routeIs('about_us') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('about_us') }}">Tentang Kami</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->routeIs('gallery') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('gallery') }}">Galeri</a>
                 </li>
                 @guest
                     @if (Route::has('login'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->routeIs('login') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('login') }}">Masuk</a>
                         </li>
                     @endif
 
                     @if (Route::has('register'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->routeIs('register') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('register') }}">Daftar</a>
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown {{ request()->routeIs('user.show') ? 'active' : ''}}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </a>

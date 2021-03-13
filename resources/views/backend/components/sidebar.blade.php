@@ -24,7 +24,7 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('post.index') }}" class="nav-link">
+                    <a href="{{ route('post.index') }}" class="nav-link {{ request()->routeIs('post.index') ? 'active' : '' }}">
                         <i class="nav-icon far fa-newspaper"></i>
                         <p>
                             Posts
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('category.index') }}" class="nav-link">
+                    <a href="{{ route('category.index') }}" class="nav-link {{ request()->routeIs('category.index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-align-justify"></i>
                         <p>
                             Categories
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('user.index') }}" class="nav-link">
+                    <a href="{{ route('user.index') }}" class="nav-link {{ request()->routeIs('user.index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users
@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('gallery.index') }}" class="nav-link">
+                    <a href="{{ route('gallery.index') }}" class="nav-link {{ request()->routeIs('gallery.index') ? 'active' : '' }}">
                         <i class="nav-icon far fa-images"></i>
                         <p>
                             Gallery
