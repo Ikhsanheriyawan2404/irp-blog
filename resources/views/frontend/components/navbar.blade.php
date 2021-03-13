@@ -59,11 +59,12 @@
                     </li>
                     <li class="nav-item dropdown dropleft">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="badge badge-success"><i class="fas fa-bell"></i>0</span>
+                            <span class="badge badge-success"><i class="fas fa-bell"></i>{{ auth()->user()->unreadNotifications->count() }}</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item"><small>Ikhsan Heriyawan menyukai postingan anda</small></a>
-                            <a class="dropdown-item"><small>Ikhsan komentar di postingan anda</small></a>
+                            @foreach (auth()->user()->unreadNotifications as $notification)
+                                <a class="dropdown-item"><small>{{ $notification->data['user']['name']}}</small></a>
+                            @endforeach
                         </div>
                     </li>
                 @endguest

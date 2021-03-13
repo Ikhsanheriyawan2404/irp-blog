@@ -11,14 +11,17 @@ class LikeComment extends Notification
 {
     use Queueable;
 
+    protected $comment;
+    protected $like;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($comment, $like)
     {
-        //
+        $this->comment = $comment;
+        $this->like = $like;
     }
 
     /**
@@ -29,7 +32,7 @@ class LikeComment extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -56,6 +59,15 @@ class LikeComment extends Notification
     {
         return [
             //
+        ];
+    }
+
+    public function toDatabase($notifiable)
+    {
+        return [
+            'comment' => $this->comment,
+            'like' => $this->like,
+            'user' => auth()->user(),
         ];
     }
 }

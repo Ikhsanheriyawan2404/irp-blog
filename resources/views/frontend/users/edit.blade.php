@@ -12,7 +12,8 @@
 @endsection
 
 @section('content')
-     <!-- Page Header -->
+    <!-- Page Header -->
+     {{dd(auth()->user()->id == $user->id )}}
     <header class="masthead" style="background-image: url()">
         <div class="overlay"></div>
         <div class="container">

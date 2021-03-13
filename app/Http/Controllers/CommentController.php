@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\{Comment, Post};
+use App\Notifications\LikeComment;
 
 class CommentController extends Controller
 {
@@ -17,31 +18,13 @@ class CommentController extends Controller
             'message' => request('comment'),
         ];
 
-        auth()->user()->comments()->create($attr);
+        $comment = auth()->user()->comments()->create($attr);
+        if ($post->user_id != $comment->user_id) {
+            $user = User::find($post->user_id);
+            $user->notify(new LikeComment($comment));
+        }
         return back();
     }
-
-    // public function edit($id)
-    // {
-    //     $comment = Comment::where('id', $id)->first();
-    //     return \Response::json($comment);
-    // }
-
-    // public function update(Comment $comment)
-    // {
-    //     request()->validate([
-    //         'comment' => 'required',
-    //     ]);
-
-    //     $post = Post::find($id);
-    //     $comment->update([
-    //         'user_id' => Auth::id(),
-    //         'post_id' => $post->id,
-    //         'message' => request('comment'),
-    //     ]);
-
-    //     return back();
-    // }
 
     public function destroy(Comment $comment)
     {
