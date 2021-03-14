@@ -49,11 +49,9 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="card my-3">
                     <div class="card-header">
-                        {{-- @if ($user->id === auth()->user()->id) --}}
-                        @can('update', $user)
+                        @if ($user->id === auth()->user()->id)
                             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-dark float-right">Edit Profil <i class="fas fa-cogs"></i></a>
-                        @endcan
-                        {{-- @endif --}}
+                        @endif
                     </div>
                     <div class="card-body">
                         <div class="row">

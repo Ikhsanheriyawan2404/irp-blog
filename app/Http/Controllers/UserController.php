@@ -58,7 +58,7 @@ class UserController extends Controller
 
     public function update(User $user)
     {
-        $this->authorize('update', $user);
+        // $this->authorize('update', $user);
         # logic to configuration default image not delete when update
         if (request('image')) {
             if ($user->image == 'img/profile/irp-logo.png') {
@@ -80,13 +80,17 @@ class UserController extends Controller
             'date_of_birth' => 'required|date',
         ]);
 
-        $user->update([
-            'name' => request('name'),
-            'image' => $image,
-            'bio' => request('bio'),
-            'gender' => request('gender'),
-            'date_of_birth' => request('date_of_birth'),
-        ]);
+        if ($user->id === auth()->user()->id) {
+                $user->update([
+                'name' => request('name'),
+                'image' => $image,
+                'bio' => request('bio'),
+                'gender' => request('gender'),
+                'date_of_birth' => request('date_of_birth'),
+            ]);
+        } else {
+            abort(403, 'THIS ACTION IS UNAUTHORIZED.');
+        }
 
         return redirect()->route('user.show', $user->id)->with('success', 'Profil berhasil diedit');
     }

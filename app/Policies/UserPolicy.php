@@ -11,6 +11,7 @@ class UserPolicy
 
     public function update(User $user)
     {
-        return auth()->user()->id === $user->id;
+        // nggk guna asyuuu, ngebug
+        return $user->id === auth()->user()->id;
     }
 }
