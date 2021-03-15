@@ -62,8 +62,17 @@
                             <span class="badge badge-success"><i class="fas fa-bell"></i>{{ auth()->user()->unreadNotifications->count() }}</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <form id="markAsRead-form" action="{{ route('markAsRead') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                            <a class="dropdown-item text-success" onclick="event.preventDefault();
+                               document.getElementById('markAsRead-form').submit();"><small>Tandai semua telah dibaca</small></a>
                             @foreach (auth()->user()->unreadNotifications as $notification)
-                                <a class="dropdown-item"><small>{{ $notification->data['user']['name']}}</small></a>
+                                @if ($notification->type == 'App\Notifications\LikeNotifications')
+                                    <a href="{{ route('post', $notification->data['post']['slug']) }}" class="dropdown-item"><small>{{ $notification->data['user']['name'] }} Menyukai postingan Anda</small></a>
+                                @elseif($notification->type == 'App\Notifications\CommentNotifications')
+                                    <a href="{{ route('post', $notification->data['post']['slug']) }}" class="dropdown-item"><small>{{ $notification->data['user']['name'] }} Komentar dipostingan Anda</small></a>
+                                @endif
                             @endforeach
                         </div>
                     </li>

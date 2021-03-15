@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Comment, Post};
-use App\Notifications\LikeComment;
+use App\Models\{Comment, Post, User};
+use App\Notifications\CommentNotifications;
 
 class CommentController extends Controller
 {
@@ -21,7 +21,7 @@ class CommentController extends Controller
         $comment = auth()->user()->comments()->create($attr);
         if ($post->user_id != $comment->user_id) {
             $user = User::find($post->user_id);
-            $user->notify(new LikeComment($comment));
+            $user->notify(new CommentNotifications($comment, $post));
         }
         return back();
     }

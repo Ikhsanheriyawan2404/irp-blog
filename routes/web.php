@@ -7,10 +7,15 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('search', [HomeController::class, 'search'])->name('post.search');
-Route::get('{post:slug}', [HomeController::class, 'show_post'])->name('post');
+Route::get('tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
+Route::get('galeri', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('category/{category:slug}', [HomeController::class, 'show_category'])->name('category');
-Route::get('info/tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
-Route::get('info/galeri', [HomeController::class, 'gallery'])->name('gallery');
+Route::post('markAsRead', function() {
+    auth()->user()->unreadNotifications->markAsRead();
+    auth()->user()->notifications()->delete();
+    return redirect()->back();
+})->name('markAsRead');
+Route::get('{post:slug}', [HomeController::class, 'show_post'])->name('post');
 Route::middleware('auth')->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('{user:id}', [UserController::class, 'show'])->name('user.show');

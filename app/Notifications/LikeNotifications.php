@@ -7,21 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class LikeComment extends Notification
+class LikeNotifications extends Notification
 {
     use Queueable;
 
-    protected $comment;
     protected $like;
+    protected $post;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($comment, $like)
+    public function __construct($like, $post)
     {
-        $this->comment = $comment;
         $this->like = $like;
+        $this->post = $post;
     }
 
     /**
@@ -49,12 +49,6 @@ class LikeComment extends Notification
                     ->line('Thank you for using our application!');
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
         return [
@@ -62,11 +56,17 @@ class LikeComment extends Notification
         ];
     }
 
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
     public function toDatabase($notifiable)
     {
         return [
-            'comment' => $this->comment,
             'like' => $this->like,
+            'post' => $this->post,
             'user' => auth()->user(),
         ];
     }
