@@ -12,6 +12,9 @@
 
     <title>{{ $title ?? config('app.name') }}</title>
 
+    <!-- Fav Icon -->
+    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" />
+
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -32,7 +35,7 @@
 
     <!-- Main Content -->
     @yield('content')
-    <hr>
+    {{-- <hr> --}}
 
     <!-- Footer -->
     @include('frontend.components.footer')
