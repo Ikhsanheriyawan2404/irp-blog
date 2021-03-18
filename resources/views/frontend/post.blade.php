@@ -81,7 +81,7 @@
                                     <div>
                                         <form action="{{ route('post.like', $post->id) }}" method="post">
                                             @csrf
-                                            <button type="submit" class="btn btn-primary">Like <i class="far fa-thumbs-up"></i></button>
+                                            <button type="submit" class="btn btn-primary">Suka <i class="far fa-thumbs-up"></i></button>
                                         </form>
                                     </div>
                                 @endif
@@ -136,7 +136,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        <button type="submit" class="btn btn-success float-right mt-3">Comment <i class="fas fa-paper-plane"></i></button>
+                                        <button type="submit" class="btn btn-success float-right mt-3">Komentar <i class="fas fa-paper-plane"></i></button>
                                     </div>
                                 </form>
                             </div>

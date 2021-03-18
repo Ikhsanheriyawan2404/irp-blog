@@ -241,32 +241,32 @@
         <div class="row my-4">
             <div class="col-lg-8">
                 <form class="form-inline">
-                    <input class="form-control mr-sm-2 col-6" type="search" placeholder="Cari barang disini..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control col-6" type="search" placeholder="Cari barang disini..." aria-label="Search">
+                    <button class="btn btn-outline-success ml-2" type="submit">Cari</button>
                 </form>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 my-3">
             <!-- bbb_deals -->
                 <div class="bbb_deals">
                     <div class="ribbon ribbon-top-right"><span>50<small class="cross">%</small></span></div>
                     <div class="bbb_deals_title">Diskon Hari Ini</div>
                     <div class="bbb_deals_slider_container">
                         <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/img1.jpg') }}"></div>
+                            <div class="bbb_deals_image"><img src="{{ asset('img/smartphone.png') }}"></div>
                             <div class="bbb_deals_content">
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Laptops</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 3.500.000</strike></div>
+                                    <div class="bbb_deals_item_category"><a href="#">Smartphone</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 12.500.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">HP Notebook</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 2.000.000</div>
+                                    <div class="bbb_deals_item_name">Xiaomi MI 10T 5G</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 6.250.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>6</span></div>
+                                        <div class="available_title">Tersedia: <span>10</span></div>
                                         <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
@@ -276,26 +276,26 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 my-3">
             <!-- bbb_deals -->
                 <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>50<small class="cross">%</small></span></div>
+                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
                     <div class="bbb_deals_title">Diskon Hari Ini</div>
                     <div class="bbb_deals_slider_container">
                         <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/img1.jpg') }}"></div>
+                            <div class="bbb_deals_image"><img src="{{ asset('img/baju1.jpg') }}"></div>
                             <div class="bbb_deals_content">
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Laptops</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 3.500.000</strike></div>
+                                    <div class="bbb_deals_item_category"><a href="#">Baju</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">HP Notebook</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 2.000.000</div>
+                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>6</span></div>
+                                        <div class="available_title">Tersedia: <span>50</span></div>
                                         <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
@@ -305,26 +305,204 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 my-3">
             <!-- bbb_deals -->
                 <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>50<small class="cross">%</small></span></div>
+                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
                     <div class="bbb_deals_title">Diskon Hari Ini</div>
                     <div class="bbb_deals_slider_container">
                         <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/img1.jpg') }}"></div>
+                            <div class="bbb_deals_image"><img src="{{ asset('img/baju2.jpg') }}"></div>
                             <div class="bbb_deals_content">
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Laptops</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 3.500.000</strike></div>
+                                    <div class="bbb_deals_item_category"><a href="#">Baju</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">HP Notebook</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 2.000.000</div>
+                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>6</span></div>
+                                        <div class="available_title">Tersedia: <span>50</span></div>
+                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                    </div>
+                                    <div class="available_bar"><span style="width:17%"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 my-3">
+            <!-- bbb_deals -->
+                <div class="bbb_deals">
+                    <div class="ribbon ribbon-top-right"><span>30<small class="cross">%</small></span></div>
+                    <div class="bbb_deals_title">Diskon Hari Ini</div>
+                    <div class="bbb_deals_slider_container">
+                        <div class=" bbb_deals_item">
+                            <div class="bbb_deals_image"><img src="{{ asset('img/baju3.jpg') }}"></div>
+                            <div class="bbb_deals_content">
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_category"><a href="#">Baju</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 250.000</strike></div>
+                                </div>
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_name">Baju Perempuan</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 175.000</div>
+                                </div>
+                                <div class="available">
+                                    <div class="available_line d-flex flex-row justify-content-start">
+                                        <div class="available_title">Tersedia: <span>30</span></div>
+                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                    </div>
+                                    <div class="available_bar"><span style="width:17%"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-3">
+            <!-- bbb_deals -->
+                <div class="bbb_deals">
+                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
+                    <div class="bbb_deals_title">Diskon Hari Ini</div>
+                    <div class="bbb_deals_slider_container">
+                        <div class=" bbb_deals_item">
+                            <div class="bbb_deals_image"><img src="{{ asset('img/handcraft1.jpg') }}"></div>
+                            <div class="bbb_deals_content">
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_category"><a href="#">Handcraft</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
+                                </div>
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
+                                </div>
+                                <div class="available">
+                                    <div class="available_line d-flex flex-row justify-content-start">
+                                        <div class="available_title">Tersedia: <span>50</span></div>
+                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                    </div>
+                                    <div class="available_bar"><span style="width:17%"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-3">
+            <!-- bbb_deals -->
+                <div class="bbb_deals">
+                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
+                    <div class="bbb_deals_title">Diskon Hari Ini</div>
+                    <div class="bbb_deals_slider_container">
+                        <div class=" bbb_deals_item">
+                            <div class="bbb_deals_image"><img src="{{ asset('img/handcraft2.jpg') }}"></div>
+                            <div class="bbb_deals_content">
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_category"><a href="#">Handcraft</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
+                                </div>
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
+                                </div>
+                                <div class="available">
+                                    <div class="available_line d-flex flex-row justify-content-start">
+                                        <div class="available_title">Tersedia: <span>50</span></div>
+                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                    </div>
+                                    <div class="available_bar"><span style="width:17%"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 my-3">
+            <!-- bbb_deals -->
+                <div class="bbb_deals">
+                    <div class="ribbon ribbon-top-right"><span>30<small class="cross">%</small></span></div>
+                    <div class="bbb_deals_title">Diskon Hari Ini</div>
+                    <div class="bbb_deals_slider_container">
+                        <div class=" bbb_deals_item">
+                            <div class="bbb_deals_image"><img src="{{ asset('img/handcraft3.jpg') }}"></div>
+                            <div class="bbb_deals_content">
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_category"><a href="#">Baju</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 250.000</strike></div>
+                                </div>
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_name">Baju Perempuan</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 175.000</div>
+                                </div>
+                                <div class="available">
+                                    <div class="available_line d-flex flex-row justify-content-start">
+                                        <div class="available_title">Tersedia: <span>30</span></div>
+                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                    </div>
+                                    <div class="available_bar"><span style="width:17%"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-3">
+            <!-- bbb_deals -->
+                <div class="bbb_deals">
+                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
+                    <div class="bbb_deals_title">Diskon Hari Ini</div>
+                    <div class="bbb_deals_slider_container">
+                        <div class=" bbb_deals_item">
+                            <div class="bbb_deals_image"><img src="{{ asset('img/handcraft4.jpg') }}"></div>
+                            <div class="bbb_deals_content">
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_category"><a href="#">Handcraft</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
+                                </div>
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
+                                </div>
+                                <div class="available">
+                                    <div class="available_line d-flex flex-row justify-content-start">
+                                        <div class="available_title">Tersedia: <span>50</span></div>
+                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                    </div>
+                                    <div class="available_bar"><span style="width:17%"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-3">
+            <!-- bbb_deals -->
+                <div class="bbb_deals">
+                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
+                    <div class="bbb_deals_title">Diskon Hari Ini</div>
+                    <div class="bbb_deals_slider_container">
+                        <div class=" bbb_deals_item">
+                            <div class="bbb_deals_image"><img src="{{ asset('img/bh.jpg') }}"></div>
+                            <div class="bbb_deals_content">
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_category"><a href="#">Handcraft</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
+                                </div>
+                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
+                                </div>
+                                <div class="available">
+                                    <div class="available_line d-flex flex-row justify-content-start">
+                                        <div class="available_title">Tersedia: <span>50</span></div>
                                         <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>

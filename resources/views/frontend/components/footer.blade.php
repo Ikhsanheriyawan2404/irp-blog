@@ -11,8 +11,8 @@
             <div class="col-lg-4 my-4 text-center">
                 <h3 class="text-white">About</h3>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Gallery</a></small></li>
-                    <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Product</a></small></li>
+                    <li class="list-group text-left"><small><a href="{{ route('gallery') }}" style="color: #b8d5cd">Gallery</a></small></li>
+                    <li class="list-group text-left"><small><a href="{{ route('product') }}" style="color: #b8d5cd">Product</a></small></li>
                     <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Privacy Policy</a></small></li>
                     <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Term & Condition</a></small></li>
                     <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Disclaimer</a></small></li>
@@ -21,9 +21,9 @@
             <div class="col-lg-4 my-4 text-center">
                 <h3 class="text-white">Contact</h3>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd"><i class="fas fa-phone-alt"></i> 082117088123</a></small></li>
-                    <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd"><i class="fas fa-map-marked-alt"></i> Desa Kempek Blok 3 Penangisan RT/RW 01/05 Kecamatan Gempol Kabupaten Cirebon Jawa Barat 41516</a></small></li>
-                    <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd"><i class="fas fa-envelope"></i> ikatanremajapenangisan@gmail.com</a></small></li>
+                    <li class="list-group text-left"><small><a href="tel:+6282117088123" style="color: #b8d5cd"><i class="fas fa-phone-alt"></i> 082117088123</a></small></li>
+                    <li class="list-group text-left"><small><a href="https://www.google.co.id/maps/@-6.6862284,108.4147599,20z/data=!4m2!7m1!2e1?hl=id" style="color: #b8d5cd"><i class="fas fa-map-marked-alt"></i> Desa Kempek Blok 3 Penangisan RT/RW 01/05 Kecamatan Gempol Kabupaten Cirebon Jawa Barat 41516</a></small></li>
+                    <li class="list-group text-left"><small><a href="mailto:ikatanremajapenangisan@gmail.com" style="color: #b8d5cd"><i class="fas fa-envelope"></i> ikatanremajapenangisan@gmail.com</a></small></li>
                 </ul>
             </div>
             <div class="col-lg-4 my-4">
