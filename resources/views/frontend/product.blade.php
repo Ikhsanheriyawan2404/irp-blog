@@ -56,7 +56,7 @@
             width: 34px;
             border-radius: 50%;
             padding: 8px 0;
-            background-color: #3498db;
+            background-color: #4BB543;
             box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
             color: #fff;
             font: 100 18px/1 'Lato', sans-serif;
@@ -84,10 +84,6 @@
         .ribbon-top-right::after {
             bottom: 17px;
             right: 0
-        }
-
-        .sold_stars i {
-            color: orange
         }
 
         .ribbon-top-right span {
@@ -267,7 +263,9 @@
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>10</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
@@ -290,13 +288,15 @@
                                     <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_name">Baju Cw</div>
                                     <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
@@ -319,13 +319,15 @@
                                     <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_name">Keranjang</div>
                                     <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
@@ -356,7 +358,9 @@
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>30</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
@@ -379,13 +383,15 @@
                                     <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_name">Keranjang</div>
                                     <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
@@ -408,13 +414,15 @@
                                     <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_name">Keranjang</div>
                                     <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
@@ -445,7 +453,9 @@
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>30</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
@@ -468,13 +478,15 @@
                                     <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_name">Keranjang</div>
                                     <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
@@ -497,13 +509,15 @@
                                     <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Sexyyy</div>
+                                    <div class="bbb_deals_item_name">Keranjang</div>
                                     <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
                                         <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                        <div class="sold_stars ml-auto">
+                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                        </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
