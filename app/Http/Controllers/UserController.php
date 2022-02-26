@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\{User, Post, Like};
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Yajra\Datatables\Datatables;
 
@@ -97,9 +96,10 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if ($user->image !== 'img/profile/irp-logo.png') {
+            Storage::delete($user->image);
+        }
         $user->delete();
-        Storage::delete($user->image);
-
         return back()->with('success', 'Data user was deleted!');
     }
 }

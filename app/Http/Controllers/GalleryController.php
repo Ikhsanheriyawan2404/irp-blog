@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         if (request()->ajax()) {
             $data = Gallery::latest()->get();

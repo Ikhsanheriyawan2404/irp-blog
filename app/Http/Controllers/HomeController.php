@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Post, Category, User, Like, Comment, Gallery};
-use Illuminate\Support\Facades\Auth;
+use App\Models\{Post, Category, Like, Gallery};
 
 class HomeController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         return view('frontend.home', [
-            'posts' => Post::with('user', 'likes', 'comments', 'categories')->withCount('likes')->orderBy('likes_count', 'DESC')->paginate(5),
+            'post_most_viewed' => Post::with('user', 'likes', 'comments', 'categories')->withCount('likes')->orderBy('likes_count', 'DESC')->limit(5)->get(),
+            'posts' => Post::with('user', 'likes', 'comments', 'categories')->latest()->paginate(10),
             'categories' => Category::get(),
         ]);
     }
@@ -39,6 +34,12 @@ class HomeController extends Controller
                 'post' => $post,
                 'posts' => Post::with('user', 'categories')->limit(5)->get(),
                 'likes' => $likes,
+                'post_related' => Post::whereHas('categories', function ($q) use ($post) {
+                    return $q->whereIn('name', $post->categories->pluck('name'));
+                })
+                ->where('id', '!=', $post->id)
+                ->limit(5)
+                ->get(),
             ]);
         } else {
             abort(404);

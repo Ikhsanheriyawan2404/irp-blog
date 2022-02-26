@@ -12,7 +12,7 @@
                 <h3 class="text-white">About</h3>
                 <ul class="list-group list-group-flush">
                     <li class="list-group text-left"><small><a href="{{ route('gallery') }}" style="color: #b8d5cd">Gallery</a></small></li>
-                    <li class="list-group text-left"><small><a href="{{ route('product') }}" style="color: #b8d5cd">Product</a></small></li>
+                    <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Product</a></small></li>
                     <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Privacy Policy</a></small></li>
                     <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Term & Condition</a></small></li>
                     <li class="list-group text-left"><small><a href="#" style="color: #b8d5cd">Disclaimer</a></small></li>

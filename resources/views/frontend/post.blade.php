@@ -150,7 +150,7 @@
                     <div class="card my-3">
                         <h3 class="post-title">Postingan Terkait</h3>
                         <ul class="list-group list-group-flush">
-                            @foreach ($posts as $post)
+                            @foreach ($post_related as $post)
                                 <li class="list-group-item">
                                     <div>
                                         <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>

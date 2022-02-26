@@ -3,8 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Post;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
 {
@@ -22,15 +23,16 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->unique()->sentence;
+        $user = User::where('id', '');
+        $title = $this->faker->unique()->sentence();
         return [
-            'user_id' => rand(1,2),
+            'user_id' => '4854ea4f-fa36-4456-80cd-d8873ef8657c',
             'title' => $title,
             'slug' => Str::slug($title),
             'meta_title' => $title,
-            'meta_description' => $this->faker->sentence,
-            'meta_keyword' => $this->faker->word,
-            'body' => $this->faker->paragraph,
+            'meta_description' => $this->faker->sentence(),
+            'meta_keyword' => $this->faker->word(),
+            'body' => $this->faker->paragraph(),
             'created_at' => now(),
             'updated_at' => now(),
         ];
