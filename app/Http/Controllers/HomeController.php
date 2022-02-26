@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Post, Category, User, Like, Comment, Gallery};
-use Illuminate\Support\Facades\Auth;
+use App\Models\{Post, Category, Like, Gallery};
 
 class HomeController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         return view('frontend.home', [
-            'posts' => Post::with('user', 'likes', 'comments', 'categories')->withCount('likes')->orderBy('likes_count', 'DESC')->paginate(5),
+            'posts' => Post::with('user', 'likes', 'comments', 'categories')->paginate(10),
             'categories' => Category::get(),
         ]);
     }
@@ -38,6 +32,7 @@ class HomeController extends Controller
                 'title' => $post->title,
                 'post' => $post,
                 'posts' => Post::with('user', 'categories')->limit(5)->get(),
+                'post_with_category' => Post::with('user', 'categories')->where('category')->limit(5)->get(),
                 'likes' => $likes,
             ]);
         } else {

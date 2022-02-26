@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController, GalleryController, ProductController};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController, GalleryController, ProductController};
 
 Auth::routes();
 
@@ -10,7 +11,6 @@ Route::get('search', [HomeController::class, 'search'])->name('post.search');
 Route::get('tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
 Route::get('galeri', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('category/{category:slug}', [HomeController::class, 'show_category'])->name('category');
-Route::get('product', [ProductController::class, 'index'])->name('product');
 Route::post('markAsRead', function() {
     auth()->user()->unreadNotifications->markAsRead();
     auth()->user()->notifications()->delete();

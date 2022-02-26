@@ -6,20 +6,14 @@ use App\Models\{Category, Post};
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Yajra\Datatables\Datatables;
-use Illuminate\Http\Request;
 
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Post $post)
     {
         if (request()->ajax()) {
-            $data = Post::latest()->get();
+            $data = Post::with('user')->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('users', function (Post $post) {
@@ -49,11 +43,6 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('frontend.posts.create', [
@@ -63,12 +52,6 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store()
     {
         request()->validate([
@@ -93,23 +76,11 @@ class PostController extends Controller
         return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan baru berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function show(Post $post)
     {
         return response()->json($post);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Post $post)
     {
         return view('frontend.posts.edit', [
@@ -119,13 +90,6 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function update(Post $post)
     {
         $this->authorize('update', $post);

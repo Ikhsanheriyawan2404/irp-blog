@@ -54,9 +54,10 @@
             </div>
             <div class="col-lg-4">
                 <div class="card my-3">
-                    <h3 class="post-title">Postingan Terbaru</h3>
+                    <h3 class="post-title">Paling Banyak Dilihat</h3>
                     <ul class="list-group list-group-flush">
-                        @foreach ($posts->sortByDesc('created_at') as $post)
+                        {{-- {{dd($posts->total())}} --}}
+                        @foreach ($post_most_viewed as $post)
                             <li class="list-group-item">
                                 <div>
                                     <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>

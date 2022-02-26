@@ -23,10 +23,10 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $user = User::where('id', '8041c9ed-0476-4320-a6e5-5af972d65d84');
+        $user = User::where('id', '');
         $title = $this->faker->unique()->sentence();
         return [
-            'user_id' => '8041c9ed-0476-4320-a6e5-5af972d65d84',
+            'user_id' => '9c319a45-6e57-4207-8977-43c945f4c4f4',
             'title' => $title,
             'slug' => Str::slug($title),
             'meta_title' => $title,
