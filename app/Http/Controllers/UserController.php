@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\{User, Post, Like};
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Yajra\Datatables\Datatables;
 
