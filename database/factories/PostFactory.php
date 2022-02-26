@@ -26,7 +26,7 @@ class PostFactory extends Factory
         $user = User::where('id', '');
         $title = $this->faker->unique()->sentence();
         return [
-            'user_id' => '4854ea4f-fa36-4456-80cd-d8873ef8657c',
+            'user_id' => '8930d081-33c9-4ec2-89cb-c4190511007c',
             'title' => $title,
             'slug' => Str::slug($title),
             'meta_title' => $title,

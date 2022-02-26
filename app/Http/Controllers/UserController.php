@@ -35,6 +35,7 @@ class UserController extends Controller
     }
     public function show(User $user)
     {
+        // Pengkodisian jika user tidak ada halaman tidak ditampilkan
         if ($user) {
             return view('frontend.users.index', [
                 'title' => 'Halaman User',
@@ -49,16 +50,20 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('frontend.users.edit', [
-            'title' => 'Edit User',
-            'user' => $user,
-        ]);
+        // User tidak bisa mengedit data user lainnya
+        if ($user->id === auth()->user()->id) {
+            return view('frontend.users.edit', [
+                'title' => 'Edit User',
+                'user' => $user,
+            ]);
+        } else {
+            abort(403, 'THIS ACTION IS UNAUTHORIZED.');
+        }
     }
 
     public function update(User $user)
     {
-        // $this->authorize('update', $user);
-        # logic to configuration default image not delete when update
+        // Logika gambar default tidak terhapus ketika update data user
         if (request('image')) {
             if ($user->image == 'img/profile/irp-logo.png') {
                 $image = request()->file('image')->store('img/profile');
@@ -96,9 +101,11 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        // Pencegahan penghapusan gambar avatar default
         if ($user->image !== 'img/profile/irp-logo.png') {
             Storage::delete($user->image);
         }
+
         $user->delete();
         return back()->with('success', 'Data user was deleted!');
     }
