@@ -10,7 +10,7 @@ class HomeController extends Controller
     {
         return view('frontend.home', [
             'post_most_viewed' => Post::with('user', 'likes', 'comments', 'categories')->withCount('likes')->orderBy('likes_count', 'DESC')->limit(5)->get(),
-            'posts' => Post::with('user', 'likes', 'comments', 'categories')->paginate(10),
+            'posts' => Post::with('user', 'likes', 'comments', 'categories')->latest()->paginate(10),
             'categories' => Category::get(),
         ]);
     }
