@@ -10,6 +10,10 @@ use Yajra\Datatables\Datatables;
 
 class PostController extends Controller
 {
+    /**
+     * @return json
+     * Data ditampilkan dengan datatables serverside
+     */
     public function index(Post $post)
     {
         if (request()->ajax()) {
@@ -48,19 +52,21 @@ class PostController extends Controller
         return view('frontend.posts.create', [
             'title' => 'Buat Postingan',
             'post' => new Post,
-            'categories' => Category::get(),
+            'categories' => Category::all(),
         ]);
     }
 
     public function store()
     {
+        // Validasi inputan dari user untuk simpan post
         request()->validate([
-            'title' => 'required|min:8|unique:posts,title,',
+            'title' => 'required|min:8|max:255|unique:posts,title,',
             'category' => 'required|array',
             'body' => 'required|min:50',
             'thumbnail' => 'image|mimes:jpg,jpeg,png|max:2058',
         ]);
 
+        // Inputan dari user
         $attr = [
             'title' => request('title'),
             'slug' => Str::slug(request('title')),
@@ -71,8 +77,12 @@ class PostController extends Controller
             'body' => request('body'),
         ];
 
+        // Menyimpan author post
         $post = auth()->user()->posts()->create($attr);
+        // Menyimpan kategori post
         $post->categories()->sync(request('category'));
+
+        // Menampilkan report success
         return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan baru berhasil ditambahkan');
     }
 
@@ -92,6 +102,7 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
+        // Permission untuk user lain tidak bisa akses
         $this->authorize('update', $post);
 
         request()->validate([
@@ -101,6 +112,7 @@ class PostController extends Controller
             'thumbnail' => 'image|mimes:jpg,jpeg,png|max:2058',
         ]);
 
+        // Pengkodisian upload gambar
         if (request('thumbnail')) {
             Storage::delete($post->thumbnail);
             $thumbnail = request()->file('thumbnail')->store('img/post');
@@ -126,10 +138,17 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        // Permission untuk user lain tidak bisa akses
         $this->authorize('delete', $post);
+
+        // Hapus data kategori post di tabel category_post
         $post->categories()->detach();
+
+        // Hapus gambar
         Storage::delete($post->thumbnail);
+        // Hapus data post
         $post->delete();
+
         return redirect()->route('user.show', $post->user->id)->with('success', 'Postingan berhasil dihapus');
     }
 }

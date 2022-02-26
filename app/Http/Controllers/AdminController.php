@@ -10,10 +10,10 @@ class AdminController extends Controller
     {
         return view('backend.index', [
             'title' => 'Halaman Admin',
-            'posts' => Post::get(),
-            'categories' => Category::get(),
-            'users' => User::get(),
-            'galleries' => Gallery::get(),
+            'posts' => Post::all(),
+            'categories' => Category::all(),
+            'users' => User::all(),
+            'galleries' => Gallery::all(),
         ]);
     }
 }
