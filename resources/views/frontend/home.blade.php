@@ -56,7 +56,6 @@
                 <div class="card my-3">
                     <h3 class="post-title">Paling Banyak Dilihat</h3>
                     <ul class="list-group list-group-flush">
-                        {{-- {{dd($posts->total())}} --}}
                         @foreach ($post_most_viewed as $post)
                             <li class="list-group-item">
                                 <div>

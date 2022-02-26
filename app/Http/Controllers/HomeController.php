@@ -9,6 +9,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('frontend.home', [
+            'post_most_viewed' => Post::with('user', 'likes', 'comments', 'categories')->withCount('likes')->orderBy('likes_count', 'DESC')->limit(5)->get(),
             'posts' => Post::with('user', 'likes', 'comments', 'categories')->paginate(10),
             'categories' => Category::get(),
         ]);
@@ -32,8 +33,13 @@ class HomeController extends Controller
                 'title' => $post->title,
                 'post' => $post,
                 'posts' => Post::with('user', 'categories')->limit(5)->get(),
-                'post_with_category' => Post::with('user', 'categories')->where('category')->limit(5)->get(),
                 'likes' => $likes,
+                'post_related' => Post::whereHas('categories', function ($q) use ($post) {
+                    return $q->whereIn('name', $post->categories->pluck('name'));
+                })
+                ->where('id', '!=', $post->id)
+                ->limit(5)
+                ->get(),
             ]);
         } else {
             abort(404);
