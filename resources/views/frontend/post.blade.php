@@ -162,66 +162,9 @@
                             @endforeach
                         </ul>
                     </div>
-                    {{-- <div class="card my-3">
-                        <h3 class="post-title">Category</h3>
-                        <ul class="list-group list-group-flush">
-                            @foreach ($categories as $category)
-                                 <li class="list-group-item"><a href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div> --}}
                 </div>
             </div>
         </div>
     </article>
 
-    <!-- Modal Edit -->
-    {{-- <div class="modal fade" id="edit-comment" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <form action="{{ route('comment.update', $comment->id) }}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-body">
-                        <textarea class="form-control" name="comment" id="comment" data-id="" cols="10" rows="3" autofocus required></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Edit Komentar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> --}}
-
-    {{-- Modal Delete --}}
-    {{-- <div class="modal fade" id="delete-comment" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <p>Apakah kamu yakin? komentar ini akan terhapus.</p>
-                </div>
-                <form action="{{ route('comment.delete', $comment->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> --}}
-
-@endsection
-@section('custom-scripts')
-    <script>
-        $(document).on('submit', 'form', function() {
-            try {
-                $('button').attr('disabled', 'disabled');
-            } catch (e) {
-
-            }
-        });
-    </script>
 @endsection

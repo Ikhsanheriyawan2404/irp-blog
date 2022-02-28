@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController, GalleryController, ProductController};
+use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController, GalleryController};
 
 Auth::routes();
 
@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
         Route::get('{user:id}/edit', [UserController::class, 'edit'])->name('user.edit');
         Route::put('{user:id}/edit', [UserController::class, 'update'])->name('user.update');
         Route::delete('{user:id}/delete', [UserController::class, 'destroy'])->name('user.destroy');
+        Route::post('{user:id}/changeRole', [UserController::class, 'changeRole'])->name('users.role');
     });
     Route::prefix('comment')->group(function () {
         Route::post('{post:id}', [CommentController::class, 'store'])->name('comment.store');

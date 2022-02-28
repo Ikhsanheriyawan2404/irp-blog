@@ -12,8 +12,6 @@
 @endsection
 
 @section('content')
-{{-- {{ dd(auth()->user()->id) }} --}}
-{{-- {{ dd($user->id) }} --}}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url()">
         <div class="overlay"></div>
@@ -160,28 +158,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-
-@section('custom-scripts')
-    {{-- <script src="{{ asset('frontend/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script> --}}
-    {{-- <script>
-        function deletePost(slug)
-        {
-            Swal.fire({
-                title: 'Apakah kamu yakin?',
-                text: "data ini akan terhapus.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#data-'+slug).submit();
-                }
-            })
-        }
-    </script> --}}
 @endsection

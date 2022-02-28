@@ -17,6 +17,23 @@ class UserController extends Controller
                 ->editColumn('created_at', function($request) {
                     return $request->created_at->diffForHumans();
                 })
+                ->addColumn('role', function($row) {
+                    $btnUser = '<form action="' . route('users.role', $row->id) . '" method="post">
+                    '. csrf_field() .'
+                    <input type="hidden" value="admin" name="role">
+                    <button type="submit" class="btn btn-primary btn-sm">User</button>
+                    </form>';
+                    $btnAdmin = '<form action="' . route('users.role', $row->id) . '" method="post">
+                    '. csrf_field() .'
+                    <input type="hidden" value="user" name="role">
+                    <button type=submit class="btn btn-primary btn-sm">Admin</button>
+                    </form>';
+                    if ($row->role == 'admin') {
+                        return $btnAdmin;
+                    } else {
+                        return $btnUser;
+                    }
+                })
                 ->addColumn('action', function($row) {
                     $btn = '<form action="' . route('user.destroy', $row->id) . '" method="post">
                     '. csrf_field() .'
@@ -25,7 +42,7 @@ class UserController extends Controller
                     </form>';
                     return $btn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['role', 'action'])
                 ->make(true);
         }
 
@@ -40,7 +57,7 @@ class UserController extends Controller
             return view('frontend.users.index', [
                 'title' => 'Halaman User',
                 'user' => $user,
-                'posts' => Post::latest()->where('user_id', $user->id)->paginate(5),
+                'posts' => Post::with('user', 'likes', 'comments', 'categories')->latest()->where('user_id', $user->id)->simplePaginate(5),
                 'likes' => Like::where('user_id', $user->id),
             ]);
         } else {
@@ -108,5 +125,15 @@ class UserController extends Controller
 
         $user->delete();
         return back()->with('success', 'Data user was deleted!');
+    }
+
+    // Method untuk mengubah role pengguna
+    public function changeRole(User $user)
+    {
+        $user->update([
+            'role' => request('role'),
+        ]);
+
+        return back()->with('success', 'Role user was changed!');
     }
 }
