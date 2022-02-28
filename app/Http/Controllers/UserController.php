@@ -57,7 +57,7 @@ class UserController extends Controller
             return view('frontend.users.index', [
                 'title' => 'Halaman User',
                 'user' => $user,
-                'posts' => Post::latest()->where('user_id', $user->id)->paginate(5),
+                'posts' => Post::with('user', 'likes', 'comments', 'categories')->latest()->where('user_id', $user->id)->simplePaginate(5),
                 'likes' => Like::where('user_id', $user->id),
             ]);
         } else {
@@ -127,6 +127,7 @@ class UserController extends Controller
         return back()->with('success', 'Data user was deleted!');
     }
 
+    // Method untuk mengubah role pengguna
     public function changeRole(User $user)
     {
         $user->update([
