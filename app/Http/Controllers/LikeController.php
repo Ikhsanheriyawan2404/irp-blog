@@ -13,11 +13,13 @@ class LikeController extends Controller
             'post_id' => $post->id,
             'likes' => 1,
         ];
+
         $like = auth()->user()->likes()->create($attr);
         if ($post->user_id != $like->user_id) {
             $user = User::find($post->user_id);
             $user->notify(new LikeNotifications($like, $post));
         }
+
         return back();
     }
 }
