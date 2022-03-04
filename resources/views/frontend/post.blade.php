@@ -168,3 +168,17 @@
     </article>
 
 @endsection
+
+@section('custom-scripts')
+    <script src="{{ asset('frontend/vendor/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/ckeditor5/ckeditor.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/ckeditor5/ckeditor.js.map') }}"></script>
+    <script src="{{ asset('frontend/vendor/ckeditor5/translations/id.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('submit', 'form', function() {
+                $('button').attr('disabled', 'disabled');
+            });
+        });
+    </script>
+@endsection
