@@ -25,7 +25,7 @@ class PostFactory extends Factory
     {
         $title = $this->faker->unique()->sentence();
         return [
-            'user_id' => '49e46623-3571-495f-9dd6-d55fa8e45b4a',
+            'user_id' => '58f0306f-5746-4597-b7b2-2a8af77b6683',
             'title' => $title,
             'slug' => Str::slug($title),
             'meta_title' => $title,

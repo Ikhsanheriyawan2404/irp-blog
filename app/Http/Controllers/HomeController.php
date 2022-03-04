@@ -33,7 +33,6 @@ class HomeController extends Controller
             return view('frontend.post', [
                 'title' => $post->title,
                 'post' => $post,
-                'posts' => Post::with('user', 'categories')->limit(5)->get(),
                 'likes' => $likes,
                 'post_related' => Post::whereHas('categories', function ($q) use ($post) {
                     return $q->whereIn('name', $post->categories->pluck('name'));
