@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\{DB, Hash};
 
 class UserTableSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             [
                 'id' => Uuid::uuid4()->toString(),
                 'name' => 'Ikhsan Heriyawan',
