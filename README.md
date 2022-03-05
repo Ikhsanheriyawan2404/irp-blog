@@ -1,28 +1,25 @@
-# Foobar
+# Simple CMS Blog
 
-Foobar is a Python library for dealing with word pluralization.
+Simple CMS Blog that can like or comment every posts and then can get notifications when posts from a user has been liked or commented
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
-pip install foobar
+composer install
+php artisan key:generate
 ```
 
-## Usage
+```bash
+php artisan storage:link
+php artisan migrate:fresh --seed
+```
 
-```python
-import foobar
 
-# returns 'words'
-foobar.pluralize('word')
+## Configuration
 
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+```php
+FILESYSTEM_DRIVER=public
 ```
 
 ## Contributing
