@@ -32,12 +32,12 @@ FILESYSTEM_DRIVER=public
 - Email : user@gmail.com
 - Password : admin
 
-### important
+### Important
 if you want to add feature default avatar image for users you can follow these steps
 - login to user has registered via seeder
 - edit user image
 - put your image default in directory /storage/app/public/img/profiles/
-- and get name 'irp-logo.png'
+- and rename to 'irp-logo.png'
 
 You can see details in my youtube video https://www.youtube.com/watch?v=S-xPWSIBIhY&t=4s
 
