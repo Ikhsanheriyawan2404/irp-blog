@@ -12,6 +12,7 @@ Simple CMS Blog that can like or comment every posts and then can get notificati
 
 ```bash
 composer install
+cp .env.example .env
 php artisan key:generate
 php artisan storage:link
 php artisan migrate:fresh --seed
@@ -24,14 +25,14 @@ add this line in your .env file
 FILESYSTEM_DRIVER=public
 ```
 ### Users
-Admin
+- Admin
 - Email : admin@gmail.com
 - Password : admin
-User
+- User
 - Email : user@gmail.com
 - Password : admin
 
-###imortant
+### important
 if you want to add feature default avatar image for users you can follow these steps
 - login to user has registered via seeder
 - edit user image
