@@ -23,14 +23,15 @@ add this line in your .env file
 ```php
 FILESYSTEM_DRIVER=public
 ```
-### important
+### Users
 Admin
-Email : admin@gmail.com
-Password : admin
+- Email : admin@gmail.com
+- Password : admin
 User
-Email : user@gmail.com
-Password : admin
+- Email : user@gmail.com
+- Password : admin
 
+###imortant
 if you want to add feature default avatar image for users you can follow these steps
 - login to user has registered via seeder
 - edit user image
