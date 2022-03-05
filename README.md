@@ -3,7 +3,7 @@
 Simple CMS Blog that can like or comment every posts and then can get notifications when posts from a user has been liked or commented
 
 ## Visuals
-![alt text](https://github.com/ikhsanheriyawan2404/irp-blog/blob/main/image1.png?raw=true)
+![Screenshot](public/img/image1.png)
 ![alt text](https://github.com/ikhsanheriyawan2404/irp-blog/blob/main/image2.png?raw=true)
 ![alt text](https://github.com/ikhsanheriyawan2404/irp-blog/blob/main/image3.png?raw=true)
 ![alt text](https://github.com/ikhsanheriyawan2404/irp-blog/blob/main/image4.png?raw=true)
