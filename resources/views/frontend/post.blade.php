@@ -99,7 +99,7 @@
                         <div class="card my-3">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="{{ $comment->user->takeImage }}" class="rounded-circle" width="75" alt="">
+                                    <img src="{{ $comment->user->takeImage }}" class="rounded-circle" height="50" width="50">
                                 </div>
                                 <div class="col-md-10">
                                     <a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a>
@@ -122,10 +122,10 @@
                     @endforeach
                     <div class="card my-3">
                         <div class="row">
-                            <div class="col-md-2">
-                                <img src="{{ auth()->user()->takeImage ?? '' }}" class="rounded-circle" width="75" alt="">
+                            <div class="col-md-1">
+                                <img src="{{ auth()->user()->takeImage ?? '' }}" class="rounded-circle" height="50" width="50" alt="">
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-11">
                                 <form action="{{ route('comment.store', $post->id) }}" method="post">
                                     @csrf
                                     <div class="form-group">

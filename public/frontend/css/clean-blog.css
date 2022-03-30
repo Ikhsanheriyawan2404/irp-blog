@@ -3,7 +3,7 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-clean-blog/blob/master/LICENSE)
  */body {
-    font-size: 21px;
+    font-size: 14px;
     color: #212529;
     font-family: "Gill Sans", sans-serif;
 }
@@ -30,7 +30,7 @@ blockquote {
     color: #868e96;
 }
 .section-heading {
-    font-size: 36px;
+    font-size: 20px;
     font-weight: 700;
     margin-top: 60px;
 }
@@ -45,7 +45,7 @@ blockquote {
     border-bottom-left-radius: 5px;
 }
 .text-comment {
-    font-size: 17px;
+    font-size: 14px;
     font-style: italic;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -227,7 +227,7 @@ header.masthead .post-heading .subheading {
     color: #2e856e;
 }
 .post-preview>a>.post-title {
-    font-size: 27px;
+    font-size: 20px;
     margin-top: 15px;
     color: #006a4e;
     margin-bottom: 5px;
@@ -238,7 +238,7 @@ header.masthead .post-heading .subheading {
     margin: 0 0 10px;
 }
 .post-preview>.post-meta {
-    font-size: 18px;
+    font-size: 14px;
     font-style: italic;
     margin-top: 0;
     color: #868e96;
@@ -253,7 +253,7 @@ header.masthead .post-heading .subheading {
 }
 @media only screen and (min-width:768px) {
     .post-preview>a>.post-title {
-    font-size: 36px;
+    font-size: 20px;
 }
 }.floating-label-form-group {
     font-size: 14px;
