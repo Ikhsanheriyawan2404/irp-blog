@@ -123,7 +123,9 @@
                     <div class="card my-3">
                         <div class="row">
                             <div class="col-md-1">
-                                <img src="{{ auth()->user()->takeImage ?? '' }}" class="rounded-circle" height="50" width="50" alt="">
+                                @if (auth()->user())
+                                <img src="{{ auth()->user()->takeImage }}" class="rounded-circle" height="50" width="50" alt="">
+                                @endif
                             </div>
                             <div class="col-md-11">
                                 <form action="{{ route('comment.store', $post->id) }}" method="post">

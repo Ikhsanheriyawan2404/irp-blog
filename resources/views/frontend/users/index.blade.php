@@ -38,7 +38,7 @@
                 <div class="card my-3">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-                            <img src="{{ $user->takeImage }}" class="img-fluid rounded-circle" height="100" width="100">
+                            <img src="{{ $user->takeImage }}" class="rounded-circle" height="100" width="100">
                         </div>
                         <p>{{ $user->bio }}</p>
                     </div>
