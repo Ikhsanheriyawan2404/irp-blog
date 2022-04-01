@@ -32,47 +32,45 @@
             <div class="col-lg-6 col-md-10 mx-auto">
                 <div class="card my-3">
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('password.update') }}">
-                            @csrf
+                    <form method="POST" action="{{ route('password.update') }}">
+                        @csrf
 
-                            <input type="hidden" name="token" value="{{ $token }}">
+                        <input type="hidden" name="token" value="{{ $token }}">
 
-                            <div class="form-group">
-                                <label for="email">{{ __('Alamat E-Mail') }} <span class="text-dagner">*</span></label>
+                        <div class="form-group">
+                            <label for="email">{{ __('Alamat E-Mail') }} <span class="text-dagner">*</span></label>
 
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
-                            <div class="form-group">
-                                <label for="password">{{ __('Password') }} <span class="text-danger">*</span></label>
+                        <div class="form-group">
+                            <label for="password">{{ __('Password') }} <span class="text-danger">*</span></label>
 
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
-                            <div class="form-group">
-                                <label for="password-confirm">{{ __('Konfirmasi Password') }} <span class="text-danger">*</span></label>
+                        <div class="form-group">
+                            <label for="password-confirm">{{ __('Konfirmasi Password') }} <span class="text-danger">*</span></label>
 
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        </div>
 
-                            <button type="submit" class="btn btn-success float-right">
-                                {{ __('Reset Password') }}
-                            </button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn btn-success float-right">
+                            {{ __('Reset Password') }}
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
