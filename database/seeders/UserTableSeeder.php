@@ -19,8 +19,8 @@ class UserTableSeeder extends Seeder
             [
                 'id' => Uuid::uuid4()->toString(),
                 'name' => 'Ikhsan Heriyawan',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('admin'),
+                'email' => 'ikhsanheriyawan2404@gmail.com',
+                'password' => Hash::make('Penangisan1902***'),
                 'date_of_birth' => '2001-02-19',
                 'bio' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes',
                 'role' => 'admin',

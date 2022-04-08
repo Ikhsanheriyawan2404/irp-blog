@@ -38,7 +38,7 @@
                 <div class="card my-3">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-                            <img src="{{ $user->takeImage }}" class="img-thumbnail rounded-circle" width="100">
+                            <img src="{{ $user->takeImage }}" class="rounded-circle" height="100" width="100">
                         </div>
                         <p>{{ $user->bio }}</p>
                     </div>
@@ -99,16 +99,17 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6>Like</h6>
+                                <h6>Menyukai</h6>
                             </div>
                             <div class="col-sm-9 text-comment">
-                                <h6>{{ $likes->sum('likes') }}</h6>
+                                {{-- <h6>{{ $likes->sum('likes') }}</h6> --}}
+                                <h6>{{ count($user->likes) }}</h6>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6>Coment</h6>
+                                <h6>Mengomentari</h6>
                             </div>
                             <div class="col-sm-9 text-comment">
                                 <h6>{{ count($user->comments) }}</h6>

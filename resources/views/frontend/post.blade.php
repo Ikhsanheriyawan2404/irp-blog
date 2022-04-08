@@ -4,6 +4,7 @@
     <meta name="title" content="{{ $post->meta_title ?? 'IRP Blog' }}">
     <meta name="description" content="{{ $post->meta_description ?? 'Sebuah sarana blog publik untuk saling berbagi - Remaja generasi millenial bisa' }}">
     <meta name="keyword" content="{{ $post->meta_keyword ?? 'Forum, Remaja, IRP' }}">
+    <meta name="image" content="{{ $post->takeImage ?? '' }}">
 @endsection
 
 @section('content')
@@ -92,6 +93,13 @@
                                 <i class="fas fa-comment"></i> {{ $post->comments->count('message') }}
                             </div>
                         </div>
+
+                        <div class="d-flex flex-row my-3">
+                            <a href="whatsapp://send?text={{ url($post->slug) }}" class="btn btn-sm btn-success"><i class="fab fa-brands fa-whatsapp"></i></a>
+                            <a href="{{ url($post->slug) }}" class="btn btn-sm btn-primary ml-2"><i class="fab fa-facebook"></i></a>
+                            <a class="btn btn-sm btn-info ml-2"><i class="fab fa-telegram"></i></a>
+                            <a class="btn btn-sm btn-info ml-2"><i class="fab fa-twitter"></i></a>
+                        </div>
                     <hr>
 
                     <!-- Comment -->
@@ -99,7 +107,7 @@
                         <div class="card my-3">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="{{ $comment->user->takeImage }}" class="rounded-circle" width="75" alt="">
+                                    <img src="{{ $comment->user->takeImage }}" class="rounded-circle" height="50" width="50">
                                 </div>
                                 <div class="col-md-10">
                                     <a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a>
@@ -122,10 +130,12 @@
                     @endforeach
                     <div class="card my-3">
                         <div class="row">
-                            <div class="col-md-2">
-                                <img src="{{ auth()->user()->takeImage ?? '' }}" class="rounded-circle" width="75" alt="">
+                            <div class="col-md-1">
+                                @if (auth()->user())
+                                <img src="{{ auth()->user()->takeImage }}" class="rounded-circle" height="50" width="50" alt="">
+                                @endif
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-11">
                                 <form action="{{ route('comment.store', $post->id) }}" method="post">
                                     @csrf
                                     <div class="form-group">
