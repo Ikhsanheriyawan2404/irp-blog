@@ -2,14 +2,19 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController, GalleryController};
+use App\Http\Controllers\{HomeController, PostController, CategoryController, UserController, CommentController, LikeController, AdminController, GalleryController, ProductController, ShopController};
 
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('search', [HomeController::class, 'search'])->name('post.search');
+
+Route::get('product/search', [ProductController::class, 'search'])->name('product.search');
+Route::get('product/filter', [ProductController::class, 'filter'])->name('product.filter');
+
 Route::get('tentang-kami', [HomeController::class, 'about_us'])->name('about_us');
 Route::get('galeri', [HomeController::class, 'gallery'])->name('gallery');
+Route::get('product', [ProductController::class, 'frontend'])->name('product.frontend');
 Route::get('category/{category:slug}', [HomeController::class, 'show_category'])->name('category');
 Route::post('markAsRead', function() {
     auth()->user()->unreadNotifications->markAsRead();
@@ -40,6 +45,7 @@ Route::middleware('auth')->group(function () {
         Route::put('{post:slug}/edit', [PostController::class, 'update'])->name('post.update');
         Route::delete('{post:slug}/delete', [PostController::class, 'destroy'])->name('post.delete');
     });
+
     Route::middleware('admin')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
@@ -58,6 +64,8 @@ Route::middleware('auth')->group(function () {
                 Route::post('store', [GalleryController::class, 'store'])->name('gallery.store');
                 Route::delete('{gallery:id}/delete', [GalleryController::class, 'destroy'])->name('gallery.destroy');
             });
+            Route::resource('product', ProductController::class);
+            Route::resource('shop', ShopController::class);
         });
     });
 });

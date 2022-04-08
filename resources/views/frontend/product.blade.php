@@ -234,132 +234,55 @@
 
     <!-- Main Content -->
     <div class="container">
-        <div class="row my-4">
-            <div class="col-lg-8">
-                <form class="form-inline">
-                    <input class="form-control col-6" type="search" placeholder="Cari barang disini..." aria-label="Search">
-                    <button class="btn btn-outline-success ml-2" type="submit">Cari</button>
-                </form>
-            </div>
-        </div>
         <div class="row">
-            <div class="col-md-4 my-3">
-            <!-- bbb_deals -->
-                <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>50<small class="cross">%</small></span></div>
-                    <div class="bbb_deals_title">Diskon Hari Ini</div>
-                    <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/smartphone.png') }}"></div>
-                            <div class="bbb_deals_content">
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Smartphone</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 12.500.000</strike></div>
-                                </div>
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Xiaomi MI 10T 5G</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 6.250.000</div>
-                                </div>
-                                <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>10</span></div>
-                                        <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="available_bar"><span style="width:17%"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-6">
+                <div class="my-2">
+                    <form class="form-inline" action="{{ route('product.search', []) }}">
+                        <input class="form-control col-9" type="search" placeholder="Cari barang disini..." aria-label="Search" name="query">
+                        <button class="btn btn-outline-success ml-2" type="submit">Cari</button>
+                    </form>
                 </div>
-            </div>
-            <div class="col-md-4 my-3">
-            <!-- bbb_deals -->
-                <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
-                    <div class="bbb_deals_title">Diskon Hari Ini</div>
-                    <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/baju1.jpg') }}"></div>
-                            <div class="bbb_deals_content">
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Baju</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
-                                </div>
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Cw</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
-                                </div>
-                                <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="available_bar"><span style="width:17%"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 my-3">
-            <!-- bbb_deals -->
-                <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
-                    <div class="bbb_deals_title">Diskon Hari Ini</div>
-                    <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/baju2.jpg') }}"></div>
-                            <div class="bbb_deals_content">
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Baju</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
-                                </div>
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Keranjang</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
-                                </div>
-                                <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="available_bar"><span style="width:17%"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <form class="form-inline" action="{{ route('product.filter', []) }}">
+                        <select class="form-control col-9" name="filter" id="filter" onchange="getValue()">
+                            <option selected disabled>--Cari Berdasarkan Toko--</option>
+                            @foreach ($shops as $shop)
+                                <option value="{{ $shop->id }}">{{ $shop->name }}</option>
+                            @endforeach
+                        </select>
+                        <button class="btn btn-outline-success ml-2" type="submit">Cari</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="row">
+
+            @foreach ($products as $product)
+
             <div class="col-md-4 my-3">
             <!-- bbb_deals -->
                 <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>30<small class="cross">%</small></span></div>
+                    <div class="ribbon ribbon-top-right"><span>{{ $product->discount }}<small class="cross">%</small></span></div>
                     <div class="bbb_deals_title">Diskon Hari Ini</div>
                     <div class="bbb_deals_slider_container">
                         <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/baju3.jpg') }}"></div>
+                            <div class="bbb_deals_image"><img src="{{ $product->takeImage }}"></div>
                             <div class="bbb_deals_content">
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Baju</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 250.000</strike></div>
+                                    <div class="bbb_deals_item_category"><a href="#">{{ $product->shop->name }}</a></div>
+                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp. {{ $product->price }}</strike></div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Perempuan</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 175.000</div>
+                                    <div class="bbb_deals_item_name">{{ $product->name }}</div>
+                                    <div class="bbb_deals_item_price ml-auto">{{ $product->price - $product->price * ($product->discount / 100) }}</div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>30</span></div>
+                                        <div class="available_title">{{ $product->description }} <span></span></div>
                                         <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
+                                            <a href="https://wa.me/{{ $product->shop->number }}" class="btn btn-success">Beli
+                                                {{-- <i class="fas fa-wallet"></i> --}}
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="available_bar"><span style="width:17%"></span></div>
@@ -369,163 +292,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 my-3">
-            <!-- bbb_deals -->
-                <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
-                    <div class="bbb_deals_title">Diskon Hari Ini</div>
-                    <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/handcraft1.jpg') }}"></div>
-                            <div class="bbb_deals_content">
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Handcraft</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
-                                </div>
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Keranjang</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
-                                </div>
-                                <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="available_bar"><span style="width:17%"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 my-3">
-            <!-- bbb_deals -->
-                <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
-                    <div class="bbb_deals_title">Diskon Hari Ini</div>
-                    <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/handcraft2.jpg') }}"></div>
-                            <div class="bbb_deals_content">
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Handcraft</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
-                                </div>
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Keranjang</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
-                                </div>
-                                <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="available_bar"><span style="width:17%"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 my-3">
-            <!-- bbb_deals -->
-                <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>30<small class="cross">%</small></span></div>
-                    <div class="bbb_deals_title">Diskon Hari Ini</div>
-                    <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/handcraft3.jpg') }}"></div>
-                            <div class="bbb_deals_content">
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Baju</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 250.000</strike></div>
-                                </div>
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Baju Perempuan</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 175.000</div>
-                                </div>
-                                <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>30</span></div>
-                                        <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="available_bar"><span style="width:17%"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 my-3">
-            <!-- bbb_deals -->
-                <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
-                    <div class="bbb_deals_title">Diskon Hari Ini</div>
-                    <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/handcraft4.jpg') }}"></div>
-                            <div class="bbb_deals_content">
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Handcraft</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
-                                </div>
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Keranjang</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
-                                </div>
-                                <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="available_bar"><span style="width:17%"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 my-3">
-            <!-- bbb_deals -->
-                <div class="bbb_deals">
-                    <div class="ribbon ribbon-top-right"><span>20<small class="cross">%</small></span></div>
-                    <div class="bbb_deals_title">Diskon Hari Ini</div>
-                    <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="{{ asset('img/bh.jpg') }}"></div>
-                            <div class="bbb_deals_content">
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_category"><a href="#">Handcraft</a></div>
-                                    <div class="bbb_deals_item_price_a ml-auto"><strike>Rp 200.000</strike></div>
-                                </div>
-                                <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Keranjang</div>
-                                    <div class="bbb_deals_item_price ml-auto">Rp 160.000</div>
-                                </div>
-                                <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Tersedia: <span>50</span></div>
-                                        <div class="sold_stars ml-auto">
-                                            <button type="button" class="btn btn-success">Beli <i class="fas fa-wallet"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="available_bar"><span style="width:17%"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            @endforeach
         </div>
     </div>
+@endsection
+
+@section('custom-scripts')
+    <script>
+        function getValue () {
+            let selectValue = document.getElementById('filter').value;
+        }
+    </script>
 @endsection

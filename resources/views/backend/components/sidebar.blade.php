@@ -55,15 +55,23 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cogs"></i>
+                    <a href="{{ route('product.index') }}" class="nav-link {{ request()->routeIs('product.*') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-images"></i>
                         <p>
-                            Setting
+                            Product
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.index') }}" class="nav-link {{ request()->routeIs('shop.*') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-images"></i>
+                        <p>
+                            Shop
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">SETTINGS</li>
                 <li class="nav-item">
                     <a class="nav-link"
                         onclick="event.preventDefault();
