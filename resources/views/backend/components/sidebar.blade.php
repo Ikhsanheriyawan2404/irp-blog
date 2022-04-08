@@ -57,7 +57,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('product.index') }}" class="nav-link {{ request()->routeIs('product.*') ? 'active' : '' }}">
-                        <i class="nav-icon far fa-images"></i>
+                        <i class="nav-icon fa fa-box"></i>
                         <p>
                             Product
                         </p>
@@ -65,7 +65,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('shop.index') }}" class="nav-link {{ request()->routeIs('shop.*') ? 'active' : '' }}">
-                        <i class="nav-icon far fa-images"></i>
+                        <i class="nav-icon fa fa-store"></i>
                         <p>
                             Shop
                         </p>
